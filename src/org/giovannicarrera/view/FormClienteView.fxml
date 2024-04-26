@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.giovannicarrera.controller.FormClienteController">
+   <children>
+      <ImageView fitHeight="750.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/Formulario.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="tfClienteId" editable="false" layoutX="69.0" layoutY="230.0" prefHeight="28.0" prefWidth="351.0" />
+      <TextField fx:id="tfNIT" layoutX="69.0" layoutY="299.0" prefHeight="28.0" prefWidth="351.0" />
+      <TextField fx:id="tfApellido" layoutX="69.0" layoutY="441.0" prefHeight="28.0" prefWidth="351.0" />
+      <TextField fx:id="tfTelefono" layoutX="69.0" layoutY="509.0" prefHeight="28.0" prefWidth="351.0" />
+      <TextField fx:id="tfDireccion" layoutX="69.0" layoutY="579.0" prefHeight="28.0" prefWidth="351.0" />
+      <TextField fx:id="tfNombre" layoutX="69.0" layoutY="375.0" prefHeight="28.0" prefWidth="351.0" />
+      <Button fx:id="btnGuardar" layoutX="136.0" layoutY="635.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="77.0" prefWidth="92.0" text="Guardar" />
+      <Button fx:id="btnCancelar" layoutX="261.0" layoutY="635.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="77.0" prefWidth="92.0" text="Cancelar" />
+   </children>
+</AnchorPane>

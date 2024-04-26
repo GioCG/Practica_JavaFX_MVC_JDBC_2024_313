@@ -1,0 +1,745 @@
+USE superDB;
+-- ============================================= CRUD Cargos ==============================================
+-- ========================================================================================================
+
+Delimiter $$
+CREATE PROCEDURE sp_agregarCargo(IN nomCarg VARCHAR(30),IN descCarg VARCHAR(100))
+	BEGIN
+		INSERT INTO Clientes(nombreCargo,descripcionCargo) VALUES
+			(nomCarg,descCargo);
+	END$$
+Delimiter ;
+
+Delimiter $$
+CREATE PROCEDURE sp_listarCargo()
+	BEGIN
+		SELECT
+			Cargos.cargoId,
+            Cargos.nombreCargo,
+            Cargos.descripcionCargo
+				FROM Cargos;
+	END$$
+Delimiter ;
+
+Delimiter $$
+CREATE PROCEDURE sp_eliminarCargo(IN carId INT)
+	BEGIN 
+		DELETE FROM Cargos
+			WHERE cargoId = carId;
+	END$$
+Delimiter ;
+
+Delimiter $$
+CREATE PROCEDURE sp_buscarCargo(IN carId INT)
+	BEGIN
+		SELECT
+            Cargos.cargoId,
+            Cargos.nombreCargo,
+            Cargos.descripcionCargo
+				FROM Cargos
+					WHERE Cargos = carId;
+	END $$
+delimiter ;
+             
+Delimiter $$
+CREATE PROCEDURE sp_editarCargo(IN carId INT,IN nomCar VARCHAR(30), IN descCar VARCHAR(100))
+	BEGIN
+		UPDATE Cargos
+			SET
+				nombreCargo = nomCar,
+				descripcionCargo = descCarg
+					WHERE cargoId = carId;
+	END $$
+Delimiter ;
+-- ======================================= CRUD CategoriaProductos ========================================
+-- ========================================================================================================
+Delimiter $$
+CREATE PROCEDURE sp_agregarCategoriaProducto(IN nomCat VARCHAR(30),IN descCat VARCHAR(100))
+	Begin
+		insert into CategoriaProductos(nombreCategoria,descripcionCategoria) values
+			(nomCat,descCat);
+	END$$
+Delimiter ;
+
+Delimiter $$
+create procedure sp_listarCategoriaProductos()
+	begin
+		select
+			CategoriaProductos.categoriaProductosId,
+            CategoriaProductos.nombreCategoria,
+            CategoriaProductos.descripcionCategoria
+				from CategoriaProductos;
+	end $$
+Delimiter ;
+
+Delimiter $$
+create procedure sp_eliminarCategoriaProductos(in catProId int)
+	begin 
+		delete from CategoriaProductos
+			where categoriaProductosId = catProId;
+	end $$
+Delimiter ;
+
+Delimiter $$
+create procedure sp_buscarCategoriaProductos(in catProId int)
+	begin
+		select
+            CategoriaProductos.categoriaProductosId,
+            CategoriaProductos.nombreCategoria,
+            CategoriaProductos.descripcionCategoria
+				from CategoriaProductos
+					where categoriaProductosId = catProId;
+	end $$
+delimiter ;
+             
+Delimiter $$
+create procedure sp_editarCategoriaProductos(in catProId int,in nomCat varchar(30), in descCat varchar(100))
+	begin
+		update CategoriaProductos
+			set
+				nombreCategoria = nomCat,
+				descripcionCategoria = descCat
+					where categoriaProductosId = catProId;
+	end $$
+Delimiter ;
+-- ========================================= CRUD Distribuidores ==========================================
+-- ========================================================================================================
+Delimiter $$
+create procedure sp_agregarDistribuidore(in nomEmp varchar(30),in apeEmp varchar(30),sue DECIMAL(10,2), horEntr TIME,horSal TIME)
+	Begin
+		insert into Distribuidores(nombreEmpleado,apellidoEmpleado,sueldo,horaEntrada,horaSalida) values
+			(nomEmp,apeEmp,sue,horEntr,horSal);
+	End$$
+Delimiter ;
+
+Delimiter $$
+create procedure sp_listarDistribuidore()
+	begin
+		select
+			Distribuidores.distribuidorId,
+            Distribuidores.nombreEmpleado,
+            Distribuidores.apellidoEmpleado,
+            Distribuidores.sueldo,
+            Distribuidores.horaEntrada,
+            Distribuidores.horaSalida
+				from Distribuidores;
+	end $$
+Delimiter ;
+
+Delimiter $$
+create procedure sp_eliminarDistribuidore(in disId int)
+	begin 
+		delete from Distribuidores
+			where distribuidorId = disId;
+	end $$
+Delimiter ;
+
+Delimiter $$
+create procedure sp_buscarDistribuidore(in disId int)
+	begin
+		select
+			Distribuidores.distribuidorId,
+            Distribuidores.nombreEmpleado,
+            Distribuidores.apellidoEmpleado,
+            Distribuidores.sueldo,
+            Distribuidores.horaEntrada,
+            Distribuidores.horaSalida
+				from Distribuidores
+					where distribuidorId = disId;
+	end $$
+delimiter ;
+             
+Delimiter $$
+create procedure sp_editarDistribuidore(in disId int,in nomEmp varchar(30),in apeEmp varchar(30),sue DECIMAL(10,2), horEntr TIME,horSal TIME)
+	begin
+		update Distribuidores
+			set
+				nombreEmpleado = nomEmp,
+				apellidoEmpleado = apeEmp,
+                sueldo = sue,
+                horaEntrada = horEntr,
+                horaSalida = horSal
+					where distribuidorId = disId;
+	end $$
+Delimiter ;
+-- ============================================ CRUD Compras ==============================================
+-- ========================================================================================================
+Delimiter $$
+create procedure sp_agregarCompra(in fecCom DATE,in totalCom DECIMAL(10,2))
+	Begin
+		insert into Clientes(fechaCompra,totalCompra) values
+			(fecCom,nom, totalCom);
+	End$$
+Delimiter ;
+
+-- Listar
+Delimiter $$
+create procedure sp_listarCompra()
+	begin
+		select
+			Compras.compraId,
+            Compras.fechaCompra,
+            Compras.totalCompra
+				from Compras;
+	end $$
+Delimiter ;
+
+-- Eliminar
+Delimiter $$
+create procedure sp_eliminarCompra(in comId int)
+	begin 
+		delete from Compras
+			where compraId = comId;
+	end $$
+Delimiter ;
+
+-- Buscar
+Delimiter $$
+create procedure sp_buscarCompra(in comId int)
+	begin
+		select
+			Compras.compraId,
+            Compras.fechaCompra,
+            Compras.totalCompra
+				from Compras
+					where compraId = comId;
+	end $$
+delimiter ;
+             
+-- Editar
+Delimiter $$
+create procedure sp_editarCompra(in comId int,in fecCom DATE,in totalCom DECIMAL(10,2))
+	begin
+		update Clientes
+			set
+				fechaCompra = fecCom,
+				totalCompra = totalCom
+					where compraId = comId;
+	end $$
+Delimiter ;
+-- ============================================ CRUD Clientes =============================================
+-- ========================================================================================================
+Delimiter $$
+create procedure sp_agregarClientes(in ni varchar(30),in nom varchar(30), in ape varchar (30), in tel varchar(15), in dir varchar (200))
+	Begin
+		insert into Clientes(NIT,nombre, apellido, telefono, direccion) values
+			(ni,nom, ape, tel, dir);
+	End$$
+Delimiter ;
+
+Delimiter $$
+create procedure sp_listarClientes()
+	begin
+		select
+			Clientes.clienteId,
+            Clientes.NIT,
+            Clientes.nombre,
+            Clientes.apellido,
+            Clientes.telefono,
+            Clientes.direccion
+				from Clientes;
+	end $$
+Delimiter ;
+
+Delimiter $$
+create procedure sp_eliminarCliente(in cliId int)
+	begin 
+		delete from Clientes
+			where clienteId = cliId;
+	end $$
+Delimiter ;
+
+Delimiter $$
+create procedure sp_buscarCliente(in cliId int)
+	begin
+		select
+			Clientes.clienteId,
+			Clientes.NIT,
+            Clientes.nombre,
+            Clientes.apellido,
+            Clientes.telefono,
+            Clientes.direccion
+				from Clientes
+					where clienteId = cliId;
+	end $$
+delimiter ;
+             
+Delimiter $$
+create procedure sp_editarCliente(in cliId int,in ni varchar(30), in nom varchar(30), in ape varchar (30), in tel varchar(15), in dir varchar (200))
+	begin
+		update Clientes
+			set
+				NIT = ni,
+				nombre = nom,
+                apellido = ape,
+                telefono = tel,
+                direccion = dir
+					where clienteId = cliId;
+	end $$
+Delimiter ;
+-- ============================================ CRUD Productos =============================================
+-- =========================================================================================================
+Delimiter $$
+create procedure sp_agregarProducto(in nomProd varchar(50),in desProd varchar(100), in cantiSt INT, in preVenUnit DECIMAL(10,2), in preVenMay DECIMAL(10,2),precioCompra DECIMAL(10,2))
+	Begin
+		insert into Productos(nombreProducto,descripcionProducto, cantidadStock, precioVentaUnitario, precioVentaMayor,precioCompra) values
+			(nomProd,desProd, preVenUnit, preVenMay, precioCompra);
+	End$$
+Delimiter ;
+
+Delimiter $$
+create procedure sp_listarProducto()
+	begin
+		select
+			Productos.productoId,
+            Productos.nombreProducto,
+            Productos.descripcionProducto,
+            Productos.cantidadStock,
+            Productos.precioVentaUnitario,
+            Productos.precioVentaMayor,
+            Productos.precioCompra
+				from Productos;
+	end $$
+Delimiter ;
+
+Delimiter $$
+create procedure sp_eliminarProducto(in prodId int)
+	begin 
+		delete from Productos
+			where productoId = prodId;
+	end $$
+Delimiter ;
+
+Delimiter $$
+create procedure sp_buscarProducto(in prodId int)
+	begin
+		select
+			Productos.productoId,
+            Productos.nombreProducto,
+            Productos.descripcionProducto,
+            Productos.cantidadStock,
+            Productos.precioVentaUnitario,
+            Productos.precioVentaMayor,
+            Productos.precioCompra
+				from Productos
+					where productoId = prodId;
+	end $$
+delimiter ;
+             
+Delimiter $$
+create procedure sp_editarProducto(in prodId int,in nomProd varchar(50),in desProd varchar(100), in cantiSt INT, in preVenUnit DECIMAL(10,2), in preVenMay DECIMAL(10,2),precioCompra DECIMAL(10,2))
+	begin
+		update Clientes
+			set
+				nombreProducto = nomProd,
+				descripcionProducto = desProd,
+                cantidadStock = cantiSt,
+                precioVentaUnitario = preVenUnit,
+                precioVentaMayor =preVenMay,
+                precioCompra = precioCompra
+					where productoId = prodId;
+	end $$
+Delimiter ;
+-- =========================================== CRUD Promociones ============================================
+-- =========================================================================================================
+Delimiter $$
+create procedure sp_agregarPromocion(in preProm DECIMAL(10,2),in desProm VARCHAR(100), in fecIn DATE, in fecFin DATE, in prodId INT)
+	Begin
+		insert into Promociones(precioPromocio,descripcionPromocion, fechaInicio, fechaFinal,productoId) values
+			(preProm,desProm, fecIn, fecFin, prodId);
+	End$$
+Delimiter ;
+
+Delimiter $$
+create procedure sp_listarPromocion()
+	begin
+		select
+			Promociones.promocionId,
+            Promociones.precioPromocio,
+            Promociones.descripcionPromocion,
+            Promociones.fechaInicio,
+            Promociones.fechaFinal,
+            Promociones.productoId
+				from Promociones;
+	end $$
+Delimiter ;
+
+Delimiter $$
+create procedure sp_eliminarPromocion(in promId int)
+	begin 
+		delete from Promociones
+			where promocionId = promId;
+	end $$
+Delimiter ;
+
+Delimiter $$
+create procedure sp_buscarPromocion(in promId int)
+	begin
+		select
+			Promociones.promocionId,
+            Promociones.precioPromocio,
+            Promociones.descripcionPromocion,
+            Promociones.fechaInicio,
+            Promociones.fechaFinal,
+            Promociones.productoId
+				from Promociones
+					where promocionId = promId;
+	end $$
+delimiter ;
+             
+Delimiter $$
+create procedure sp_editarPromocion(in promId int,in preProm DECIMAL(10,2),in desProm VARCHAR(100), in fecIn DATE, in fecFin DATE, in prodId INT)
+	begin
+		update Clientes
+			set
+				precioPromocio = preProm,
+				descripcionPromocion = desProm,
+                fechaInicio = fecIn,
+                fechaFinal = fecFin,
+                productoId = prodId
+					where promocionId = prodId;
+	end $$
+Delimiter ;
+
+-- ========================================== CRUD DetalleCompras ==========================================
+-- ========================================================================================================
+Delimiter $$
+create procedure sp_agregarDetalleCompra(in cantCom INT,in prodId INT, in comId INT)
+	Begin
+		insert into DetalleCompras(cantidadCompra,productoId, compraId) values
+			(cantCom,prodId, fecIn, fecFin, prodId);
+	End$$
+Delimiter ;
+
+Delimiter $$
+create procedure sp_listarDetalleCompra()
+	begin
+		select
+			DetalleCompras.detalleCompraId,
+            DetalleCompras.cantidadCompra,
+            DetalleCompras.productoId,
+            DetalleCompras.compraId
+				from DetalleCompras;
+	end $$
+Delimiter ;
+
+Delimiter $$
+create procedure sp_eliminarDetalleCompra(in detComId int)
+	begin 
+		delete from DetalleCompras
+			where detalleCompraId = detComId;
+	end $$
+Delimiter ;
+
+Delimiter $$
+create procedure sp_buscarDetalleCompra(in detComId int)
+	begin
+		select
+			DetalleCompras.detalleCompraId,
+            DetalleCompras.cantidadCompra,
+            DetalleCompras.productoId,
+            DetalleCompras.compraId
+				from DetalleCompras
+					where detalleCompraId = detComId;
+	end $$
+delimiter ;
+             
+Delimiter $$
+create procedure sp_editarDetalleCompra(in detComId int,in cantCom INT,in prodId INT, in comId INT)
+	begin
+		update Clientes
+			set
+                cantidadCompra = cantCom,
+                productoId = prodId,
+                compraId = comId
+					where detalleCompraId = detComId;
+	end $$
+Delimiter ;
+-- ============================================ CRUD Empleados ============================================
+-- ========================================================================================================
+delimiter $$
+		create procedure sp_agregarEmpleado(IN nomEmp varchar(30), in apeEmp varchar(30),IN suel DECIMAL(10,2),IN horEnt TIME, IN horSal TIME, IN carId INT) 
+	begin
+		insert into Empleados(nombreEmpleado, apellidoEmpleado,sueldo,horaEntrada,horaSalida,cargoId)
+			values(nomEmp,apeEmp,suel,horEnt,carId);
+	end$$
+delimiter ;
+
+Delimiter $$
+create procedure sp_listarEmpleado()
+	begin
+		select
+			Empleados.empleadoId,
+            Empleados.nombreEmpleado,
+            Empleados.apellidoEmpleado,
+            Empleados.horaEntrada,
+            Empleados.horaSalida,
+            Empleados.cargoId
+				from Empleados;
+	end $$
+Delimiter ;
+
+-- Eliminar
+Delimiter $$
+create procedure sp_eliminarEmpleado(in empId int)
+	begin 
+		delete from Empleados
+			where empleadoId = empId;
+	end $$
+Delimiter ;
+
+-- Buscar
+Delimiter $$
+create procedure sp_buscarEmpleado(in empId int)
+	begin
+		select
+			Empleados.empleadoId,
+            Empleados.nombreEmpleado,
+            Empleados.apellidoEmpleado,
+            Empleados.horaEntrada,
+            Empleados.horaSalida,
+            Empleados.cargoId
+				from Empleados
+                where empleadoId = empId;
+	end $$
+delimiter ;
+             
+-- Editar
+Delimiter $$
+create procedure sp_editarEmpleado(IN empId INT, IN nomEmp VARCHAR(30), IN apeEmp VARCHAR(30),IN suel DECIMAL(10,2),IN horEnt TIME, IN horSal TIME, IN carId INT)
+	begin
+		update Empleados
+			set
+				nombreEmpleado = nomEmp,
+				apellidoEmpleado = apeEmp,
+                clienteId = suel,
+                horaEntrada = horEnt,
+                horaSalida = horSal,
+                cargoId = carId
+					where empleadoId = empId;
+	end $$
+Delimiter ;
+
+-- ============================================ CRUD Facturas =============================================
+-- ========================================================================================================
+delimiter $$
+		create procedure sp_agregarFactura(IN fec date, in hor time,IN cliId int,IN empId int) 
+	begin
+		insert into Facturas(fecha,hora,numCliente,empleadoId)
+			values(fec,hor,numCli,empId);
+	end$$
+delimiter ;
+
+Delimiter $$
+create procedure sp_listarFactura()
+	begin
+		select
+			Facturas.facturaId,
+            Facturas.fecha,
+            Facturas.hora,
+            Facturas.clienteId,
+            Facturas.empleadoId
+				from Facturas;
+	end $$
+Delimiter ;
+
+-- Eliminar
+Delimiter $$
+create procedure sp_eliminarFactura(in facId int)
+	begin 
+		delete from Facturas
+			where facturaId = facId;
+	end $$
+Delimiter ;
+
+-- Buscar
+Delimiter $$
+create procedure sp_buscarFactura(in facId int)
+	begin
+		select
+			Facturas.facturaId,
+            Facturas.fecha,
+            Facturas.hora,
+            Facturas.clienteId,
+            Facturas.empleadoId
+				from Facturas
+                where facturaId = facId;
+	end $$
+delimiter ;
+             
+-- Editar
+Delimiter $$
+create procedure sp_editarFactura(in facId int,in fec date, in hor time, in cliId INT, in empId INT)
+	begin
+		update Facturas
+			set
+				fecha = fec,
+				hora = hor,
+                clienteId = cliId,
+                empleadoId = empId
+					where facturaId = facId;
+	end $$
+Delimiter ;
+
+-- ========================================== CRUD ticketSporte ===========================================
+-- ========================================================================================================
+delimiter $$
+	create procedure sp_agregarTicketSporte(IN desTic VARCHAR(250),IN cliId int,IN facId INT) 
+		begin
+			insert into ticketSporte(descripcionTicket,clienteId,facturaId)
+				values(desTic,cliId,facId);
+	end$$
+delimiter ;
+
+Delimiter $$
+	create procedure sp_listarTicketSporte()
+		begin
+			select
+				ticketSporte.descripcionTicket,
+				ticketSporte.estatus,
+				ticketSporte.clienteId,
+				ticketSporte.facturaId
+					from ticketSporte;
+	end $$
+Delimiter ;
+
+Delimiter $$
+	create procedure sp_eliminarTicketSporte(in ticSopId int)
+		begin 
+			delete from ticketSporte
+				where ticketSoporteId = ticSopId;
+	end $$
+Delimiter ;
+
+Delimiter $$
+	create procedure sp_buscarTicketSporte(in ticSopId int)
+		begin
+			select
+				ticketSporte.descripcionTicket,
+				ticketSporte.estatus,
+				ticketSporte.clienteId,
+				ticketSporte.facturaId
+					from ticketSporte
+					where ticketSoporteId = ticSopId;
+	end $$
+delimiter ;
+
+Delimiter $$
+	create procedure sp_editarTicketSporte(IN ticSopId INT,IN desTic VARCHAR(250), in est VARCHAR(30),IN cliId int,IN facId INT)
+		begin
+			update Facturas
+				set
+					descripcionTicket = desTic,
+					estatus = est,
+					clienteId = cliId,
+					facturaId = facId
+						where ticketSoporteId = ticSopId;
+	end $$
+Delimiter ;
+
+-- ======================================== CRUD DetalleFacturas ==========================================
+-- ========================================================================================================
+delimiter $$
+	create procedure SP_agregarDetFacturas(IN facId int(11),IN prodId int(11))
+        begin
+		insert into DetalleFactur(facturaId,productoId)
+			values(facId, prodId);
+	end$$
+delimiter ;
+    
+delimiter $$
+    create procedure sp_ListarDetFacturas()
+	begin
+		select
+			DetalleFactur.detalleFacturaId,
+			DetalleFactur.facturaId,
+            DetalleFactur.productoId
+				from DetalleFactur;
+	end$$
+delimiter ;
+
+delimiter $$
+	create procedure sp_EliminarDetFacturas(in detFacId int)
+		begin
+			delete from DetalleFactur
+				where detalleFacturaId = detFacId;
+	end $$
+delimiter ;
+
+delimiter $$
+	create procedure sp_BuscarDetFactura(in detFacId int)
+		begin
+			select
+				DetalleFactur.detalleFacturaId,
+				DetalleFactur.facturaId,
+				DetalleFactur.productoId
+					from DetalleFactur
+					where detalleFacturaId = detFacId;
+	end$$
+delimiter ;
+
+delimiter $$
+	create procedure sp_EditarDetFactura(IN detFacId int(11),IN facId int(11), IN  prodId int(11)) 
+		begin
+			update DetalleFactur
+				set
+				detalleFacturaId = detFacId,
+				facturaId =fec,
+				productoId = facId,
+				empleadoId = prodId
+						where detalleFacturaId = detFacId;
+	end$$
+delimiter ;
+
+-- ========================================= Facturas Complement ==========================================
+-- ========================================================================================================
+delimiter $$
+create procedure sp_asignarTotalFactura(in factId int, in totalFact decimal(10,2))
+begin
+	update facturas 
+		set total = totalFact
+			where facturaId = factId;
+end $$
+delimiter ;
+
+delimiter $$
+create trigger tg_totalFactura
+after insert on detalleFactura
+for each row
+begin
+	declare totalFact decimal(10,2);
+     
+	set totalFact = FN_totalFact(new.facturaId);
+end$$
+delimiter ;
+-- =========================================== Stok Complement ============================================
+-- ========================================================================================================
+delimiter $$
+create procedure sp_asignarDesStok(in proId int, in totalStok int)
+begin
+	update Productos 
+		set cantidad = totalStok
+			where productoId = proId;
+end $$
+delimiter ;
+delimiter $$
+create trigger tg_totalStok
+after insert on detalleFactura
+for each row
+begin
+	declare totalStok int;
+     
+	set totalStok = FN_desStok(new.productoId);
+end$$
+delimiter ;
+-- ========================================= Empleado Complement ==========================================
+-- ========================================================================================================
+delimiter $$
+	create procedure sp_AsignarEncargado(IN empId int,IN encId int) 
+	
+    begin
+		update Empleados 
+			set encargadoId = encId
+					where empleadoId = empId;
+	end$$
+    delimiter ;
