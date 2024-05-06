@@ -18,7 +18,7 @@ create table CategoriaProductos(
 create table Distribuidores(
 	distribuidorId INT NOT NULL AUTO_INCREMENT,
 	nombreDistribuidor VARCHAR(30) NOt NULL,
-    disreccionDistribuidor VARCHAR(200) NOt NULL,
+    direccionDistribuidor VARCHAR(200) NOt NULL,
     nitDistribuidor VARCHAR(15) NOt NULL,
     telefonoDistribuidor VARCHAR(15) NOt NULL,
     web varchar(50),
@@ -89,7 +89,7 @@ create table Empleados(
     cargoId INT,
     encargadoId INT,
     PRIMARY KEY PK_empleadoId(empleadoId),
-    CONSTRAINT FK_Productos_Cargos FOREIGN KEY Productos(cargoId)
+    CONSTRAINT FK_Empleados_Cargos FOREIGN KEY Productos(cargoId)
         REFERENCES Cargos(cargoId),
     CONSTRAINT FK_encargadoId FOREIGN KEY Empleados(encargadoId)
         REFERENCES Empleados(empleadoId)
@@ -108,7 +108,7 @@ create table Facturas(
         REFERENCES Empleados(empleadoId)
 );
 
-create table TicketSoporte(
+create table TicketSoportes(
 	ticketSoporteId INT NOT NULL AUTO_INCREMENT,
     descripcionTicketSoporte VARCHAR(250) NOT NULL,
     estatus VARCHAR(30) DEFAULT 'Recién creado' NOT NULL,

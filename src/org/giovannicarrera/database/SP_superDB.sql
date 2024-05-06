@@ -583,10 +583,10 @@ Delimiter ;
 -- ========================================== CRUD ticketSporte ===========================================
 -- ========================================================================================================
 delimiter $$
-	create procedure sp_agregarTicketSporte(IN desTic VARCHAR(250),IN cliId int,IN facId INT) 
+	create procedure sp_agregarTicketSoporte(IN des VARCHAR(250),IN cliId int,IN facId INT) 
 		begin
-			insert into TicketSoportes(descripcionTicketSoporte,clienteId,facturaId)
-				values(desTic,cliId,facId);
+			insert into TicketSoportes(descripcion,clienteId,facturaId)
+				values(des,cliId,facId);
 	end$$
 delimiter ;
 
@@ -594,11 +594,21 @@ Delimiter $$
 	create procedure sp_listarTicketSporte()
 		begin
 			select
-				ticketSporte.descripcionTicket,
+				ticketSporte.descripcion,
 				ticketSporte.estatus,
 				ticketSporte.clienteId,
 				ticketSporte.facturaId
 					from ticketSporte;
+	end $$
+Delimiter ;
+
+Delimiter $$
+	create procedure sp_listarTicketSoporteComplet()
+		begin
+			select TS.ticketSoporteId,TS.descripcion,TS.estatus,C.clienteId,F.clienteId,
+            CONCAT("id:",C.clienteId,"|", C.nombre," ", C.apellido) AS Cliente, TS.facturaId from TicketSoportes TS
+            join Clientes C on TS.clienteId = C.clienteId
+            join Facturas F on TS.facturaId = F.facturaId;
 	end $$
 Delimiter ;
 
@@ -614,7 +624,7 @@ Delimiter $$
 	create procedure sp_buscarTicketSporte(in ticSopId int)
 		begin
 			select
-				ticketSporte.descripcionTicket,
+				ticketSporte.descripcion,
 				ticketSporte.estatus,
 				ticketSporte.clienteId,
 				ticketSporte.facturaId
@@ -624,11 +634,11 @@ Delimiter $$
 delimiter ;
 
 Delimiter $$
-	create procedure sp_editarTicketSporte(IN ticSopId INT,IN desTic VARCHAR(250), in est VARCHAR(30),IN cliId int,IN facId INT)
+	create procedure sp_editarTicketSporte(IN ticSopId INT,IN des VARCHAR(250), in est VARCHAR(30),IN cliId int,IN facId INT)
 		begin
 			update Facturas
 				set
-					descripcionTicket = desTic,
+					descripcion = des,
 					estatus = est,
 					clienteId = cliId,
 					facturaId = facId
@@ -755,3 +765,4 @@ call sp_agregarEmpleado('nombreEmpleado', 'apellidoEmpleado',23.5,12,5,1);
  call sp_agregarFactura('2000-10-02',2,1,1);
  call sp_agregarTicketSporte('1',1,1);
 call SP_agregarDetFacturas(1,1);
+call sp_listarTicketSoporteComplet;

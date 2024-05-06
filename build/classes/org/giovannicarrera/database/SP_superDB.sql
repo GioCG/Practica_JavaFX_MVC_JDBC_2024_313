@@ -5,8 +5,8 @@ USE superDB;
 Delimiter $$
 CREATE PROCEDURE sp_agregarCargo(IN nomCarg VARCHAR(30),IN descCarg VARCHAR(100))
 	BEGIN
-		INSERT INTO Clientes(nombreCargo,descripcionCargo) VALUES
-			(nomCarg,descCargo);
+		INSERT INTO Cargos(nombreCargo,descripcionCargo) VALUES
+			(nomCarg,descCarg);
 	END$$
 Delimiter ;
 
@@ -105,70 +105,69 @@ Delimiter ;
 -- ========================================= CRUD Distribuidores ==========================================
 -- ========================================================================================================
 Delimiter $$
-create procedure sp_agregarDistribuidore(in nomEmp varchar(30),in apeEmp varchar(30),sue DECIMAL(10,2), horEntr TIME,horSal TIME)
+create procedure sp_AgregarDistribuidor(in nomDis varchar(30), in dirDis varchar (200), in nitDis varchar(15), in telDis varchar(15), in we varchar(50))
 	Begin
-		insert into Distribuidores(nombreEmpleado,apellidoEmpleado,sueldo,horaEntrada,horaSalida) values
-			(nomEmp,apeEmp,sue,horEntr,horSal);
+		insert into Distribuidores(nombreDistribuidor, direccionDistribuidor, nitDistribuidor, telefonoDistribuidor, web) values
+			(nomDis, dirDis, nitDis, telDis, we);
 	End$$
 Delimiter ;
 
 Delimiter $$
-create procedure sp_listarDistribuidore()
+create procedure sp_ListarDistribuidor()
 	begin
 		select
 			Distribuidores.distribuidorId,
-            Distribuidores.nombreEmpleado,
-            Distribuidores.apellidoEmpleado,
-            Distribuidores.sueldo,
-            Distribuidores.horaEntrada,
-            Distribuidores.horaSalida
+			Distribuidores.nombreDistribuidor,
+			Distribuidores.direccionDistribuidor,
+            Distribuidores.nitDistribuidor,
+            Distribuidores.telefonoDistribuidor, 
+            Distribuidores.web
 				from Distribuidores;
-	end $$
+	End $$
 Delimiter ;
 
 Delimiter $$
-create procedure sp_eliminarDistribuidore(in disId int)
+create procedure sp_EliminarDistribuidores(in disId int)
 	begin 
 		delete from Distribuidores
 			where distribuidorId = disId;
-	end $$
+	End $$
 Delimiter ;
 
 Delimiter $$
-create procedure sp_buscarDistribuidore(in disId int)
+create procedure sp_BuscarDistribuidores(in disId int)
 	begin
 		select
 			Distribuidores.distribuidorId,
-            Distribuidores.nombreEmpleado,
-            Distribuidores.apellidoEmpleado,
-            Distribuidores.sueldo,
-            Distribuidores.horaEntrada,
-            Distribuidores.horaSalida
+			Distribuidores.nombreDistribuidor,
+            Distribuidores.direccionDistribuidor,
+            Distribuidores.nitDistribuidor,
+            Distribuidores.telefonoDistribuidor,
+            Distribuidores.web
 				from Distribuidores
 					where distribuidorId = disId;
-	end $$
+	End $$
 delimiter ;
-             
+     
 Delimiter $$
-create procedure sp_editarDistribuidore(in disId int,in nomEmp varchar(30),in apeEmp varchar(30),sue DECIMAL(10,2), horEntr TIME,horSal TIME)
-	begin
-		update Distribuidores
+Create procedure sp_EditarDistribuidores(in nomDis varchar(30), in dirDis varchar (200), in nitDis varchar(15), in telDis varchar(15), in we varchar(50))
+	Begin
+		Update Distribuidores
 			set
-				nombreEmpleado = nomEmp,
-				apellidoEmpleado = apeEmp,
-                sueldo = sue,
-                horaEntrada = horEntr,
-                horaSalida = horSal
+                nombreDistribuidor = nomDis,
+                nitDistribuidor = nitDis,
+                telefonoDistribuidor = telDis,
+                web = we
 					where distribuidorId = disId;
-	end $$
+	End $$
 Delimiter ;
 -- ============================================ CRUD Compras ==============================================
 -- ========================================================================================================
 Delimiter $$
 create procedure sp_agregarCompra(in fecCom DATE,in totalCom DECIMAL(10,2))
 	Begin
-		insert into Clientes(fechaCompra,totalCompra) values
-			(fecCom,nom, totalCom);
+		insert into Compras(fechaCompra,totalCompra) values
+			(fecCom, totalCom);
 	End$$
 Delimiter ;
 
@@ -280,10 +279,10 @@ Delimiter ;
 -- ============================================ CRUD Productos =============================================
 -- =========================================================================================================
 Delimiter $$
-create procedure sp_agregarProducto(in nomProd varchar(50),in desProd varchar(100), in cantiSt INT, in preVenUnit DECIMAL(10,2), in preVenMay DECIMAL(10,2),precioCompra DECIMAL(10,2))
+create procedure sp_agregarProducto(in nomProd varchar(50),in desProd varchar(100), in cantiSt INT, in preVenUnit DECIMAL(10,2), in preVenMay DECIMAL(10,2),precioCompra DECIMAL(10,2),IN disId INT,IN catProId INT)
 	Begin
-		insert into Productos(nombreProducto,descripcionProducto, cantidadStock, precioVentaUnitario, precioVentaMayor,precioCompra) values
-			(nomProd,desProd, preVenUnit, preVenMay, precioCompra);
+		insert into Productos(nombreProducto,descripcionProducto, cantidadStock, precioVentaUnitario, precioVentaMayor,precioCompra,distribuidorId,categoriaProductosId) values
+			(nomProd,desProd,cantiSt, preVenUnit, preVenMay, precioCompra,disId,catProId);
 	End$$
 Delimiter ;
 
@@ -407,7 +406,7 @@ Delimiter $$
 create procedure sp_agregarDetalleCompra(in cantCom INT,in prodId INT, in comId INT)
 	Begin
 		insert into DetalleCompras(cantidadCompra,productoId, compraId) values
-			(cantCom,prodId, fecIn, fecFin, prodId);
+			(cantCom,prodId, comId);
 	End$$
 Delimiter ;
 
@@ -461,7 +460,7 @@ delimiter $$
 		create procedure sp_agregarEmpleado(IN nomEmp varchar(30), in apeEmp varchar(30),IN suel DECIMAL(10,2),IN horEnt TIME, IN horSal TIME, IN carId INT) 
 	begin
 		insert into Empleados(nombreEmpleado, apellidoEmpleado,sueldo,horaEntrada,horaSalida,cargoId)
-			values(nomEmp,apeEmp,suel,horEnt,carId);
+			values(nomEmp,apeEmp,suel,horEnt,horSal,carId);
 	end$$
 delimiter ;
 
@@ -525,8 +524,8 @@ Delimiter ;
 delimiter $$
 		create procedure sp_agregarFactura(IN fec date, in hor time,IN cliId int,IN empId int) 
 	begin
-		insert into Facturas(fecha,hora,numCliente,empleadoId)
-			values(fec,hor,numCli,empId);
+		insert into Facturas(fecha,hora,clienteId,empleadoId)
+			values(fec,hor,cliId,empId);
 	end$$
 delimiter ;
 
@@ -584,10 +583,10 @@ Delimiter ;
 -- ========================================== CRUD ticketSporte ===========================================
 -- ========================================================================================================
 delimiter $$
-	create procedure sp_agregarTicketSporte(IN desTic VARCHAR(250),IN cliId int,IN facId INT) 
+	create procedure sp_agregarTicketSoporte(IN des VARCHAR(250),IN cliId int,IN facId INT) 
 		begin
-			insert into ticketSporte(descripcionTicket,clienteId,facturaId)
-				values(desTic,cliId,facId);
+			insert into TicketSoportes(descripcion,clienteId,facturaId)
+				values(des,cliId,facId);
 	end$$
 delimiter ;
 
@@ -595,11 +594,21 @@ Delimiter $$
 	create procedure sp_listarTicketSporte()
 		begin
 			select
-				ticketSporte.descripcionTicket,
+				ticketSporte.descripcion,
 				ticketSporte.estatus,
 				ticketSporte.clienteId,
 				ticketSporte.facturaId
 					from ticketSporte;
+	end $$
+Delimiter ;
+
+Delimiter $$
+	create procedure sp_listarTicketSoporteComplet()
+		begin
+			select TS.ticketSoporteId,TS.descripcion,TS.estatus,C.clienteId,F.clienteId,
+            CONCAT("id:",C.clienteId,"|", C.nombre," ", C.apellido) AS Cliente, TS.facturaId from TicketSoportes TS
+            join Clientes C on TS.clienteId = C.clienteId
+            join Facturas F on TS.facturaId = F.facturaId;
 	end $$
 Delimiter ;
 
@@ -615,7 +624,7 @@ Delimiter $$
 	create procedure sp_buscarTicketSporte(in ticSopId int)
 		begin
 			select
-				ticketSporte.descripcionTicket,
+				ticketSporte.descripcion,
 				ticketSporte.estatus,
 				ticketSporte.clienteId,
 				ticketSporte.facturaId
@@ -625,11 +634,11 @@ Delimiter $$
 delimiter ;
 
 Delimiter $$
-	create procedure sp_editarTicketSporte(IN ticSopId INT,IN desTic VARCHAR(250), in est VARCHAR(30),IN cliId int,IN facId INT)
+	create procedure sp_editarTicketSporte(IN ticSopId INT,IN des VARCHAR(250), in est VARCHAR(30),IN cliId int,IN facId INT)
 		begin
 			update Facturas
 				set
-					descripcionTicket = desTic,
+					descripcion = des,
 					estatus = est,
 					clienteId = cliId,
 					facturaId = facId
@@ -642,7 +651,7 @@ Delimiter ;
 delimiter $$
 	create procedure SP_agregarDetFacturas(IN facId int(11),IN prodId int(11))
         begin
-		insert into DetalleFactur(facturaId,productoId)
+		insert into DetalleFactura(facturaId,productoId)
 			values(facId, prodId);
 	end$$
 delimiter ;
@@ -718,7 +727,7 @@ delimiter $$
 create procedure sp_asignarDesStok(in proId int, in totalStok int)
 begin
 	update Productos 
-		set cantidad = totalStok
+		set cantidadStock = totalStok
 			where productoId = proId;
 end $$
 delimiter ;
@@ -743,3 +752,17 @@ delimiter $$
 					where empleadoId = empId;
 	end$$
     delimiter ;
+
+ call sp_agregarCargo('a','b');
+ call sp_agregarCategoriaProducto('c','d');
+call sp_AgregarDistribuidor('f','g','21','6534','reg');
+ call sp_agregarCompra('2000-10-02', 20.50);
+ call sp_agregarClientes('NIT','nombre', 'apellido', 'telefono', 'direccion');
+ call sp_agregarProducto('h','i',12,23.45,32.45,21.35,1,1);
+ call sp_agregarPromocion(12.50,'descripcionPromocion','2052-11-02','2005-10-02',1);
+ call sp_agregarDetalleCompra(20,1,1);
+call sp_agregarEmpleado('nombreEmpleado', 'apellidoEmpleado',23.5,12,5,1);
+ call sp_agregarFactura('2000-10-02',2,1,1);
+ call sp_agregarTicketSporte('1',1,1);
+call SP_agregarDetFacturas(1,1);
+call sp_listarTicketSoporteComplet;

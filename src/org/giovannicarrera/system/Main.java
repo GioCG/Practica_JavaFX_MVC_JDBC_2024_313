@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import org.giovannicarrera.controller.FormClienteController;
 import org.giovannicarrera.controller.MenuClienteController;
 import org.giovannicarrera.controller.MenuPrincipalController;
+import org.giovannicarrera.controller.MenuTicketSoporteController;
 
 
 
@@ -60,7 +61,6 @@ public class Main extends Application {
         try{
             MenuClienteController menuClientesView = (MenuClienteController)switchScene("MenuClienteView.fxml",1200,750);
             menuClientesView.setStage(this);
-
         }catch(Exception e){
            System.out.println(e.getMessage());
         }
@@ -74,9 +74,17 @@ public class Main extends Application {
            System.out.println(e.getMessage());
         }
     }
+    
+    public void menuTicketSoporteView() {
+        try{
+            MenuTicketSoporteController menuTicketSoporteView = (MenuTicketSoporteController)switchScene("MenuTicketSoporteView.fxml",1200,750);
+            menuTicketSoporteView.setStage(this);
+        }catch(Exception e){
+           System.out.println(e.getMessage());
+        }
+    }
     public static void main(String[] args) {
         launch(args);
-    }
-
+    } 
     
 }

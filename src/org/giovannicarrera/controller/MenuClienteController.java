@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -22,6 +23,7 @@ import org.giovannicarrera.dao.Conexion;
 import org.giovannicarrera.dto.ClienteDTO;
 import org.giovannicarrera.modelo.Cliente;
 import org.giovannicarrera.system.Main;
+import org.giovannicarrera.utils.SuperKinalAlert;
 
 public class MenuClienteController implements Initializable {
     private int op;
@@ -49,8 +51,10 @@ public class MenuClienteController implements Initializable {
             ClienteDTO.getClienteDTO().setCliente((Cliente)tblClientes.getSelectionModel().getSelectedItem());
             stage.formularioClientesView(2);
         }else if(event.getSource()== btnEliminar){
-            eliminarCliente(((Cliente) tblClientes.getSelectionModel().getSelectedItem()).getClienteId());
-            cargarLista();
+            if(SuperKinalAlert.getInstance().mostrarAlertConf(770).get() == ButtonType.OK){
+                eliminarCliente(((Cliente) tblClientes.getSelectionModel().getSelectedItem()).getClienteId());
+                cargarLista();
+            }
         }else if(event.getSource()== btnBuscar){
             if(tfClienteId.getText().equals("")){
                cargarLista();

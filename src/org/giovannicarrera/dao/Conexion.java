@@ -12,7 +12,7 @@ import java.sql.SQLException;
 public class Conexion {
     private static Conexion instance;
     private String jdbcurl = "jdbc:mysql://localhost:3306/superDB?serverTimezone=GMT-6&useSSL=false";
-    private String user = "giovanniCarrera";
+    private String user = "giovannicarrera";
     private String password = "jjVuGB8u";
     private Conexion(){
         try{

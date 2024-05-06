@@ -1,4 +1,4 @@
-use superDB
+USE superDB
 
 Delimiter $$
 create function FN_AsignarEncargado(encId int) returns boolean
@@ -27,7 +27,7 @@ begin
     totalLoop : loop
     
     if factId = (select DF.facturaId from detalleFactura DF where detallefacturaId = i) then
-		set a = ( select P.precio from Productos P where productoId = (select productoId from detalleFactura where detallefacturaId = i));
+		set a = ( select P.precioVentaUnitario from Productos P where productoId = (select productoId from detalleFactura where detallefacturaId = i));
 		set total = a + total;
         set totalIVA = total * 0.12;
         set totalFa = total + totalIVA ;
@@ -73,12 +73,11 @@ create function FN_cambioStatus(estatus VARCHAR(30)) returns boolean
 deterministic
 begin
 	declare i int default 1;
-    declare nuevoEstatus varchar(30);
+    declare nuevoEstatus varchar(30) DEFAULT 'En proceso';
     declare dia int;
     declare a int;
 	select count(*) into a from ticketSporte;
-		while i < a do  
-			update estatus set nuevoEstatus from (select * from ticketSporte) as temp where  ticketSoporteId = i;
+		while i < a do
 			update ticketSporte set estatus = nuevoEstatus where ticketSoporteId = i;
 			set i = i + 1;
 		end while;
@@ -97,7 +96,7 @@ begin
     totalLoop : loop
     
     if 	proId = (select DF.productoId from detalleFactura DF where detallefacturaId = i) then
-		set a = ( select P.cantidad from Productos P where productoId = (select productoId from detalleFactura where detallefacturaId = i));
+		set a = ( select P.cantidadStock from Productos P where productoId = (select productoId from detalleFactura where detallefacturaId = i));
 		set Stok =  a - 1;
     end if;
     

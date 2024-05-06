@@ -14,11 +14,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import org.giovannicarrera.dao.Conexion;
 import org.giovannicarrera.dto.ClienteDTO;
 import org.giovannicarrera.modelo.Cliente;
 import org.giovannicarrera.system.Main;
+import org.giovannicarrera.utils.SuperKinalAlert;
 
 /**
  * FXML Controller class
@@ -43,12 +45,30 @@ public class FormClienteController implements Initializable {
             stage.menuClientesView();
         }if(event.getSource()== btnGuardar){
             if(op==1){
-                agregarCliente();
-                stage.menuClientesView();
+                if( !tfNombre.getText().equals("") &&  !tfApellido.getText().equals("") && !tfDireccion.getText().equals("")){
+                    agregarCliente();
+                    SuperKinalAlert.getInstance().mostrarAlertInfo(400);
+                    stage.menuClientesView();
+                }else{
+                    SuperKinalAlert.getInstance().mostrarAlertInfo(600);
+                    tfNombre.requestFocus();
+                }
+                
             }else if(op ==2){
-                editarCliente();
-                stage.menuClientesView();
-                ClienteDTO.getClienteDTO().setCliente(null);
+                if( !tfNombre.getText().equals("") &&  !tfApellido.getText().equals("") && !tfDireccion.getText().equals("")){
+                    if(SuperKinalAlert.getInstance().mostrarAlertConf(550).get() == ButtonType.OK){
+                        editarCliente();
+                        SuperKinalAlert.getInstance().mostrarAlertInfo(500);
+                        stage.menuClientesView();
+                        ClienteDTO.getClienteDTO().setCliente(null);
+                    }else{
+                        stage.menuClientesView();
+                    }     
+                }else{
+                    SuperKinalAlert.getInstance().mostrarAlertInfo(600);
+                    tfNombre.requestFocus();
+                }
+                
             }
             
         }
