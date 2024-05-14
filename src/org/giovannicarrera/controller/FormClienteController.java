@@ -145,6 +145,7 @@ public class FormClienteController implements Initializable {
         }
         
     }
+    
     public Main getStage() {
         return stage;
     }

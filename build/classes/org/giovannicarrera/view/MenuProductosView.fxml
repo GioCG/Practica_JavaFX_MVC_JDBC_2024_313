@@ -3,34 +3,38 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="1200.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="org.giovannicarrera.controller.MenuProductosController">
+<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.giovannicarrera.controller.MenuProductosController">
    <children>
       <ImageView fitHeight="750.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/Productos.png" />
          </image>
       </ImageView>
-      <Button layoutX="299.0" layoutY="46.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="95.0" text="Regresar" />
-      <Button layoutX="171.0" layoutY="46.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="95.0" text="Agregar" />
-      <Button layoutX="35.0" layoutY="46.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="95.0" text="Editar" />
-      <ImageView fitHeight="233.0" fitWidth="372.0" layoutX="809.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" />
-      <TableView layoutX="14.0" layoutY="233.0" prefHeight="423.0" prefWidth="697.0">
+      <Button fx:id="btnMenuPrincipal" layoutX="14.0" layoutY="631.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="82.0" prefWidth="212.0" text="Regresar" />
+      <ImageView fx:id="imgMostrar" fitHeight="265.0" fitWidth="371.0" layoutX="809.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true" />
+      <TableView fx:id="tblProductos" layoutX="36.0" layoutY="58.0" prefHeight="449.0" prefWidth="723.0">
         <columns>
-          <TableColumn prefWidth="76.0" text="producto Id" />
-          <TableColumn prefWidth="74.0" text="nombre" />
-            <TableColumn prefWidth="75.0" text="descripcion" />
-            <TableColumn prefWidth="47.0" text="stock" />
-            <TableColumn prefWidth="89.0" text="presio unitario" />
-            <TableColumn prefWidth="101.0" text="presio por mayor" />
-            <TableColumn prefWidth="61.0" text="compra" />
-            <TableColumn prefWidth="90.0" text="distribuidor Id" />
-            <TableColumn prefWidth="83.0" text="categoria Id" />
+          <TableColumn fx:id="colProductoId" prefWidth="74.0" text="producto Id" />
+          <TableColumn fx:id="colNombre" prefWidth="53.0" text="nombre" />
+            <TableColumn fx:id="colDescripcion" prefWidth="71.0" text="descripcion" />
+            <TableColumn fx:id="colStock" prefWidth="43.0" text="stock" />
+            <TableColumn fx:id="colPresioUnitario" prefWidth="92.0" text="presio unitario" />
+            <TableColumn fx:id="colPresioMayor" prefWidth="113.0" text="presio por mayor" />
+            <TableColumn fx:id="colCompra" prefWidth="52.0" text="compra" />
+            <TableColumn fx:id="colImagen" prefWidth="56.0" text="imagen" />
+            <TableColumn fx:id="colDistribuidor" minWidth="0.0" prefWidth="90.0" text="Distribuidor " />
+            <TableColumn fx:id="colCategoria" prefWidth="79.0" text="Categoria" />
         </columns>
       </TableView>
+      <Button fx:id="btnEliminar" layoutX="802.0" layoutY="635.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="75.0" prefWidth="136.0" text="Eliminar" />
+      <Button fx:id="btnAgregar" layoutX="802.0" layoutY="447.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="75.0" prefWidth="136.0" text="Agregar" />
+      <Button fx:id="btnEditar" layoutX="802.0" layoutY="540.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="75.0" prefWidth="136.0" text="Editar" />
+      <Button fx:id="btnBuscar" layoutX="341.0" layoutY="635.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="75.0" prefWidth="113.0" text="Buscar" />
+      <TextField fx:id="tfProductoId" layoutX="500.0" layoutY="635.0" prefHeight="75.0" prefWidth="224.0" />
    </children>
 </AnchorPane>

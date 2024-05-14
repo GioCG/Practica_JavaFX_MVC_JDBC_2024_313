@@ -10,9 +10,18 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.giovannicarrera.controller.FormAsignarEncargadoController;
 import org.giovannicarrera.controller.FormClienteController;
+import org.giovannicarrera.controller.FormDistribuidoresController;
+import org.giovannicarrera.controller.FormEmpleadosController;
+import org.giovannicarrera.controller.MenuCargosController;
+import org.giovannicarrera.controller.MenuCategoriaProductosController;
 import org.giovannicarrera.controller.MenuClienteController;
+import org.giovannicarrera.controller.MenuDistribuidorController;
+import org.giovannicarrera.controller.MenuEmpleadosController;
+import org.giovannicarrera.controller.MenuFormProductoController;
 import org.giovannicarrera.controller.MenuPrincipalController;
+import org.giovannicarrera.controller.MenuProductosController;
 import org.giovannicarrera.controller.MenuTicketSoporteController;
 
 
@@ -79,6 +88,86 @@ public class Main extends Application {
         try{
             MenuTicketSoporteController menuTicketSoporteView = (MenuTicketSoporteController)switchScene("MenuTicketSoporteView.fxml",1200,750);
             menuTicketSoporteView.setStage(this);
+        }catch(Exception e){
+           System.out.println(e.getMessage());
+        }
+    }
+    
+    public void menuProductosView() {
+        try{
+            MenuProductosController menuProductosView = (MenuProductosController)switchScene("MenuProductosView.fxml",1200,750);
+            menuProductosView.setStage(this);
+        }catch(Exception e){
+           System.out.println(e.getMessage());
+        }
+    }
+    
+    public void menuFormProductoView(int op) {
+        try{
+            MenuFormProductoController menuFormProductoView = (MenuFormProductoController)switchScene("MenuFormProductoView.fxml",1200,750);
+            menuFormProductoView.setStage(this);
+        }catch(Exception e){
+           System.out.println(e.getMessage());
+        }
+    }
+    
+    public void menuCargosView() {
+        try{
+            MenuCargosController menuCargosView = (MenuCargosController)switchScene("MenuCargosView.fxml",600,900);
+            menuCargosView.setStage(this);
+        }catch(Exception e){
+           e.printStackTrace();
+        }
+    }
+    
+    public void menuCategoriaProductos() {
+        try{
+            MenuCategoriaProductosController menuCategoriaProductosView = (MenuCategoriaProductosController)switchScene("MenuCategoriaProductosView.fxml",600,900);
+            menuCategoriaProductosView.setStage(this);
+        }catch(Exception e){
+           System.out.println(e.getMessage());
+        }
+    }
+    
+    public void menuEmpleadosView() {
+        try{
+            MenuEmpleadosController menuEmpleadosView = (MenuEmpleadosController)switchScene("MenuEmpleadosView.fxml",1200,750);
+            menuEmpleadosView.setStage(this);
+        }catch(Exception e){
+           e.printStackTrace();
+        }
+    }
+    
+    public void formEmpleadosView(int op) {
+        try{
+            FormEmpleadosController formEmpleadosView = (FormEmpleadosController)switchScene("FormEmpleadosView.fxml",500,750);
+            formEmpleadosView.setStage(this);
+        }catch(Exception e){
+           System.out.println(e.getMessage());
+        }
+    }
+    
+    public void formAsignarEncargadoView() {
+        try{
+            FormAsignarEncargadoController formAsignarEncargadoView = (FormAsignarEncargadoController)switchScene("FormAsignarEncargadoView.fxml",600,900);
+            formAsignarEncargadoView.setStage(this);
+        }catch(Exception e){
+           System.out.println(e.getMessage());
+        }
+    }
+    public void menuDistribuidorView() {
+        try{
+            MenuDistribuidorController menuDistribuidorView = (MenuDistribuidorController)switchScene("MenuDistribuidorView.fxml",1200,750);
+            menuDistribuidorView.setStage(this);
+        }catch(Exception e){
+           System.out.println(e.getMessage());
+        }
+    }
+    
+    public void formDistribuidoresView(int op) {
+        try{
+            FormDistribuidoresController formDistribuidoresView = (FormDistribuidoresController)switchScene("FormDistribuidoresView.fxml",600,900);
+            formDistribuidoresView.setStage(this);
         }catch(Exception e){
            System.out.println(e.getMessage());
         }

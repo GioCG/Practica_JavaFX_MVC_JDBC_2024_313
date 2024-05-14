@@ -24,10 +24,10 @@
       <TableView fx:id="tblTickets" layoutX="519.0" layoutY="286.0" onMouseClicked="#cargarForm" prefHeight="411.0" prefWidth="661.0">
         <columns>
           <TableColumn fx:id="colTicketId" prefWidth="54.4000244140625" text="Ticket Id" />
-          <TableColumn fx:id="colDescripcion" prefWidth="246.4000244140625" text="Descripcion" />
-            <TableColumn fx:id="colEstatus" prefWidth="109.5999755859375" text="Estatus" />
-            <TableColumn fx:id="colCliente" prefWidth="184.79998779296875" text="Cliente" />
-            <TableColumn fx:id="colFacturaId" prefWidth="67.2000732421875" text="Factura Id" />
+          <TableColumn fx:id="colDescripcion" prefWidth="227.0" text="Descripcion" />
+            <TableColumn fx:id="colEstatus" prefWidth="83.0" text="Estatus" />
+            <TableColumn fx:id="colCliente" prefWidth="126.0" text="Cliente" />
+            <TableColumn fx:id="colFactura" prefWidth="174.0" text="Factura" />
         </columns>
       </TableView>
       <Button fx:id="btnVaciarForm" layoutX="273.0" layoutY="593.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="63.0" prefWidth="130.0" text="Vaciar Form" />
