@@ -13,23 +13,24 @@ import java.sql.Date;
  */
 public class Promociones {
     private int promocionId;
-    private Double precioPromocio;
+    private Double precioPromocion;
     private String descripcionPromocion;
     private Date fechaInicio;
-    private Date horaEntrada;
+    private Date fechaFinal;
+    private String productos;
     private int productoId;
 
     public Promociones() {
         
     }
 
-    public Promociones(int promocionId, Double precioPromocio, String descripcionPromocion, Date fechaInicio, Date horaEntrada, int productoId) {
+    public Promociones(int promocionId, Double precioPromocion, String descripcionPromocion, Date fechaInicio, Date fechaFinal, String productos) {
         this.promocionId = promocionId;
-        this.precioPromocio = precioPromocio;
+        this.precioPromocion = precioPromocion;
         this.descripcionPromocion = descripcionPromocion;
         this.fechaInicio = fechaInicio;
-        this.horaEntrada = horaEntrada;
-        this.productoId = productoId;
+        this.fechaFinal = fechaFinal;
+        this.productos = productos;
     }
 
     public int getPromocionId() {
@@ -40,12 +41,12 @@ public class Promociones {
         this.promocionId = promocionId;
     }
 
-    public Double getPrecioPromocio() {
-        return precioPromocio;
+    public Double getPrecioPromocion() {
+        return precioPromocion;
     }
 
-    public void setPrecioPromocio(Double precioPromocio) {
-        this.precioPromocio = precioPromocio;
+    public void setPrecioPromocion(Double precioPromocion) {
+        this.precioPromocion = precioPromocion;
     }
 
     public String getDescripcionPromocion() {
@@ -64,12 +65,20 @@ public class Promociones {
         this.fechaInicio = fechaInicio;
     }
 
-    public Date getHoraEntrada() {
-        return horaEntrada;
+    public Date getFechaFinal() {
+        return fechaFinal;
     }
 
-    public void setHoraEntrada(Date horaEntrada) {
-        this.horaEntrada = horaEntrada;
+    public void setFechaFinal(Date fechaFinal) {
+        this.fechaFinal = fechaFinal;
+    }
+
+    public String getProductos() {
+        return productos;
+    }
+
+    public void setProductos(String productos) {
+        this.productos = productos;
     }
 
     public int getProductoId() {
@@ -79,6 +88,9 @@ public class Promociones {
     public void setProductoId(int productoId) {
         this.productoId = productoId;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Promociones{" + "promocionId=" + promocionId + ", precioPromocion=" + precioPromocion + ", descripcionPromocion=" + descripcionPromocion + ", fechaInicio=" + fechaInicio + ", fechaFinal=" + fechaFinal + ", productos=" + productos + ", productoId=" + productoId + '}';
+    }
 }

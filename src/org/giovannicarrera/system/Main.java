@@ -23,6 +23,7 @@ import org.giovannicarrera.controller.MenuFormProductoController;
 import org.giovannicarrera.controller.MenuPrincipalController;
 import org.giovannicarrera.controller.MenuProductosController;
 import org.giovannicarrera.controller.MenuTicketSoporteController;
+import org.giovannicarrera.controller.MenuPromocionesController;
 
 
 
@@ -172,6 +173,14 @@ public class Main extends Application {
             formDistribuidoresView.setStage(this);
         }catch(Exception e){
            System.out.println(e.getMessage());
+        }
+    }
+    public void menuPromocionesView() {
+        try{
+            MenuPromocionesController menuPromocionesView = (MenuPromocionesController)switchScene("MenuPromocionesView.fxml",1200,750);
+            menuPromocionesView.setStage(this);
+        }catch(Exception e){
+            e.printStackTrace();
         }
     }
     public static void main(String[] args) {
