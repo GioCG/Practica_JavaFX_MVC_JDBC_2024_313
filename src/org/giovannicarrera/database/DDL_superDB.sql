@@ -2,7 +2,6 @@ drop database IF EXISTS superDB;
 CREATE DATABASE IF NOT EXISTS superDB;
 USE superDB;
 SET GLOBAL time_zone = '-6:00';
-
 create table Cargos(
 	cargoId INT NOT NULL AUTO_INCREMENT,
     nombreCargo VARCHAR(30),
@@ -48,7 +47,7 @@ create table Productos(
     precioVentaUnitario DECIMAL(10,2) NOT NULL,
     precioVentaMayor DECIMAL(10,2) NOT NULL,
     precioCompra DECIMAL(10,2)NOT NULL,
-    imagenProducto BLOB,
+    imagen LONGBLOB,
     distribuidorId INT NOT NULL,
     categoriaProductosId INT,
 	PRIMARY KEY PK_productoId(productoId),
@@ -110,7 +109,7 @@ create table Facturas(
 
 create table TicketSoportes(
 	ticketSoporteId INT NOT NULL AUTO_INCREMENT,
-    descripcionTicketSoporte VARCHAR(250) NOT NULL,
+    descripcion VARCHAR(250) NOT NULL,
     estatus VARCHAR(30) DEFAULT 'Recién creado' NOT NULL,
     clienteId INT,
     facturaId INT,

@@ -150,11 +150,12 @@ create procedure sp_BuscarDistribuidores(in disId int)
 delimiter ;
      
 Delimiter $$
-Create procedure sp_EditarDistribuidores(in nomDis varchar(30), in dirDis varchar (200), in nitDis varchar(15), in telDis varchar(15), in we varchar(50))
+Create procedure sp_EditarDistribuidores(in disId int,in nomDis varchar(30), in dirDis varchar (200), in nitDis varchar(15), in telDis varchar(15), in we varchar(50))
 	Begin
 		Update Distribuidores
 			set
                 nombreDistribuidor = nomDis,
+                direccionDistribuidor = dirDis,
                 nitDistribuidor = nitDis,
                 telefonoDistribuidor = telDis,
                 web = we
@@ -209,7 +210,7 @@ delimiter ;
 Delimiter $$
 create procedure sp_editarCompra(in comId int,in fecCom DATE,in totalCom DECIMAL(10,2))
 	begin
-		update Clientes
+		update Compras
 			set
 				fechaCompra = fecCom,
 				totalCompra = totalCom
@@ -239,6 +240,8 @@ create procedure sp_listarClientes()
 				from Clientes;
 	end $$
 Delimiter ;
+
+
 
 Delimiter $$
 create procedure sp_eliminarCliente(in cliId int)
@@ -296,11 +299,25 @@ create procedure sp_listarProducto()
             Productos.cantidadStock,
             Productos.precioVentaUnitario,
             Productos.precioVentaMayor,
-            Productos.precioCompra
+            Productos.precioCompra,
+			Productos.imagen,
+			Productos.distribuidorId,
+			Productos.categoriaProductosId
+
 				from Productos;
 	end $$
 Delimiter ;
 
+Delimiter $$
+create procedure sp_ListarProductoComple()
+	begin
+		select P.productoId, P.nombreProducto, P.descripcionProducto,P.precioVentaUnitario,P.precioVentaMayor,P.precioCompra,P.imagen,
+        CONCAT("Id: ",D.distribuidorId,"|",D.nombreDistribuidor,"|" ,D.direccionDistribuidor,"|",D.nitDistribuidor,"|",telefonoDistribuidor) As Distribuidor,
+        CONCAT("Id: ",CA.categoriaProductosId,"|",CA.nombreCategoria,"|" , CA.descripcionCategoria) As Categoria, P.cantidadStock from Productos P
+        join Distribuidores D on P.distribuidorId =  D.distribuidorId
+		join CategoriaProductos CA on P.categoriaProductosId = CA.categoriaProductosId;	
+	End $$
+Delimiter;
 Delimiter $$
 create procedure sp_eliminarProducto(in prodId int)
 	begin 
@@ -312,15 +329,11 @@ Delimiter ;
 Delimiter $$
 create procedure sp_buscarProducto(in prodId int)
 	begin
-		select
-			Productos.productoId,
-            Productos.nombreProducto,
-            Productos.descripcionProducto,
-            Productos.cantidadStock,
-            Productos.precioVentaUnitario,
-            Productos.precioVentaMayor,
-            Productos.precioCompra
-				from Productos
+		select P.productoId, P.nombreProducto, P.descripcionProducto,P.precioVentaUnitario,P.precioVentaMayor,P.precioCompra,P.imagen,
+        CONCAT("Id: ",D.distribuidorId,"|",D.nombreDistribuidor,"|" ,D.direccionDistribuidor,"|",D.nitDistribuidor,"|",telefonoDistribuidor) As Distribuidor,
+        CONCAT("Id: ",CA.categoriaProductosId,"|",CA.nombreCategoria,"|" , CA.descripcionCategoria) As Categoria, P.cantidadStock from Productos P
+        join Distribuidores D on P.distribuidorId =  D.distribuidorId
+		join CategoriaProductos CA on P.categoriaProductosId = CA.categoriaProductosId
 					where productoId = prodId;
 	end $$
 delimiter ;
@@ -328,7 +341,7 @@ delimiter ;
 Delimiter $$
 create procedure sp_editarProducto(in prodId int,in nomProd varchar(50),in desProd varchar(100), in cantiSt INT, in preVenUnit DECIMAL(10,2), in preVenMay DECIMAL(10,2),precioCompra DECIMAL(10,2))
 	begin
-		update Clientes
+		update Productos
 			set
 				nombreProducto = nomProd,
 				descripcionProducto = desProd,
@@ -389,7 +402,7 @@ delimiter ;
 Delimiter $$
 create procedure sp_editarPromocion(in promId int,in preProm DECIMAL(10,2),in desProm VARCHAR(100), in fecIn DATE, in fecFin DATE, in prodId INT)
 	begin
-		update Clientes
+		update Promociones
 			set
 				precioPromocio = preProm,
 				descripcionPromocion = desProm,
@@ -471,9 +484,11 @@ create procedure sp_listarEmpleado()
 			Empleados.empleadoId,
             Empleados.nombreEmpleado,
             Empleados.apellidoEmpleado,
+            Empleados.sueldo,
             Empleados.horaEntrada,
             Empleados.horaSalida,
-            Empleados.cargoId
+            Empleados.cargoId,
+            Empleados.encargadoId
 				from Empleados;
 	end $$
 Delimiter ;
@@ -495,9 +510,11 @@ create procedure sp_buscarEmpleado(in empId int)
 			Empleados.empleadoId,
             Empleados.nombreEmpleado,
             Empleados.apellidoEmpleado,
+            Empleados.sueldo,
             Empleados.horaEntrada,
             Empleados.horaSalida,
-            Empleados.cargoId
+            Empleados.cargoId,
+            Empleados.encargadoId
 				from Empleados
                 where empleadoId = empId;
 	end $$
@@ -505,16 +522,17 @@ delimiter ;
              
 -- Editar
 Delimiter $$
-create procedure sp_editarEmpleado(IN empId INT, IN nomEmp VARCHAR(30), IN apeEmp VARCHAR(30),IN suel DECIMAL(10,2),IN horEnt TIME, IN horSal TIME, IN carId INT)
+create procedure sp_editarEmpleado(IN empId INT, IN nomEmp VARCHAR(30), IN apeEmp VARCHAR(30),IN suel DECIMAL(10,2),IN horEnt TIME, IN horSal TIME, IN carId INT,IN encId INT)
 	begin
 		update Empleados
 			set
 				nombreEmpleado = nomEmp,
 				apellidoEmpleado = apeEmp,
-                clienteId = suel,
+                sueldo = suel,
                 horaEntrada = horEnt,
                 horaSalida = horSal,
-                cargoId = carId
+                cargoId = carId,
+                encargadoId= encId
 					where empleadoId = empId;
 	end $$
 Delimiter ;
@@ -530,17 +548,30 @@ delimiter $$
 delimiter ;
 
 Delimiter $$
-create procedure sp_listarFactura()
+create procedure sp_ListarFactura()
 	begin
 		select
 			Facturas.facturaId,
             Facturas.fecha,
             Facturas.hora,
             Facturas.clienteId,
-            Facturas.empleadoId
+            Facturas.empleadoId,
+            Facturas.total
 				from Facturas;
-	end $$
+	End $$
 Delimiter ;
+
+Delimiter $$
+create procedure sp_ListarFacturaComple()
+	begin
+		select F.facturaId, F.fecha, F.hora ,
+        CONCAT("Id: ",C.clienteId, " | ",C.nombre, " " , C.apellido) As Cliente ,
+        CONCAT("Id: ",E.empleadoId, " | ",E.nombreEmpleado, " " , E.apellidoEmpleado) As Empleado, F.total from Facturas F
+        join Clientes C on F.clienteId =  C.clienteId
+		join Empleados E on F.empleadoId = E.empleadoId;	
+	End $$
+Delimiter ;
+
 
 -- Eliminar
 Delimiter $$
@@ -591,14 +622,9 @@ delimiter $$
 delimiter ;
 
 Delimiter $$
-	create procedure sp_listarTicketSporte()
+	create procedure sp_listarTicketSoporte()
 		begin
-			select
-				ticketSporte.descripcion,
-				ticketSporte.estatus,
-				ticketSporte.clienteId,
-				ticketSporte.facturaId
-					from ticketSporte;
+			select * from TicketSoportes;
 	end $$
 Delimiter ;
 
@@ -606,14 +632,16 @@ Delimiter $$
 	create procedure sp_listarTicketSoporteComplet()
 		begin
 			select TS.ticketSoporteId,TS.descripcion,TS.estatus,C.clienteId,F.clienteId,
-            CONCAT("id:",C.clienteId,"|", C.nombre," ", C.apellido) AS Cliente, TS.facturaId from TicketSoportes TS
+            CONCAT("id: ",C.clienteId,"|", C.nombre," ", C.apellido) AS Cliente,
+            CONCAT("id: ",F.facturaId,"|", F.fecha,"|", F.hora,"|", F.total) AS Factura, TS.clienteId from TicketSoportes TS
             join Clientes C on TS.clienteId = C.clienteId
             join Facturas F on TS.facturaId = F.facturaId;
 	end $$
 Delimiter ;
 
+
 Delimiter $$
-	create procedure sp_eliminarTicketSporte(in ticSopId int)
+	create procedure sp_eliminarTicketSoporte(in ticSopId int)
 		begin 
 			delete from ticketSporte
 				where ticketSoporteId = ticSopId;
@@ -621,7 +649,7 @@ Delimiter $$
 Delimiter ;
 
 Delimiter $$
-	create procedure sp_buscarTicketSporte(in ticSopId int)
+	create procedure sp_buscarTicketSoporte(in ticSopId int)
 		begin
 			select
 				ticketSporte.descripcion,
@@ -634,9 +662,9 @@ Delimiter $$
 delimiter ;
 
 Delimiter $$
-	create procedure sp_editarTicketSporte(IN ticSopId INT,IN des VARCHAR(250), in est VARCHAR(30),IN cliId int,IN facId INT)
+	create procedure sp_editarTicketSoporte(IN ticSopId INT,IN des VARCHAR(250), in est VARCHAR(30),IN cliId int,IN facId INT)
 		begin
-			update Facturas
+			update TicketSoportes
 				set
 					descripcion = des,
 					estatus = est,
@@ -753,16 +781,18 @@ delimiter $$
 	end$$
     delimiter ;
 
- call sp_agregarCargo('a','b');
- call sp_agregarCategoriaProducto('c','d');
+call sp_agregarCargo('a','b');
+call sp_agregarCategoriaProducto('c','d');
 call sp_AgregarDistribuidor('f','g','21','6534','reg');
- call sp_agregarCompra('2000-10-02', 20.50);
- call sp_agregarClientes('NIT','nombre', 'apellido', 'telefono', 'direccion');
- call sp_agregarProducto('h','i',12,23.45,32.45,21.35,1,1);
- call sp_agregarPromocion(12.50,'descripcionPromocion','2052-11-02','2005-10-02',1);
- call sp_agregarDetalleCompra(20,1,1);
+call sp_agregarCompra('2000-10-02', 20.50);
+call sp_agregarClientes('NIT','nombre', 'apellido', 'telefono', 'direccion');
+call sp_agregarClientes('NIT','nombre', 'apellido', 'telefono', 'direccion');
+call sp_agregarProducto('h','i',13,23.45,32.45,21.35,1,1);
+call sp_agregarPromocion(12.50,'descripcionPromocion','2052-11-02','2005-10-02',1);
+call sp_agregarDetalleCompra(20,1,1);
 call sp_agregarEmpleado('nombreEmpleado', 'apellidoEmpleado',23.5,12,5,1);
- call sp_agregarFactura('2000-10-02',2,1,1);
- call sp_agregarTicketSporte('1',1,1);
+call sp_agregarFactura('2000-10-02',2,1,1);
+call sp_agregarTicketSoporte('1',1,1);
 call SP_agregarDetFacturas(1,1);
 call sp_listarTicketSoporteComplet;
+call sp_ListarProductoComple;

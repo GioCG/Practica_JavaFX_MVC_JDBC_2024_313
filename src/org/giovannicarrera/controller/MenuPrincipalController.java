@@ -17,7 +17,7 @@ import org.giovannicarrera.system.Main;
 public class MenuPrincipalController implements Initializable{
     private Main stage;
     @FXML
-    MenuItem btnMenuClientes,btnMenuTiketSop ;
+    MenuItem btnMenuClientes,btnMenuTiketSop,btnMenuProductos,btnMenuCargos,btnMenuCategoriaProductos,btnMenuEmpleados,btnMenuDistribuidores;
     @Override
     public void initialize(URL location, ResourceBundle resources){
         
@@ -38,6 +38,16 @@ public class MenuPrincipalController implements Initializable{
             stage.menuClientesView();
         }else if(event.getSource()== btnMenuTiketSop){
             stage.menuTicketSoporteView();
+        }else if(event.getSource()== btnMenuProductos){
+            stage.menuProductosView();
+        }else if(event.getSource()== btnMenuCargos){
+            stage.menuCargosView();
+        }else if(event.getSource()== btnMenuCategoriaProductos){
+            stage.menuCategoriaProductos();
+        }else if(event.getSource()== btnMenuEmpleados){
+            stage.menuEmpleadosView();
+        }else if(event.getSource()== btnMenuDistribuidores){
+            stage.menuDistribuidorView();
         }
     }
     

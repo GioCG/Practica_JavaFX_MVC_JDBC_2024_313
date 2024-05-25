@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.giovannicarrera.controller.FormDistribuidoresController">
+   <children>
+      <ImageView fitHeight="750.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/Form%20distribuidores.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnGuardar" layoutX="76.0" layoutY="670.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="66.0" prefWidth="100.0" text="Guardar" />
+      <Button fx:id="btnCancelar" layoutX="325.0" layoutY="670.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="66.0" prefWidth="100.0" text="Cancelar" />
+      <TextField fx:id="tfDistribuidorId" layoutX="76.0" layoutY="187.0" prefHeight="26.0" prefWidth="349.0" />
+      <TextField fx:id="tfNombreDistribuidor" layoutX="76.0" layoutY="279.0" prefHeight="26.0" prefWidth="349.0" />
+      <TextField fx:id="tfDireccionDistribuidor" layoutX="76.0" layoutY="368.0" prefHeight="26.0" prefWidth="349.0" />
+      <TextField fx:id="tfNitDistribuidor" layoutX="75.0" layoutY="454.0" prefHeight="26.0" prefWidth="349.0" />
+      <TextField fx:id="tfTelefonoDistribuidor" layoutX="75.0" layoutY="536.0" prefHeight="26.0" prefWidth="349.0" />
+      <TextField fx:id="tfWeb" layoutX="76.0" layoutY="623.0" prefHeight="26.0" prefWidth="349.0" />
+   </children>
+</AnchorPane>

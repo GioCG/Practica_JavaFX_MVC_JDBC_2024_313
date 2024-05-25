@@ -15,19 +15,24 @@ public class TicketSoporte {
     private String estatus;
     private int clienteId;
     private String cliente;
+    private String factura;
     private int facturaId;
 
     public TicketSoporte() {
         
     }
 
-    public TicketSoporte(int ticketSoporteId, String descripcion, String estatus, String cliente, int facturaId) {
+    public TicketSoporte(int ticketSoporteId, String descripcion, String estatus, String cliente, String factura) {
         this.ticketSoporteId = ticketSoporteId;
         this.descripcion = descripcion;
         this.estatus = estatus;
+        this.clienteId = clienteId;
         this.cliente = cliente;
+        this.factura = factura;
         this.facturaId = facturaId;
     }
+
+    
 
     public int getTicketSoporteId() {
         return ticketSoporteId;
@@ -69,6 +74,14 @@ public class TicketSoporte {
         this.cliente = cliente;
     }
 
+    public String getFactura() {
+        return factura;
+    }
+
+    public void setFactura(String factura) {
+        this.factura = factura;
+    }
+
     public int getFacturaId() {
         return facturaId;
     }
@@ -79,6 +92,8 @@ public class TicketSoporte {
 
     @Override
     public String toString() {
-        return "TicketSoporte{" + "ticketSoporteId=" + ticketSoporteId + ", descripcion=" + descripcion + ", estatus=" + estatus + ", clienteId=" + clienteId + ", cliente=" + cliente + ", facturaId=" + facturaId + '}';
+        return "TicketSoporte{" + "ticketSoporteId=" + ticketSoporteId + ", descripcion=" + descripcion + ", estatus=" + estatus + ", clienteId=" + clienteId + ", cliente=" + cliente + ", factura=" + factura + ", facturaId=" + facturaId + '}';
     }
+
+    
 }
