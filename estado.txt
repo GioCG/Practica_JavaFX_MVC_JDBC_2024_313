@@ -1,0 +1,25 @@
+Echos
+--------------
+Clientes
+Cargo Empleados // agregar cmb embes de textfield id´s
+Categoria Productos
+Distribuidores 
+TiketSoporte
+===============
+Puliendo
+--------------- 
+-Productos // agregar
+-Promociones // falta funcion db
+-Empleados // agregar
+===============
+Faltan
+--------------- 
+-compras
+-Detalle compra
+-Factura
+-detalle factrura
+================
+Extras
+----------------
+-Login 
+-Registro

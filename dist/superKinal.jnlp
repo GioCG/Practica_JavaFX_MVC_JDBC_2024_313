@@ -14,7 +14,7 @@
     <jar href="lib\mysql-connector-java-8.0.12.jar" size="2020431" download="eager" />
     <jar href="lib\protobuf-java-2.6.0.jar" size="593799" download="eager" />
     <jar href="lib\slf4j-api-1.6.1.jar" size="25496" download="eager" />
-    <jar href="superKinal.jar" size="8659238" download="eager" />
+    <jar href="superKinal.jar" size="8659404" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="superKinal" >
     <param name="requiredFXVersion" value="8.0+"/>

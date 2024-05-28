@@ -13,7 +13,7 @@ import java.sql.Date;
  */
 public class Promociones {
     private int promocionId;
-    private Double precioPromocion;
+    private Double precioPromocio;
     private String descripcionPromocion;
     private Date fechaInicio;
     private Date fechaFinal;
@@ -24,9 +24,9 @@ public class Promociones {
         
     }
 
-    public Promociones(int promocionId, Double precioPromocion, String descripcionPromocion, Date fechaInicio, Date fechaFinal, String productos) {
+    public Promociones(int promocionId, Double precioPromocio, String descripcionPromocion, Date fechaInicio, Date fechaFinal, String productos) {
         this.promocionId = promocionId;
-        this.precioPromocion = precioPromocion;
+        this.precioPromocio = precioPromocio;
         this.descripcionPromocion = descripcionPromocion;
         this.fechaInicio = fechaInicio;
         this.fechaFinal = fechaFinal;
@@ -41,12 +41,12 @@ public class Promociones {
         this.promocionId = promocionId;
     }
 
-    public Double getPrecioPromocion() {
-        return precioPromocion;
+    public Double getPrecioPromocio() {
+        return precioPromocio;
     }
 
-    public void setPrecioPromocion(Double precioPromocion) {
-        this.precioPromocion = precioPromocion;
+    public void setPrecioPromocio(Double precioPromocio) {
+        this.precioPromocio = precioPromocio;
     }
 
     public String getDescripcionPromocion() {
@@ -91,6 +91,6 @@ public class Promociones {
 
     @Override
     public String toString() {
-        return "Promociones{" + "promocionId=" + promocionId + ", precioPromocion=" + precioPromocion + ", descripcionPromocion=" + descripcionPromocion + ", fechaInicio=" + fechaInicio + ", fechaFinal=" + fechaFinal + ", productos=" + productos + ", productoId=" + productoId + '}';
+        return "Promociones{" + "promocionId=" + promocionId + ", precioPromocion=" + precioPromocio + ", descripcionPromocion=" + descripcionPromocion + ", fechaInicio=" + fechaInicio + ", fechaFinal=" + fechaFinal + ", productos=" + productos + ", productoId=" + productoId + '}';
     }
 }

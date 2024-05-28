@@ -104,12 +104,23 @@ public class MenuTicketSoporteController implements Initializable {
         cmbFactura.getSelectionModel().clearSelection();
     }
     
+    @FXML
+    public void cargarForm(){
+        TicketSoporte ts = (TicketSoporte)tblTickets.getSelectionModel().getSelectedItem();
+        if(ts != null){
+            tfTicketId.setText(Integer.toString(ts.getTicketSoporteId()));
+            taDescripcion.setText(ts.getDescripcion());
+            cmbEstatus.getSelectionModel().select(0);
+            cmbCliente.getSelectionModel().select(obtenerIndexCliente());
+            cmbFactura.getSelectionModel().select(obtenerIndexFactura());
+        }
+    }
     
     public int obtenerIndexCliente(){
         int index = 0;
+        String clienteTbl = ((TicketSoporte)tblTickets.getSelectionModel().getSelectedItem()).getCliente();
         for(int i = 0 ; i <= cmbCliente.getItems().size() ; i++){
             String clienteCmb = cmbCliente.getItems().get(i).toString();
-            String clienteTbl = ((TicketSoporte)tblTickets.getSelectionModel().getSelectedItem()).getCliente(); 
             
             if(clienteTbl.equals(clienteCmb)){
                 index = i;
@@ -127,24 +138,13 @@ public class MenuTicketSoporteController implements Initializable {
             String facturaCmb = cmbFactura.getItems().get(i).toString();
             
             if (facturaTbl.equals(facturaCmb)) {
-                index =i;
+                index = i;
                 return i;
             }
         }
         return index; 
     }
     
-    @FXML
-    public void cargarForm(){
-        TicketSoporte ts = (TicketSoporte)tblTickets.getSelectionModel().getSelectedItem();
-        if(ts != null){
-            tfTicketId.setText(Integer.toString(ts.getTicketSoporteId()));
-            taDescripcion.setText(ts.getDescripcion());
-            cmbEstatus.getSelectionModel().select(0);
-            cmbCliente.getSelectionModel().select(obtenerIndexCliente());
-            cmbFactura.getSelectionModel().select(obtenerIndexFactura());
-        }
-    }
     public ObservableList<TicketSoporte> listarTickets(){
         ArrayList<TicketSoporte> tickets = new ArrayList<>();
      

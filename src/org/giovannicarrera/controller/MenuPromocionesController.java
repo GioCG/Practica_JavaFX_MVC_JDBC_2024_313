@@ -81,23 +81,27 @@ public class MenuPromocionesController implements Initializable{
     public void cargarDatos(){
         tblPromocion.setItems(listarPromo());
         colPromocionId.setCellValueFactory(new PropertyValueFactory<Promociones, Integer>("promocionId"));
-        colPromocion.setCellValueFactory(new PropertyValueFactory<Promociones, Double>("promocioncolPromocion"));
-        colDescripcion.setCellValueFactory(new PropertyValueFactory<Promociones, String>("descripcion"));
-        colInicio.setCellValueFactory(new PropertyValueFactory<Promociones, String>("inicio"));
-        colFinal.setCellValueFactory(new PropertyValueFactory<Promociones, String>("final"));
+        colPromocion.setCellValueFactory(new PropertyValueFactory<Promociones, Double>("precioPromocio"));
+        colDescripcion.setCellValueFactory(new PropertyValueFactory<Promociones, String>("descripcionPromocion"));
+        colInicio.setCellValueFactory(new PropertyValueFactory<Promociones, String>("fechaInicio"));
+        colFinal.setCellValueFactory(new PropertyValueFactory<Promociones, String>("fechaFinal"));
+        colProducto.setCellValueFactory(new PropertyValueFactory<Promociones, String>("productos"));
     }
     
     public void vaciarForm(){
         tfPromocionId.clear();
+        tfPromocion.clear();
+        tfInicio.clear();
+        tfFinal.clear();
         taDescripcion.clear();
         cmbProducto.getSelectionModel().clearSelection();
     }
     
     public int obtenerIndexProducto(){
         int index = 0;
+        String ProductoTbl = ((Promociones)tblPromocion.getSelectionModel().getSelectedItem()).getProductos(); 
         for(int i = 0 ; i <= cmbProducto.getItems().size() ; i++){
             String ProductoCmb = cmbProducto.getItems().get(i).toString();
-            String ProductoTbl = ((Promociones)tblPromocion.getSelectionModel().getSelectedItem()).getProductos(); 
             
             if(ProductoTbl.equals(ProductoCmb)){
                 index = i;
@@ -113,7 +117,7 @@ public class MenuPromocionesController implements Initializable{
         Promociones ts = (Promociones)tblPromocion.getSelectionModel().getSelectedItem();
         if(ts != null){
             tfPromocionId.setText(Integer.toString(ts.getPromocionId()));
-            tfPromocion.setText(Double.toString(ts.getPrecioPromocion()));
+            tfPromocion.setText(Double.toString(ts.getPrecioPromocio()));
             taDescripcion.setText(ts.getDescripcionPromocion());
             tfInicio.setText(ts.getFechaInicio().toString());
             tfFinal.setText(ts.getFechaFinal().toString());
@@ -178,9 +182,9 @@ public class MenuPromocionesController implements Initializable{
                 Double precioVentaMayor = resultSet.getDouble("precioVentaMayor");
                 Double precioCompra = resultSet.getDouble("precioCompra");
                 Blob imagen = resultSet.getBlob("imagen");
-                String descripcionPromocion = resultSet.getString("descripcionPromocion");
+                String distribuidor = resultSet.getString("distribuidor");
                 String categoria = resultSet.getString("categoria");
-                producto.add(new Productos(productoId, nombreProducto, descripcionProducto, cantidadStock,precioVentaUnitario, precioVentaMayor, precioCompra,imagen, descripcionPromocion, categoria));
+                producto.add(new Productos(productoId, nombreProducto, descripcionProducto, cantidadStock,precioVentaUnitario, precioVentaMayor, precioCompra,imagen, distribuidor, categoria));
             }
         }catch(SQLException e){
             System.out.println(e.getMessage());

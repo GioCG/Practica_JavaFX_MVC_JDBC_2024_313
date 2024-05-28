@@ -49,7 +49,7 @@ delimiter ;
 
 delimiter $$
 create function FN_descuentoMasivo(descuento double) returns boolean
-deterministic
+deterministic	
 begin
 	declare i int default 1;
     declare precionu double;

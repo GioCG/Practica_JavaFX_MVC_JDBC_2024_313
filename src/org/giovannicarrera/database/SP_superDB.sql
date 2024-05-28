@@ -1610,4 +1610,4 @@ call sp_agregarTicketSoporte('1',1,1);
 call SP_agregarDetFacturas(1,1);
 call sp_listarTicketSoporteComplet;
 call sp_ListarProductoComple;
-call sp_ListarPromocionComple;
+call sp_ListarPromocionComple;CREATE PROCEDURE sp_agregarCargo(IN nomCarg VARCHAR(30),IN descCarg VARCHAR(100))   BEGIN    INSERT INTO Cargos(nombreCargo,descripcionCargo) VALUES     (nomCarg,descCarg);   END
