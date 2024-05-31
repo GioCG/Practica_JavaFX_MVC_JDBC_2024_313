@@ -47,7 +47,7 @@ CREATE PROCEDURE sp_editarCargo(IN carId INT,IN nomCar VARCHAR(30), IN descCar V
 		UPDATE Cargos
 			SET
 				nombreCargo = nomCar,
-				descripcionCargo = descCarg
+				descripcionCargo = descCar
 					WHERE cargoId = carId;
 	END $$
 Delimiter ;
@@ -530,7 +530,7 @@ delimiter ;
              
 -- Editar
 Delimiter $$
-create procedure sp_editarEmpleado(IN empId INT, IN nomEmp VARCHAR(30), IN apeEmp VARCHAR(30),IN suel DECIMAL(10,2),IN horEnt TIME, IN horSal TIME, IN carId INT,IN encId INT)
+create procedure sp_editarEmpleado(IN empId INT, IN nomEmp VARCHAR(30), IN apeEmp VARCHAR(30),IN suel DECIMAL(10,2),IN horEnt TIME, IN horSal TIME, IN carId INT)
 	begin
 		update Empleados
 			set
@@ -539,8 +539,7 @@ create procedure sp_editarEmpleado(IN empId INT, IN nomEmp VARCHAR(30), IN apeEm
                 sueldo = suel,
                 horaEntrada = horEnt,
                 horaSalida = horSal,
-                cargoId = carId,
-                encargadoId= encId
+                cargoId = carId
 					where empleadoId = empId;
 	end $$
 Delimiter ;

@@ -1,16 +1,16 @@
 Echos
 --------------
 Clientes
-Cargo Empleados // agregar cmb embes de textfield id´s
-Categoria Productos
 Distribuidores 
 TiketSoporte
+Cargo Empleados
+Categoria Productos
 ===============
 Puliendo
 --------------- 
--Productos // agregar
+-Productos // agregar - //editar - //eliminar
 -Promociones // falta funcion db
--Empleados // agregar
+-Empleados  // agregar cmb embes de textfield id´s
 ===============
 Faltan
 --------------- 

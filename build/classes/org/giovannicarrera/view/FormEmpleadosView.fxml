@@ -13,15 +13,14 @@
             <Image url="@../image/FormEmpleado.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnGuardar" layoutX="378.0" layoutY="63.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="66.0" prefWidth="100.0" text="Guardar" />
-      <Button fx:id="btnCancelar" layoutX="378.0" layoutY="139.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="66.0" prefWidth="100.0" text="Cancelar" />
+      <Button fx:id="btnGuardar" layoutX="97.0" layoutY="665.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="66.0" prefWidth="100.0" text="Guardar" />
+      <Button fx:id="btnCancelar" layoutX="280.0" layoutY="665.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="66.0" prefWidth="100.0" text="Cancelar" />
       <TextField fx:id="tfEmpleadoId" editable="false" layoutX="76.0" layoutY="215.0" prefHeight="26.0" prefWidth="349.0" />
       <TextField fx:id="tfNombreEmpleado" layoutX="76.0" layoutY="283.0" prefHeight="26.0" prefWidth="349.0" />
       <TextField fx:id="tfApellidoEmpleado" layoutX="76.0" layoutY="362.0" prefHeight="26.0" prefWidth="349.0" />
       <TextField fx:id="tfSueldo" layoutX="76.0" layoutY="426.0" prefHeight="26.0" prefWidth="349.0" />
       <TextField fx:id="tfHoraEntrada" layoutX="75.0" layoutY="494.0" prefHeight="26.0" prefWidth="349.0" />
-      <TextField layoutX="75.0" layoutY="562.0" prefHeight="26.0" prefWidth="349.0" />
+      <TextField fx:id="tfHoraSalida" layoutX="75.0" layoutY="562.0" prefHeight="26.0" prefWidth="349.0" />
       <TextField fx:id="tfCargoId" layoutX="75.0" layoutY="630.0" prefHeight="26.0" prefWidth="349.0" />
-      <TextField fx:id="tfEncargadoId" layoutX="75.0" layoutY="700.0" prefHeight="26.0" prefWidth="349.0" />
    </children>
 </AnchorPane>

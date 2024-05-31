@@ -47,7 +47,7 @@ CREATE PROCEDURE sp_editarCargo(IN carId INT,IN nomCar VARCHAR(30), IN descCar V
 		UPDATE Cargos
 			SET
 				nombreCargo = nomCar,
-				descripcionCargo = descCarg
+				descripcionCargo = descCar
 					WHERE cargoId = carId;
 	END $$
 Delimiter ;
@@ -501,6 +501,28 @@ create procedure sp_listarEmpleado()
 	end $$
 Delimiter ;
 
+Delimiter $$
+create procedure sp_listarEmpleado()
+	begin
+		select
+			Empleados.empleadoId,
+            Empleados.nombreEmpleado,
+            Empleados.apellidoEmpleado,
+            Empleados.sueldo,
+            Empleados.horaEntrada,
+            Empleados.horaSalida,
+            Empleados.cargoId,
+            Empleados.encargadoId
+				from Empleados;
+	end $$
+Delimiter ;Delimiter $$
+create procedure sp_listarEmpleadoComp()
+	begin
+		select F.facturaId, F.fecha, F.hora ,
+        CONCAT("Id: ",E.empleadoId, " | ",E.nombreEmpleado, " " , E.apellidoEmpleado) As Empleado, F.total from Facturas F
+        join Clientes C on F.clienteId =  C.clienteId;
+	end $$
+Delimiter ;
 -- Eliminar
 Delimiter $$
 create procedure sp_eliminarEmpleado(in empId int)
@@ -530,7 +552,7 @@ delimiter ;
              
 -- Editar
 Delimiter $$
-create procedure sp_editarEmpleado(IN empId INT, IN nomEmp VARCHAR(30), IN apeEmp VARCHAR(30),IN suel DECIMAL(10,2),IN horEnt TIME, IN horSal TIME, IN carId INT,IN encId INT)
+create procedure sp_editarEmpleado(IN empId INT, IN nomEmp VARCHAR(30), IN apeEmp VARCHAR(30),IN suel DECIMAL(10,2),IN horEnt TIME, IN horSal TIME, IN carId INT)
 	begin
 		update Empleados
 			set
@@ -539,8 +561,7 @@ create procedure sp_editarEmpleado(IN empId INT, IN nomEmp VARCHAR(30), IN apeEm
                 sueldo = suel,
                 horaEntrada = horEnt,
                 horaSalida = horSal,
-                cargoId = carId,
-                encargadoId= encId
+                cargoId = carId
 					where empleadoId = empId;
 	end $$
 Delimiter ;

@@ -63,9 +63,11 @@ public class MenuCategoriaProductosController implements Initializable {
             if(tfCategoriaProductosId.getText().equals("")){
                 agregarCargos();
                 cargarDatos();
+                vaciarForm();
             }else{
                 editarCargos();
                 cargarDatos();
+                vaciarForm();
             }
         }else if(event.getSource() == btnEliminar){
             if(tfCategoriaProductosId.getText().equals("")){
@@ -89,7 +91,6 @@ public class MenuCategoriaProductosController implements Initializable {
         colNombreCategoria.setCellValueFactory(new PropertyValueFactory<CategoriaProductos, String>("nombreCategoria"));
         colDescripcionCategoria.setCellValueFactory(new PropertyValueFactory<CategoriaProductos, String>("descripcionCategoria"));
     }
-    
     @FXML
     public void cargarForm(){
         CategoriaProductos ts = (CategoriaProductos)tblCategoriaProductos.getSelectionModel().getSelectedItem();
@@ -98,6 +99,12 @@ public class MenuCategoriaProductosController implements Initializable {
             tfNombreCategoria.setText(ts.getNombreCategoria());
             taDescripcionCategoria.setText(ts.getDescripcionCategoria());
         }
+    }
+    
+    public void vaciarForm(){
+        tfCategoriaProductosId.clear();
+        tfNombreCategoria.clear();
+        taDescripcionCategoria.clear();
     }
     
     public ObservableList<CategoriaProductos> listarCategoriaProductos(){

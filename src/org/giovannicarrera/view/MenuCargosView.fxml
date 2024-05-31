@@ -17,8 +17,8 @@
          <image>
             <Image url="@../image/Formulario%20Cargos%20.png" />
          </image></ImageView>
-      <TextField fx:id="tfCargoId" editable="false" layoutX="290.0" layoutY="143.0" />
-      <TextField fx:id="tfNombreCargo" layoutX="116.0" layoutY="143.0" />
+      <TextField fx:id="tfCargoId" alignment="CENTER" editable="false" layoutX="290.0" layoutY="143.0" />
+      <TextField fx:id="tfNombreCargo" alignment="CENTER" layoutX="116.0" layoutY="143.0" />
       <TextArea fx:id="taDescripcion" layoutX="116.0" layoutY="208.0" prefHeight="200.0" prefWidth="200.0" />
       <TableView fx:id="tblCargos" layoutX="116.0" layoutY="434.0" onMouseClicked="#cargarForm" prefHeight="252.0" prefWidth="369.0">
         <columns>
@@ -27,10 +27,10 @@
             <TableColumn fx:id="colDescripcionCargo" prefWidth="182.0" text="Descripcion" />
         </columns>
       </TableView>
-      <Button fx:id="btnEliminar" layoutX="64.0" layoutY="737.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="89.0" prefWidth="106.0" text="Eliminar" />
-      <Button fx:id="btnGuardar" layoutX="224.0" layoutY="737.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="89.0" prefWidth="106.0" text="Guardar" />
+      <Button fx:id="btnEliminar" layoutX="116.0" layoutY="737.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="89.0" prefWidth="106.0" text="Eliminar" />
+      <Button fx:id="btnGuardar" layoutX="247.0" layoutY="737.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="89.0" prefWidth="106.0" text="Guardar" />
       <Button fx:id="btnRegresar" layoutX="379.0" layoutY="737.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="89.0" prefWidth="106.0" text="Regresar" />
-      <Text layoutX="312.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Categoria ID">
+      <Text layoutX="312.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cargo ID">
          <font>
             <Font size="19.0" />
          </font>

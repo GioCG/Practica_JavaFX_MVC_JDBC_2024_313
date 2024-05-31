@@ -64,9 +64,11 @@ public class MenuCargosController implements Initializable {
             if(tfCargoId.getText().equals("")){
                 agregarCargos();
                 cargarDatos();
+                vaciarForm();
             }else{
                 editarCargos();
                 cargarDatos();
+                vaciarForm();
             }
         }else if(event.getSource() == btnEliminar){
             if(tfCargoId.getText().equals("")){
@@ -90,6 +92,12 @@ public class MenuCargosController implements Initializable {
         colCargoId.setCellValueFactory(new PropertyValueFactory<Cargos, Integer>("cargoId"));
         colNombreCargo.setCellValueFactory(new PropertyValueFactory<Cargos, String>("nombreCargo"));
         colDescripcionCargo.setCellValueFactory(new PropertyValueFactory<Cargos, String>("descripcionCargo"));
+    }
+    
+    public void vaciarForm(){
+        tfCargoId.clear();
+        tfNombreCargo.clear();
+        taDescripcion.clear();
     }
     
     @FXML

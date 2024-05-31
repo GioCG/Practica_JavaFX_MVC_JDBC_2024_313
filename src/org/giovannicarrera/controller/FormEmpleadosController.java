@@ -37,7 +37,7 @@ public class FormEmpleadosController implements Initializable {
     @FXML
     Button btnGuardar,btnCancelar;
     @FXML    
-    TextField tfEmpleadoId,tfNombreEmpleado,tfApellidoEmpleado,tfSueldo,tfHoraEntrada,tfHoraSalida,tfCargoId,tfEncargadoId;
+    TextField tfEmpleadoId,tfNombreEmpleado,tfApellidoEmpleado,tfSueldo,tfHoraEntrada,tfHoraSalida,tfCargoId;
 
     
     @FXML
@@ -47,11 +47,11 @@ public class FormEmpleadosController implements Initializable {
         }else if(event.getSource() == btnGuardar){
             if(op == 1){
             agregarEmpleado(); 
-            stage.menuDistribuidorView();
+            stage.menuEmpleadosView();
             }else if(op == 2){
                 editarEmpleado();
                 EmpleadosDTO.getEmpleadosDTO().setEmpleado(null);
-                stage.menuDistribuidorView();
+                stage.menuEmpleadosView();
             }  
                 
         }
@@ -76,14 +76,13 @@ public class FormEmpleadosController implements Initializable {
         tfHoraEntrada.setText(formatoHora.format(empleado.getHoraEntrada()));
         tfHoraSalida.setText(formatoHora.format(empleado.getHoraSalida()));
         tfCargoId.setText(Integer.toString(empleado.getCargoId()));
-        tfEncargadoId.setText(Integer.toString(empleado.getEncargadoId()));
     }
 
     public void agregarEmpleado(){
       
         try{
             conexion = Conexion.getInstance().obtenerConexion();
-            String sql = "call sp_agregarEmpleado(?,?,?,?,?,?,?)";
+            String sql = "call sp_agregarEmpleado(?,?,?,?,?,?)";
             statement = conexion.prepareStatement(sql);
             statement.setString(1,tfNombreEmpleado.getText());
             statement.setString(2,tfApellidoEmpleado.getText());
@@ -91,7 +90,6 @@ public class FormEmpleadosController implements Initializable {
             statement.setString(4,tfHoraEntrada.getText());
             statement.setString(5,tfHoraSalida.getText());
             statement.setString(6,tfCargoId.getText());
-            statement.setString(7,tfEncargadoId.getText());
             statement.execute();
         }catch(SQLException e){
             System.out.println(e.getMessage());
@@ -112,7 +110,7 @@ public class FormEmpleadosController implements Initializable {
     public void editarEmpleado(){
         try{
             conexion = Conexion.getInstance().obtenerConexion();
-            String sql = "call sp_editarEmpleado(?,?,?,?,?,?,?,?)";
+            String sql = "call sp_editarEmpleado(?,?,?,?,?,?,?)";
             statement = conexion.prepareStatement(sql);
             statement.setInt(1, Integer.parseInt(tfEmpleadoId.getText()));
             statement.setString(2,tfNombreEmpleado.getText());
@@ -121,7 +119,6 @@ public class FormEmpleadosController implements Initializable {
             statement.setString(5,tfHoraEntrada.getText());
             statement.setString(6,tfHoraSalida.getText());
             statement.setString(7,tfCargoId.getText());
-            statement.setString(8,tfEncargadoId.getText());
             statement.execute();
         }catch(SQLException e){
         System.out.println(e.getMessage());

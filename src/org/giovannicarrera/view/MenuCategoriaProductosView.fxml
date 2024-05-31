@@ -27,9 +27,7 @@
             <TableColumn fx:id="colDescripcionCategoria" prefWidth="177.60000000000002" text="Descripcion" />
         </columns>
       </TableView>
-      <Button fx:id="btnEliminar" layoutX="64.0" layoutY="737.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="89.0" prefWidth="106.0" text="Eliminar" />
-      <Button fx:id="btnGuardar" layoutX="224.0" layoutY="737.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="89.0" prefWidth="106.0" text="Guardar" />
-      <Button fx:id="btnRegresar" layoutX="379.0" layoutY="737.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="89.0" prefWidth="106.0" text="Regresar" />
+      <Button fx:id="btnRegresar" layoutX="375.0" layoutY="748.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="89.0" prefWidth="106.0" text="Regresar" />
       <Text layoutX="118.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Categoria ID">
          <font>
             <Font size="19.0" />
@@ -45,5 +43,7 @@
             <Font size="19.0" />
          </font>
       </Text>
+      <Button fx:id="btnEliminar" layoutX="116.0" layoutY="747.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="89.0" prefWidth="106.0" text="Eliminar" />
+      <Button fx:id="btnGuardar" layoutX="247.0" layoutY="748.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="89.0" prefWidth="106.0" text="Guardar" />
    </children>
 </AnchorPane>
