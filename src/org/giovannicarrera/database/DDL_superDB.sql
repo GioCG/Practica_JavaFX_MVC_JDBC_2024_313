@@ -1,5 +1,5 @@
-drop database IF EXISTS superDB;
-CREATE DATABASE IF NOT EXISTS superDB;
+drop database superDB;
+CREATE DATABASE  superDB;
 USE superDB;
 SET GLOBAL time_zone = '-6:00';
 create table Cargos(

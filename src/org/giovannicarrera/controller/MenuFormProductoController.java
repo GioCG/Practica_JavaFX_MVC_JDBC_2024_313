@@ -175,8 +175,12 @@ public class MenuFormProductoController implements Initializable {
             statement.setString(4,tfPrecioVentaUnitario.getText());
             statement.setString(5,tfPrecioVentaMayor.getText());
             statement.setString(6,tfPrecioCompra.getText());
-            InputStream img = new FileInputStream(files.get(0));
-            statement.setBinaryStream(7, img);
+            if (files != null && !files.isEmpty() && files.get(0) != null) {
+                InputStream img = new FileInputStream(files.get(0));
+                statement.setBinaryStream(7, img);
+            } else {
+                statement.setBinaryStream(7, null); 
+            }
             statement.setInt(8, ((Distribuidor)cmbDistribuidor.getSelectionModel().getSelectedItem()).getDistribuidorId());
             statement.setInt(9, ((CategoriaProductos)cmbCategoria.getSelectionModel().getSelectedItem()).getCategoriaProductosId());
             statement.execute();

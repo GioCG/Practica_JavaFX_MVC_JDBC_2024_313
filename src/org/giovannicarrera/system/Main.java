@@ -12,6 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.giovannicarrera.controller.FormAsignarEncargadoController;
 import org.giovannicarrera.controller.FormClienteController;
+import org.giovannicarrera.controller.FormDetalleFacturaController;
 import org.giovannicarrera.controller.FormDistribuidoresController;
 import org.giovannicarrera.controller.FormEmpleadosController;
 import org.giovannicarrera.controller.MenuCargosController;
@@ -19,6 +20,7 @@ import org.giovannicarrera.controller.MenuCategoriaProductosController;
 import org.giovannicarrera.controller.MenuClienteController;
 import org.giovannicarrera.controller.MenuDistribuidorController;
 import org.giovannicarrera.controller.MenuEmpleadosController;
+import org.giovannicarrera.controller.MenuFacturaController;
 import org.giovannicarrera.controller.MenuFormProductoController;
 import org.giovannicarrera.controller.MenuPrincipalController;
 import org.giovannicarrera.controller.MenuProductosController;
@@ -151,7 +153,7 @@ public class Main extends Application {
     
     public void formAsignarEncargadoView() {
         try{
-            FormAsignarEncargadoController formAsignarEncargadoView = (FormAsignarEncargadoController)switchScene("FormAsignarEncargadoView.fxml",600,900);
+            FormAsignarEncargadoController formAsignarEncargadoView = (FormAsignarEncargadoController)switchScene("FormAsignarEncargadoView.fxml",500,750);
             formAsignarEncargadoView.setStage(this);
         }catch(Exception e){
            System.out.println(e.getMessage());
@@ -183,6 +185,22 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
+    public void menuFacturaView() {
+        try{
+            MenuFacturaController menuFacturaView = (MenuFacturaController)switchScene("MenuFacturaView.fxml",1200,750);
+            menuFacturaView.setStage(this);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    public void formDetalleFacturaView() {
+        try{
+            FormDetalleFacturaController formDetalleFacturaView = (FormDetalleFacturaController)switchScene("FormDetalleFacturaView.fxml",500,750);
+            formDetalleFacturaView.setStage(this);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    } 
     public static void main(String[] args) {
         launch(args);
     } 

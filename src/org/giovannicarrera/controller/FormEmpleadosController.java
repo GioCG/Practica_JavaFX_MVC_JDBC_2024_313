@@ -10,17 +10,22 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import org.giovannicarrera.dao.Conexion;
 import org.giovannicarrera.dto.EmpleadosDTO;
+import org.giovannicarrera.modelo.Cargos;
 import org.giovannicarrera.modelo.Empleado;
 import org.giovannicarrera.system.Main;
+import java.sql.ResultSet;
 import org.giovannicarrera.utils.SuperKinalAlert;
 
 /**
@@ -33,11 +38,14 @@ public class FormEmpleadosController implements Initializable {
     
     private static Connection conexion = null;
     private static PreparedStatement statement = null;
+    private static ResultSet resultSet = null;
 
     @FXML
     Button btnGuardar,btnCancelar;
     @FXML    
-    TextField tfEmpleadoId,tfNombreEmpleado,tfApellidoEmpleado,tfSueldo,tfHoraEntrada,tfHoraSalida,tfCargoId;
+    TextField tfEmpleadoId,tfNombreEmpleado,tfApellidoEmpleado,tfSueldo,tfHoraEntrada,tfHoraSalida;
+    @FXML
+    ComboBox cmbCargoId;
 
     
     @FXML
@@ -61,11 +69,14 @@ public class FormEmpleadosController implements Initializable {
         
     @Override
     public void initialize(URL location, ResourceBundle rb) {
+        cmbCargoId.setItems(listarCargos());
         if(EmpleadosDTO.getEmpleadosDTO().getEmpleado()!= null){
             cargarDatos(EmpleadosDTO.getEmpleadosDTO().getEmpleado());
         }
         
     }    
+    
+    
     
     public void cargarDatos(Empleado empleado){
         SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
@@ -75,9 +86,46 @@ public class FormEmpleadosController implements Initializable {
         tfSueldo.setText(Double.toString(empleado.getSueldo()));
         tfHoraEntrada.setText(formatoHora.format(empleado.getHoraEntrada()));
         tfHoraSalida.setText(formatoHora.format(empleado.getHoraSalida()));
-        tfCargoId.setText(Integer.toString(empleado.getCargoId()));
     }
+    
 
+    public ObservableList<Cargos> listarCargos(){
+        ArrayList<Cargos> cargos = new ArrayList<>();
+     
+       try{
+           conexion = Conexion.getInstance().obtenerConexion();
+           String sql = "call sp_listarCargo";
+           statement = conexion.prepareStatement(sql);
+           resultSet = statement.executeQuery();
+           
+           while(resultSet.next()){
+                int cargoId = resultSet.getInt("cargoId");
+                String nombreCargo = resultSet.getString("nombreCargo");
+                String descripcionCargo = resultSet.getString("descripcionCargo");
+                
+                cargos.add(new Cargos(cargoId,nombreCargo,descripcionCargo));
+            }
+       }catch(SQLException e){
+            e.printStackTrace();
+       }finally{
+            try{
+                if(resultSet != null){
+                   resultSet.close();
+               }
+               if(statement != null){
+                   statement.close();
+               }
+               if(conexion != null){
+                   conexion.close();
+               }
+                
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+       }     
+       return FXCollections.observableList(cargos);
+    }
+    
     public void agregarEmpleado(){
       
         try{
@@ -89,7 +137,7 @@ public class FormEmpleadosController implements Initializable {
             statement.setString(3,tfSueldo.getText());
             statement.setString(4,tfHoraEntrada.getText());
             statement.setString(5,tfHoraSalida.getText());
-            statement.setString(6,tfCargoId.getText());
+            statement.setInt(6,((Cargos)cmbCargoId.getSelectionModel().getSelectedItem()).getCargoId());
             statement.execute();
         }catch(SQLException e){
             System.out.println(e.getMessage());
@@ -118,7 +166,7 @@ public class FormEmpleadosController implements Initializable {
             statement.setString(4,tfSueldo.getText());
             statement.setString(5,tfHoraEntrada.getText());
             statement.setString(6,tfHoraSalida.getText());
-            statement.setString(7,tfCargoId.getText());
+            statement.setInt(7,((Cargos)cmbCargoId.getSelectionModel().getSelectedItem()).getCargoId());
             statement.execute();
         }catch(SQLException e){
         System.out.println(e.getMessage());

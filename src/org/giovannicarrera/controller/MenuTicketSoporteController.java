@@ -21,6 +21,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -32,10 +33,11 @@ import org.giovannicarrera.modelo.Cliente;
 import org.giovannicarrera.modelo.Factura;
 import org.giovannicarrera.modelo.TicketSoporte;
 import org.giovannicarrera.system.Main;
+import org.giovannicarrera.utils.SuperKinalAlert;
 
 
 public class MenuTicketSoporteController implements Initializable {
-    
+    private int op;
     Main stage;
     
     private static Connection conexion = null;
@@ -43,7 +45,7 @@ public class MenuTicketSoporteController implements Initializable {
     private static ResultSet resultSet = null;
     
     @FXML
-    TextField tfTicketId;
+    TextField tfTicketId,tfTicketBuscar;
     @FXML
     TextArea taDescripcion;
     @FXML
@@ -53,7 +55,7 @@ public class MenuTicketSoporteController implements Initializable {
     @FXML
     TableColumn colTicketId, colDescripcion, colEstatus, colCliente, colFactura;
     @FXML
-    Button btnGuardar,btnVaciarForm,btnRegresar;
+    Button btnGuardar,btnVaciarForm,btnRegresar,btnEliminar,btnBuscar;
     
     
     
@@ -71,6 +73,20 @@ public class MenuTicketSoporteController implements Initializable {
             }
         }else if(event.getSource() == btnVaciarForm){
             vaciarForm();
+        }else if(event.getSource()== btnEliminar){
+            if(SuperKinalAlert.getInstance().mostrarAlertConf(770).get() == ButtonType.OK){
+                eliminarTicketSoporte(((TicketSoporte) tblTickets.getSelectionModel().getSelectedItem()).getTicketSoporteId());
+                cargarDatos();
+            }
+        }else if(event.getSource()== btnBuscar){
+            if(tfTicketBuscar.getText().equals("")){
+               cargarDatos();
+            }else{
+                op=3;
+                tblTickets.getItems().clear();
+                cargarDatos(); 
+            }
+            
         }
     }
     @Override
@@ -82,12 +98,17 @@ public class MenuTicketSoporteController implements Initializable {
     }    
     
     public void cargarDatos(){
+        if(op==3){
+            tblTickets.getItems().add(buscarTicketSoporte()); 
+            op = 0;
+        }else{
         tblTickets.setItems(listarTickets());
         colTicketId.setCellValueFactory(new PropertyValueFactory<TicketSoporte, Integer>("ticketSoporteId"));
         colDescripcion.setCellValueFactory(new PropertyValueFactory<TicketSoporte, String>("descripcion"));
         colEstatus.setCellValueFactory(new PropertyValueFactory<TicketSoporte, String>("estatus"));
         colCliente.setCellValueFactory(new PropertyValueFactory<TicketSoporte, String>("cliente"));
         colFactura.setCellValueFactory(new PropertyValueFactory<TicketSoporte, String>("factura"));
+        }
     }
     
     public void cargarCmbEstatus(){
@@ -99,6 +120,7 @@ public class MenuTicketSoporteController implements Initializable {
     public void vaciarForm(){
         tfTicketId.clear();
         taDescripcion.clear();
+        tfTicketBuscar.clear();
         cmbEstatus.getSelectionModel().clearSelection();
         cmbCliente.getSelectionModel().clearSelection();
         cmbFactura.getSelectionModel().clearSelection();
@@ -106,14 +128,14 @@ public class MenuTicketSoporteController implements Initializable {
     
     @FXML
     public void cargarForm(){
-        TicketSoporte ts = (TicketSoporte)tblTickets.getSelectionModel().getSelectedItem();
-        if(ts != null){
-            tfTicketId.setText(Integer.toString(ts.getTicketSoporteId()));
-            taDescripcion.setText(ts.getDescripcion());
-            cmbEstatus.getSelectionModel().select(0);
-            cmbCliente.getSelectionModel().select(obtenerIndexCliente());
-            cmbFactura.getSelectionModel().select(obtenerIndexFactura());
-        }
+            TicketSoporte ts = (TicketSoporte)tblTickets.getSelectionModel().getSelectedItem();
+            if(ts != null){
+                tfTicketId.setText(Integer.toString(ts.getTicketSoporteId()));
+                taDescripcion.setText(ts.getDescripcion());
+                cmbEstatus.getSelectionModel().select(0);
+                cmbCliente.getSelectionModel().select(obtenerIndexCliente());
+                cmbFactura.getSelectionModel().select(obtenerIndexFactura());
+            }
     }
     
     public int obtenerIndexCliente(){
@@ -229,7 +251,7 @@ public class MenuTicketSoporteController implements Initializable {
         
         try{
             conexion = Conexion.getInstance().obtenerConexion();
-            String sql = "call sp_ListarFactura()";
+            String sql = "call sp_ListarFacturaComple()";
             statement = conexion.prepareStatement(sql);
             resultSet = statement.executeQuery();
             
@@ -237,11 +259,11 @@ public class MenuTicketSoporteController implements Initializable {
                 int facturaId = resultSet.getInt("facturaId");
                 Date fecha = resultSet.getDate("fecha");
                 Time hora = resultSet.getTime("hora");
-                int clienteId = resultSet.getInt("clienteId");
-                int empleadoId = resultSet.getInt("empleadoId");
+                String cliente = resultSet.getString("cliente");
+                String empleado = resultSet.getString("empleado");
                 Double total = resultSet.getDouble("total");
                 
-                facturas.add(new Factura(facturaId,fecha, hora, clienteId,empleadoId,total));
+                facturas.add(new Factura(facturaId,fecha, hora, cliente,empleado,total));
             }
         }catch(SQLException e){
             System.out.println(e.getMessage());
@@ -312,6 +334,68 @@ public class MenuTicketSoporteController implements Initializable {
                 System.out.println(e.getMessage());
             }
         }
+    }
+    
+    public void eliminarTicketSoporte(int ticSopId){
+        try{
+            conexion = Conexion.getInstance().obtenerConexion();
+            String sql = "call sp_eliminarTicketSoporte(?)";
+            statement = conexion.prepareStatement(sql);
+            statement.setInt(1, ticSopId);
+            statement.execute();            
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }finally{
+            try{
+                if(statement != null){
+                    statement.close();
+                }
+                if(conexion != null){
+                    conexion.close();
+                }
+            }catch(SQLException e){
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+    
+    public TicketSoporte buscarTicketSoporte(){
+        TicketSoporte ticketSoporte = null;
+        try{
+            conexion = Conexion.getInstance().obtenerConexion();
+            String sql = "call sp_buscarTicketSoporte(?)";
+            statement = conexion.prepareStatement(sql);
+            statement.setInt(1, Integer.parseInt(tfTicketBuscar.getText()));
+            resultSet = statement.executeQuery();
+            
+            if(resultSet.next()){
+                int ticketSoporteId = resultSet.getInt("ticketSoporteId");
+                String descripcion = resultSet.getString("descripcion");
+                String estatus = resultSet.getString("estatus");
+                String cliente = resultSet.getString("cliente");
+                String factura = resultSet.getString("factura");
+                
+                ticketSoporte = new TicketSoporte(ticketSoporteId, descripcion,estatus,cliente,factura);
+            }
+            
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }finally{
+            try{
+                if(resultSet != null){
+                    resultSet.close();
+                }
+                if(statement != null){
+                    statement.close();
+                }
+                if(conexion != null){
+                    conexion.close();
+                }
+            }catch(SQLException e){
+                System.out.println(e.getMessage());
+            }
+        }   
+        return ticketSoporte;
     }
     
     public Main getStage() {

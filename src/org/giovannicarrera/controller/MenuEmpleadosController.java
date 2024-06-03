@@ -95,17 +95,18 @@ public class MenuEmpleadosController implements Initializable {
             colSueldo.setCellValueFactory(new PropertyValueFactory<Empleado, Double>("sueldo"));
             colHoraEntrada.setCellValueFactory(new PropertyValueFactory<Empleado, Time>("horaEntrada"));
             colhoraSalida.setCellValueFactory(new PropertyValueFactory<Empleado, Time>("horaSalida"));
-            colCargoId.setCellValueFactory(new PropertyValueFactory<Empleado, Integer>("cargoId"));
+            colCargoId.setCellValueFactory(new PropertyValueFactory<Empleado, Integer>("cargo"));
             colEncargadoId.setCellValueFactory(new PropertyValueFactory<Empleado, Integer>("encargadoId"));  
         }
     }
+    
     
     public ObservableList<Empleado> listarEmpleado(){
         ArrayList<Empleado> empleado = new ArrayList<>();
         
         try{
             conexion = Conexion.getInstance().obtenerConexion();
-            String sql = "call sp_listarEmpleado()";
+            String sql = "call sp_listarEmpleadoComp()";
             statement = conexion.prepareStatement(sql);
             resultSet = statement.executeQuery();
             
@@ -116,9 +117,9 @@ public class MenuEmpleadosController implements Initializable {
                 Double sueldo = resultSet.getDouble("sueldo");
                 Time horaEntrada = resultSet.getTime("horaEntrada");
                 Time horaSalida = resultSet.getTime("horaSalida");
-                int cargoId = resultSet.getInt("cargoId");
+                String cargo = resultSet.getString("cargo");
                 int encargadoId = resultSet.getInt("encargadoId");
-                empleado.add(new Empleado (empleadoId,nombreEmpleado, apellidoEmpleado, sueldo,horaEntrada,horaSalida,cargoId,encargadoId));
+                empleado.add(new Empleado (empleadoId,nombreEmpleado, apellidoEmpleado, sueldo,horaEntrada,horaSalida,cargo,encargadoId));
             }
         }catch(SQLException e){
             System.out.println(e.getMessage());
@@ -169,9 +170,9 @@ public class MenuEmpleadosController implements Initializable {
                 Double sueldo = resultSet.getDouble("sueldo");
                 Time horaEntrada = resultSet.getTime("horaEntrada");
                 Time horaSalida = resultSet.getTime("horaSalida");
-                int cargoId = resultSet.getInt("cargoId");
+                String cargo = resultSet.getString("cargo");
                 int encargadoId = resultSet.getInt("encargadoId");
-                empleado = new Empleado(empleadoId,nombreEmpleado, apellidoEmpleado, sueldo,horaEntrada,horaSalida,cargoId,encargadoId);
+                empleado = new Empleado(empleadoId,nombreEmpleado, apellidoEmpleado, sueldo,horaEntrada,horaSalida,cargo,encargadoId);
             }
         }catch(SQLException e){
             System.out.println(e.getMessage());

@@ -1,23 +1,23 @@
 Echos
 --------------
 Clientes
-Distribuidores 
-TiketSoporte
-Cargo Empleados
-Categoria Productos
+Distribuidores //alertas  
+TiketSoporte //alertas  
+Cargo Empleados //alertas  
+Categoria Productos //alertas  
+Promociones //alertas  
+Factura //alertas  
+compras //alertas  
+Detalle compra //alertas 
+detalle factrura //alertas 
 ===============
 Puliendo
---------------- 
+---------------  
 -Productos // agregar - //editar - //eliminar
--Promociones // falta funcion db
--Empleados  // agregar cmb embes de textfield id´s
+-Empleados  // asignar encargado
 ===============
 Faltan
 --------------- 
--compras
--Detalle compra
--Factura
--detalle factrura
 ================
 Extras
 ----------------
