@@ -13,8 +13,8 @@
             <Image url="@../image/Form%20distribuidores.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnGuardar" layoutX="77.0" layoutY="502.0" mnemonicParsing="false" onAction="handleButtonAction" prefHeight="66.0" prefWidth="100.0" text="Guardar" />
-      <Button fx:id="btnCancelar" layoutX="322.0" layoutY="502.0" mnemonicParsing="false" onAction="handleButtonAction" prefHeight="66.0" prefWidth="100.0" text="Cancelar" />
+      <Button fx:id="btnGuardar" layoutX="77.0" layoutY="502.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="66.0" prefWidth="100.0" text="Guardar" />
+      <Button fx:id="btnCancelar" layoutX="322.0" layoutY="502.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="66.0" prefWidth="100.0" text="Cancelar" />
       <ComboBox fx:id="cmbEmpleadoId" layoutX="77.0" layoutY="185.0" prefHeight="26.0" prefWidth="346.0" />
       <ComboBox fx:id="cmbEncargadoId" layoutX="77.0" layoutY="362.0" prefHeight="26.0" prefWidth="346.0" />
    </children>

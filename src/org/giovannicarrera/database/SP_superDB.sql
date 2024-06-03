@@ -282,10 +282,10 @@ Delimiter ;
 -- ============================================ CRUD Productos =============================================
 -- =========================================================================================================
 Delimiter $$
-create procedure sp_agregarProducto(in nomProd varchar(50),in desProd varchar(100), in cantiSt INT, in preVenUnit DECIMAL(10,2), in preVenMay DECIMAL(10,2),precioCompra DECIMAL(10,2),IN disId INT,IN catProId INT)
+create procedure sp_agregarProducto(in nomProd varchar(50),in desProd varchar(100), in cantiSt INT, in preVenUnit DECIMAL(10,2), in preVenMay DECIMAL(10,2),IN precioCompra DECIMAL(10,2),in img LONGBLOB,IN disId INT,IN catProId INT)
 	Begin
-		insert into Productos(nombreProducto,descripcionProducto, cantidadStock, precioVentaUnitario, precioVentaMayor,precioCompra,distribuidorId,categoriaProductosId) values
-			(nomProd,desProd,cantiSt, preVenUnit, preVenMay, precioCompra,disId,catProId);
+		insert into Productos(nombreProducto,descripcionProducto, cantidadStock, precioVentaUnitario, precioVentaMayor,precioCompra,imagen,distribuidorId,categoriaProductosId) values
+			(nomProd,desProd,cantiSt, preVenUnit, preVenMay, precioCompra,img,disId,catProId);
 	End$$
 Delimiter ;
 
@@ -339,7 +339,7 @@ create procedure sp_buscarProducto(in prodId int)
 delimiter ;
              
 Delimiter $$
-create procedure sp_editarProducto(in prodId int,in nomProd varchar(50),in desProd varchar(100), in cantiSt INT, in preVenUnit DECIMAL(10,2), in preVenMay DECIMAL(10,2),precioCompra DECIMAL(10,2))
+create procedure sp_editarProducto(in prodId int,in nomProd varchar(50),in desProd varchar(100), in cantiSt INT, in preVenUnit DECIMAL(10,2), in preVenMay DECIMAL(10,2),IN precioCompra DECIMAL(10,2),IN img LONGBLOB,IN disId INT,IN catProId INT)
 	begin
 		update Productos
 			set
@@ -348,7 +348,10 @@ create procedure sp_editarProducto(in prodId int,in nomProd varchar(50),in desPr
                 cantidadStock = cantiSt,
                 precioVentaUnitario = preVenUnit,
                 precioVentaMayor =preVenMay,
-                precioCompra = precioCompra
+                precioCompra = precioCompra,
+                imagen = img,
+                distribuidorId = disId,
+                categoriaProductosId = catProId
 					where productoId = prodId;
 	end $$
 Delimiter ;
@@ -807,13 +810,6 @@ call sp_agregarCategoriaProducto('c','d');
 call sp_AgregarDistribuidor('f','g','21','6534','reg');
 call sp_agregarCompra('2000-10-02');
 call sp_agregarClientes('NIT','nombre', 'apellido', 'telefono', 'direccion');
-call sp_agregarProducto('h','i',13,23.45,32.45,21.35,1,1);
-call sp_agregarPromocion(12.50,'descripcionPromocion','2052-11-02','2005-10-02',1);
-call sp_agregarDetalleCompra(20,1,1);
-call sp_agregarEmpleado('nombreEmpleado', 'apellidoEmpleado',23.5,12,5,1);
-call sp_agregarFactura('2000-10-02',2,1,1);
-call sp_agregarTicketSoporte('1',1,1);
-call SP_agregarDetFacturas(1,1);
 call sp_listarTicketSoporteComplet;
 call sp_ListarProductoComple;
 call sp_listarEmpleadoComp;

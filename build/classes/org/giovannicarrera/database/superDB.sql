@@ -1081,11 +1081,6 @@ delimiter $$
 	end$$
     delimiter ;
 
-call sp_agregarCargo('a','b');
-call sp_agregarCategoriaProducto('c','d');
-call sp_AgregarDistribuidor('f','g','21','6534','reg');
-call sp_agregarCompra('2000-10-02');
-call sp_agregarClientes('NIT','nombre', 'apellido', 'telefono', 'direccion');
 call sp_listarTicketSoporteComplet;
 call sp_ListarProductoComple;
 call sp_listarEmpleadoComp;

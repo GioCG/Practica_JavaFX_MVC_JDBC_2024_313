@@ -19,9 +19,9 @@
       <TextField fx:id="tfEmpleadoId" editable="false" layoutX="76.0" layoutY="215.0" prefHeight="26.0" prefWidth="349.0" />
       <TextField fx:id="tfNombreEmpleado" layoutX="76.0" layoutY="283.0" prefHeight="26.0" prefWidth="349.0" />
       <TextField fx:id="tfApellidoEmpleado" layoutX="76.0" layoutY="362.0" prefHeight="26.0" prefWidth="349.0" />
-      <TextField fx:id="tfSueldo" layoutX="76.0" layoutY="426.0" prefHeight="26.0" prefWidth="349.0" text="00.00" />
-      <TextField fx:id="tfHoraEntrada" layoutX="75.0" layoutY="494.0" prefHeight="26.0" prefWidth="349.0" text="00:00:00" />
-      <TextField fx:id="tfHoraSalida" layoutX="75.0" layoutY="562.0" prefHeight="26.0" prefWidth="349.0" text="00:00:00" />
+      <TextField fx:id="tfSueldo" layoutX="76.0" layoutY="426.0" prefHeight="26.0" prefWidth="349.0" promptText="00.00" />
+      <TextField fx:id="tfHoraEntrada" layoutX="75.0" layoutY="494.0" prefHeight="26.0" prefWidth="349.0" promptText="00:00:00" />
+      <TextField fx:id="tfHoraSalida" layoutX="75.0" layoutY="562.0" prefHeight="26.0" prefWidth="349.0" promptText="00:00:00" />
       <ComboBox fx:id="cmbCargoId" layoutX="72.0" layoutY="631.0" prefHeight="26.0" prefWidth="350.0" />
    </children>
 </AnchorPane>

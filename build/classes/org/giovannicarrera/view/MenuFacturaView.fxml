@@ -19,8 +19,8 @@
       <TextField fx:id="tfFacturaId" layoutX="75.0" layoutY="197.0" prefHeight="35.0" prefWidth="222.0" />
       <ComboBox fx:id="cmbCliente" layoutX="513.0" layoutY="197.0" prefHeight="35.0" prefWidth="174.0" />
       <ComboBox fx:id="cmbEmpleado" layoutX="732.0" layoutY="197.0" prefHeight="35.0" prefWidth="222.0" />
-      <TextField fx:id="tfFecha" layoutX="75.0" layoutY="339.0" prefHeight="35.0" prefWidth="222.0" />
-      <TextField fx:id="tfHora" layoutX="75.0" layoutY="428.0" prefHeight="35.0" prefWidth="222.0" />
+      <TextField fx:id="tfFecha" layoutX="75.0" layoutY="339.0" prefHeight="35.0" prefWidth="222.0" promptText="AAAA-MM-DD" />
+      <TextField fx:id="tfHora" layoutX="75.0" layoutY="428.0" prefHeight="35.0" prefWidth="222.0" promptText="00:00:00" />
       <Button fx:id="btnGuardar" layoutX="33.0" layoutY="651.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="64.0" prefWidth="174.0" text="Guardar" />
       <Button fx:id="btnRegresar" layoutX="297.0" layoutY="651.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="64.0" prefWidth="174.0" text="Regresar" />
       <Button fx:id="btnVaciarForm" layoutX="297.0" layoutY="470.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="64.0" prefWidth="174.0" text="Vaciar" />
