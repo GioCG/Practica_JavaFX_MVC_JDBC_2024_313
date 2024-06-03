@@ -108,6 +108,7 @@ public class Main extends Application {
     public void menuFormProductoView(int op) {
         try{
             MenuFormProductoController menuFormProductoView = (MenuFormProductoController)switchScene("MenuFormProductoView.fxml",1200,750);
+            menuFormProductoView.setOp(op);
             menuFormProductoView.setStage(this);
         }catch(Exception e){
            System.out.println(e.getMessage());

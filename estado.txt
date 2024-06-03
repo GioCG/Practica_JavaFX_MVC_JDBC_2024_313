@@ -10,10 +10,12 @@ Factura //alertas
 compras //alertas  
 Detalle compra //alertas 
 detalle factrura //alertas 
+Productos //alertas
 ===============
 Puliendo
 ---------------  
--Productos // agregar - //editar - //eliminar
+-Clientes // no se puede agregar algo luego de editar
+-Productos // no se puede agregar algo luego de editar
 -Empleados  // asignar encargado
 ===============
 Faltan

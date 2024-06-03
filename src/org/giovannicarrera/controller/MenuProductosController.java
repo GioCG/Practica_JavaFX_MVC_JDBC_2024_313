@@ -65,7 +65,7 @@ public class MenuProductosController implements Initializable {
             stage.menuFormProductoView(2);
         }else if(event.getSource()== btnEliminar){
             if(SuperKinalAlert.getInstance().mostrarAlertConf(770).get() == ButtonType.OK){
-                eliminarCliente(((Productos) tblProductos.getSelectionModel().getSelectedItem()).getProductoId());
+                eliminarProducto(((Productos) tblProductos.getSelectionModel().getSelectedItem()).getProductoId());
                 cargarLista();
             }
         }else if(event.getSource()== btnBuscar){
@@ -177,7 +177,7 @@ public class MenuProductosController implements Initializable {
     }
     
     
-    public void eliminarCliente(int prodId){
+    public void eliminarProducto(int prodId){
         try{
             conexion = Conexion.getInstance().obtenerConexion();
             String sql = "call sp_eliminarProducto(?)";

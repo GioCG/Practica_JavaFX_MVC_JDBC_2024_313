@@ -21,6 +21,7 @@
             <Image url="@../image/subir%20Imagen.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="imgMostrar" fitHeight="411.0" fitWidth="656.0" layoutX="76.0" layoutY="80.0" onDragDropped="#handleOnDrop" onDragOver="#handleOnDrag" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="imgCargar" fitHeight="411.0" fitWidth="656.0" layoutX="66.0" layoutY="70.0" onDragDropped="#handleOnDrop" onDragOver="#handleOnDrag" pickOnBounds="true" preserveRatio="true" />
       <TextField fx:id="tfProductoId" editable="false" layoutX="896.0" layoutY="190.0" prefHeight="40.0" prefWidth="223.0" />
       <TextField fx:id="tfNombreProducto" layoutX="896.0" layoutY="236.0" prefHeight="40.0" prefWidth="223.0" promptText="Introdusca el nombre del producto" />
