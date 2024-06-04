@@ -1081,6 +1081,15 @@ delimiter $$
 	end$$
     delimiter ;
 
+select * from DetalleFactura
+join Facturas on DetalleFactura.facturaId = Facturas.facturaId
+join Clientes on Facturas.clienteId = Clientes.clienteId
+join Productos on DetalleFactura.productoid = Productos.productoId
+where Facturas.facturaId;
+
+select * from Clientes;
+select * from Productos;
+
 call sp_listarTicketSoporteComplet;
 call sp_ListarProductoComple;
 call sp_listarEmpleadoComp;

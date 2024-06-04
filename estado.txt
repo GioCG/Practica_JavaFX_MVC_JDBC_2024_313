@@ -14,8 +14,6 @@ Productos //alertas
 ===============
 Puliendo
 ---------------  
--Clientes // no se puede agregar algo luego de editar
--Productos // no se puede agregar algo luego de editar
 -Empleados  // asignar encargado
 ===============
 Faltan
