@@ -30,6 +30,7 @@ import javafx.scene.image.ImageView;
 import org.giovannicarrera.dao.Conexion;
 import org.giovannicarrera.dto.ProductoDTO;
 import org.giovannicarrera.modelo.Productos;
+import org.giovannicarrera.report.GenerarReporte;
 import org.giovannicarrera.system.Main;
 import org.giovannicarrera.utils.SuperKinalAlert;
 
@@ -44,7 +45,7 @@ public class MenuProductosController implements Initializable {
     @FXML
     TableView tblProductos;
     @FXML
-    Button btnMenuPrincipal,btnAgregar,btnEditar,btnBuscar,btnEliminar;
+    Button btnMenuPrincipal,btnAgregar,btnEditar,btnBuscar,btnEliminar,btnReporte;
     @FXML
     TextField tfProductoId;
     @FXML
@@ -75,8 +76,9 @@ public class MenuProductosController implements Initializable {
                 op=3;
                 tblProductos.getItems().clear();
                 cargarLista(); 
-            }
-            
+            } 
+        }else if(event.getSource()==btnReporte){
+            GenerarReporte.getInstance().generarProductos();
         }
     }
     @Override

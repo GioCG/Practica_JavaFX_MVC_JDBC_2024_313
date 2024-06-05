@@ -63,8 +63,7 @@ where Facturas.facturaId = $P{factId}]]>
 		<variableExpression><![CDATA[$F{total}]]></variableExpression>
 	</variable>
 	<variable name="IVA" class="java.lang.Double" calculation="Sum">
-		<variableExpression><![CDATA[$F{precioVentaUnitario}
-]]></variableExpression>
+		<variableExpression><![CDATA[$F{precioVentaUnitario}]]></variableExpression>
 	</variable>
 	<group name="facturaId">
 		<groupExpression><![CDATA[$F{facturaId}]]></groupExpression>
@@ -218,8 +217,7 @@ where Facturas.facturaId = $P{factId}]]>
 			</staticText>
 			<textField>
 				<reportElement x="280" y="0" width="100" height="30" uuid="7385e341-37b6-4a3d-b1de-4b7ffc999ac5"/>
-				<textFieldExpression><![CDATA["Q"+$V{IVA}*0.12
-]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Q"+$V{IVA}*0.12]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="280" y="34" width="100" height="30" uuid="08e6f898-dcca-443b-8b66-c6dde30e0f8a"/>

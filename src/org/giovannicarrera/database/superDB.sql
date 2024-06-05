@@ -130,6 +130,26 @@ create table DetalleFactura(
         REFERENCES Productos(productoId)
 );
 
+Create table LvlAcces(
+	lvlAccesId INT NOT NULL AUTO_INCREMENT,
+    lvlAcces VARCHAR(30) not null,
+    PRIMARY KEY PK_LvlAcces (lvlAccesId)
+);
+ 
+Create table Usuar(
+	usuarId INT NOT NULL AUTO_INCREMENT,
+	usuar VARCHAR(100) not null,
+    contra VARCHAR(100) not null,
+    lvlAccesId int not null,
+    empleadoId int not null,
+	PRIMARY KEY PK_Usuar (usuarId),
+    CONSTRAINT FK_Usuar_lvlAcces FOREIGN KEY (lvlAccesId)
+		REFERENCES lvlAcces (lvlAccesId),
+	CONSTRAINT FK_Usuar_Empleados FOREIGN KEY (empleadoId)
+		REFERENCES Empleados (empleadoId)
+
+);
+
 Delimiter $$
 create function FN_AsignarEncargado(encId int) returns boolean
 deterministic
@@ -985,7 +1005,7 @@ delimiter $$
 delimiter ;
     
 delimiter $$
-    create procedure sp_ListarDetFacturas()
+    create procedure sp_listarDetFacturas()
 	begin
 		select
 			DetalleFactur.detalleFacturaId,
@@ -996,7 +1016,7 @@ delimiter $$
 delimiter ;
 
 delimiter $$
-	create procedure sp_EliminarDetFacturas(in detFacId int)
+	create procedure sp_eliminarDetFacturas(in detFacId int)
 		begin
 			delete from DetalleFactur
 				where detalleFacturaId = detFacId;
@@ -1004,7 +1024,7 @@ delimiter $$
 delimiter ;
 
 delimiter $$
-	create procedure sp_BuscarDetFactura(in detFacId int)
+	create procedure sp_buscarDetFactura(in detFacId int)
 		begin
 			select
 				DetalleFactur.detalleFacturaId,
@@ -1015,18 +1035,48 @@ delimiter $$
 	end$$
 delimiter ;
 
-delimiter $$
-	create procedure sp_EditarDetFactura(IN detFacId int(11),IN facId int(11), IN  prodId int(11)) 
-		begin
-			update DetalleFactur
-				set
-				detalleFacturaId = detFacId,
-				facturaId =fec,
-				productoId = facId,
-				empleadoId = prodId
-						where detalleFacturaId = detFacId;
-	end$$
-delimiter ;
+-- ========================================== CRUD User ===========================================
+-- ================================================================================================
+ 
+Delimiter $$
+Create procedure sp_AgregarUsuar(in us Varchar(100), cont Varchar(100), in lvAcId int, in empId int)
+Begin
+	Insert into Usuar(usuar, contra, lvlAccesId, empleadoId)
+		Values(us, cont, lvAcId, empId);
+END $$
+Delimiter ;
+ 
+Delimiter $$
+Create procedure sp_BuscarUsuar(us Varchar(100))
+Begin 
+	Select * From Usuar
+		Where usuar = us;
+END $$
+Delimiter ;
+ 
+-- ========================================== CRUD lvlAcces ===========================================
+-- ================================================================================================
+ Delimiter $$
+
+Create procedure sp_AgregarLvlAcces(in lvAc Varchar(30))
+Begin
+	Insert into LvlAcces(lvlAcces)
+		Values(lvAc);
+
+END $$
+Delimiter ;
+
+Delimiter $$
+Create procedure sp_ListarLvlAcces()
+
+Begin 
+	Select 
+    LvlAcces.lvlAccesId,
+    LvlAcces.LvlAcces
+		from LvlAcces;
+END $$
+
+Delimiter ;
 
 -- ========================================= Facturas Complement ==========================================
 -- ========================================================================================================
@@ -1089,7 +1139,13 @@ where Facturas.facturaId;
 
 select * from Clientes;
 select * from Productos;
-
+call sp_agregarCargo('a','b');
+call sp_agregarCategoriaProducto('c','d');
+call sp_AgregarDistribuidor('f','g','21','6534','reg');
+call sp_agregarClientes('NIT','nombre', 'apellido', 'telefono', 'direccion');
+call sp_agregarClientes('NIT','nombre', 'apellido', 'telefono', 'direccion');
+call sp_agregarEmpleado('nombreEmpleado', 'apellidoEmpleado',23.5,12,5,1);
+call sp_AgregarLvlAcces('Alto');
 call sp_listarTicketSoporteComplet;
 call sp_ListarProductoComple;
 call sp_listarEmpleadoComp;

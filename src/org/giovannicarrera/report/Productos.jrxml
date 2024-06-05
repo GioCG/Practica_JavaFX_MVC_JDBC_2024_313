@@ -74,16 +74,90 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="20" width="100" height="30" uuid="133a6aef-b0f6-4eef-a25c-9442388c4662"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Productos]]></text>
+			</staticText>
+		</band>
 	</title>
 	<pageHeader>
 		<band height="35" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch"/>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="-11" y="10" width="100" height="30" uuid="dff99a53-9809-46b2-a21f-c1f7b67257cc">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7b39c0df-27d6-4048-96bb-0596361d5a8c"/>
+				</reportElement>
+				<text><![CDATA[productoId]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="10" width="100" height="30" uuid="a9557091-022b-4006-a671-6dd329a3a11f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="728751a7-78e4-478a-8ef2-c93691dc66ba"/>
+				</reportElement>
+				<text><![CDATA[nombreProducto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="210" y="10" width="100" height="30" uuid="88aa6e62-82c2-47cf-97d9-c530c681f4f5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f640178b-1efc-4a8b-8f38-896221d1c7b6"/>
+				</reportElement>
+				<text><![CDATA[descripcionProducto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="10" width="100" height="30" uuid="24486233-176d-40c9-a582-f4075ac1f4bd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4efe7241-6e26-446c-9951-5c5067b9e43f"/>
+				</reportElement>
+				<text><![CDATA[cantidadStock]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="10" width="100" height="30" uuid="b5919ea8-449e-48e3-8ebb-12bc31de4d24">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c19fabff-8a45-4ae1-95a3-6e41e51a954c"/>
+				</reportElement>
+				<text><![CDATA[precioVentaUnitario]]></text>
+			</staticText>
+		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="-11" y="10" width="100" height="30" uuid="d5a2efc0-94d7-4f76-9d5b-5f76458a7f6f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7b39c0df-27d6-4048-96bb-0596361d5a8c"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{productoId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="10" width="100" height="30" uuid="66344a85-d0dd-4278-adb6-6f7a269a6cab">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="728751a7-78e4-478a-8ef2-c93691dc66ba"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{nombreProducto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="210" y="10" width="100" height="30" uuid="a99c8047-72d0-4e81-af2b-1f118e94fe63">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f640178b-1efc-4a8b-8f38-896221d1c7b6"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{descripcionProducto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="320" y="10" width="100" height="30" uuid="0b37e4c6-1870-4c09-98dc-01c2abcd6f8f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4efe7241-6e26-446c-9951-5c5067b9e43f"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{cantidadStock}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="10" width="100" height="30" uuid="37955bac-fe5e-47d4-934a-a07a0268f2df">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c19fabff-8a45-4ae1-95a3-6e41e51a954c"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{precioVentaUnitario}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="240" y="40" width="60" height="60" uuid="48482fcd-eff6-48b1-8e8d-9dfeb942bfab"/>
+				<imageExpression><![CDATA[$F{imagen}]]></imageExpression>
+			</image>
+		</band>
 	</detail>
 	<columnFooter>
 		<band height="45" splitType="Stretch"/>

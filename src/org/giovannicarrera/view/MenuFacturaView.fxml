@@ -38,5 +38,6 @@
       <Button fx:id="btnBuscar" layoutX="756.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="96.0" prefWidth="126.0" text="Buscar" />
       <TextField fx:id="tfFacturaBuscar" layoutX="423.0" layoutY="31.0" prefHeight="64.0" prefWidth="323.0" />
       <Button fx:id="btnEliminar" layoutX="297.0" layoutY="558.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="64.0" prefWidth="174.0" text="Eliminar" />
+      <Button fx:id="btnImprimir" layoutX="33.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="64.0" prefWidth="174.0" text="Imprimir " />
    </children>
 </AnchorPane>

@@ -15,7 +15,7 @@
             <Image url="@../image/Productos.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnMenuPrincipal" layoutX="932.0" layoutY="466.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="82.0" prefWidth="136.0" text="Regresar" />
+      <Button fx:id="btnMenuPrincipal" layoutX="932.0" layoutY="557.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="82.0" prefWidth="136.0" text="Regresar" />
       <TableView fx:id="tblProductos" layoutX="36.0" layoutY="58.0" prefHeight="449.0" prefWidth="723.0">
         <columns>
           <TableColumn fx:id="colProductoId" prefWidth="74.0" text="producto Id" />
@@ -35,5 +35,6 @@
       <Button fx:id="btnEditar" layoutX="932.0" layoutY="268.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="75.0" prefWidth="136.0" text="Editar" />
       <Button fx:id="btnBuscar" layoutX="36.0" layoutY="619.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="75.0" prefWidth="113.0" text="Buscar" />
       <TextField fx:id="tfProductoId" layoutX="195.0" layoutY="619.0" prefHeight="75.0" prefWidth="224.0" />
+      <Button fx:id="btnReporte" layoutX="932.0" layoutY="457.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="82.0" prefWidth="136.0" text="Reporte" />
    </children>
 </AnchorPane>

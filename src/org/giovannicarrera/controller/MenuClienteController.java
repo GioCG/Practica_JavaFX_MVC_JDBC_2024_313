@@ -26,6 +26,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import org.giovannicarrera.dao.Conexion;
 import org.giovannicarrera.dto.ClienteDTO;
 import org.giovannicarrera.modelo.Cliente;
+import org.giovannicarrera.report.GenerarReporte;
 import org.giovannicarrera.system.Main;
 import org.giovannicarrera.utils.SuperKinalAlert;
 
@@ -39,7 +40,7 @@ public class MenuClienteController implements Initializable {
     @FXML
     TableView tblClientes;
     @FXML
-    Button btnMenuPrincipal,btnAgregar,btnEditar,btnEliminar,btnBuscar;
+    Button btnMenuPrincipal,btnAgregar,btnEditar,btnEliminar,btnBuscar,btnReporte;
     @FXML
     TextField tfClienteId;
     @FXML    
@@ -66,9 +67,11 @@ public class MenuClienteController implements Initializable {
                 op=3;
                 tblClientes.getItems().clear();
                 cargarLista(); 
-            }
-            
+            }   
+        }else if(event.getSource()==btnReporte){
+            GenerarReporte.getInstance().generarClientes();
         }
+        
     }
     
     @Override

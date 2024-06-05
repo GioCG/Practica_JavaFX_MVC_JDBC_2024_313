@@ -15,6 +15,8 @@ import org.giovannicarrera.controller.FormClienteController;
 import org.giovannicarrera.controller.FormDetalleFacturaController;
 import org.giovannicarrera.controller.FormDistribuidoresController;
 import org.giovannicarrera.controller.FormEmpleadosController;
+import org.giovannicarrera.controller.FormLoginController;
+import org.giovannicarrera.controller.FormRegistrarController;
 import org.giovannicarrera.controller.MenuCargosController;
 import org.giovannicarrera.controller.MenuCategoriaProductosController;
 import org.giovannicarrera.controller.MenuClienteController;
@@ -41,7 +43,7 @@ public class Main extends Application {
         stage.setTitle("Super Kinal APP");
         Image image = new Image("org/giovannicarrera/image/Logo.png");
         stage.getIcons().add(image);
-        menuPrincipalView();
+        formLoginView();
         stage.show();
     }
 
@@ -202,6 +204,24 @@ public class Main extends Application {
             e.printStackTrace();
         }
     } 
+    public void formRegistrarView(){
+        try{
+            FormRegistrarController formRegistrarView = (FormRegistrarController) switchScene("FormRegistrarView.fxml", 600, 750);
+            formRegistrarView.setStage(this);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    public void formLoginView(){
+        try{
+            FormLoginController formLoginView = (FormLoginController) switchScene("FormLoginView.fxml", 500, 750);
+            formLoginView.setStage(this);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
     public static void main(String[] args) {
         launch(args);
     } 

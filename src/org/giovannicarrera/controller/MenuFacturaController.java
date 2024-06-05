@@ -31,6 +31,7 @@ import org.giovannicarrera.dao.Conexion;
 import org.giovannicarrera.modelo.Cliente;
 import org.giovannicarrera.modelo.Empleado;
 import org.giovannicarrera.modelo.Factura;
+import org.giovannicarrera.report.GenerarReporte;
 
 import org.giovannicarrera.system.Main;
 import org.giovannicarrera.utils.SuperKinalAlert;
@@ -58,7 +59,7 @@ public class MenuFacturaController implements Initializable {
     @FXML
     TableColumn colFacturaId, colFecha, colHora, colCliente, colEmpleado,colTotal;
     @FXML
-    Button btnGuardar,btnVaciarForm,btnDetFactura,btnRegresar,btnEliminar,btnBuscar;
+    Button btnGuardar,btnVaciarForm,btnDetFactura,btnRegresar,btnEliminar,btnBuscar,btnImprimir;
     
     @FXML
     public void handleButtonAction(ActionEvent event){
@@ -89,8 +90,9 @@ public class MenuFacturaController implements Initializable {
                 op=3;
                 tblFactura.getItems().clear();
                 cargarDatos(); 
-            }
-            
+            }    
+        }else if(event.getSource()== btnImprimir){
+            GenerarReporte.getInstance().generarFactura(Integer.parseInt(tfFacturaId.getText()));
         }
     }
     @Override

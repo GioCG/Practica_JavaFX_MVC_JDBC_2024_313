@@ -27,6 +27,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import org.giovannicarrera.dao.Conexion;
 import org.giovannicarrera.dto.EmpleadosDTO;
 import org.giovannicarrera.modelo.Empleado;
+import org.giovannicarrera.report.GenerarReporte;
 import org.giovannicarrera.system.Main;
 import org.giovannicarrera.utils.SuperKinalAlert;
 
@@ -44,7 +45,7 @@ public class MenuEmpleadosController implements Initializable {
     @FXML
     TableView tblEmpleados;
     @FXML
-    Button btnMenuPrincipal,btnAgregar,btnAsignarEncargado,btnEditar,btnEliminar,btnBuscar;
+    Button btnMenuPrincipal,btnAgregar,btnAsignarEncargado,btnEditar,btnEliminar,btnBuscar,btnReporte;
     @FXML
     TextField tfEmpleadoId;
     @FXML    
@@ -73,7 +74,8 @@ public class MenuEmpleadosController implements Initializable {
                 op=3;
                 tblEmpleados.getItems().clear();
                 cargarLista(); 
-            }
+            }  
+        }else if(event.getSource()==btnReporte){
             
         }
     }

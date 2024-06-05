@@ -3,9 +3,8 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Clientes" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9c5947ee-fde6-4948-a241-700fe7d7754e">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SuperKinalDB"/>
-	<parameter name="cliId" class="java.lang.Integer"/>
 	<queryString language="SQL">
-		<![CDATA[select * from Clientes]]>
+		<![CDATA[select * from Clientes;]]>
 	</queryString>
 	<field name="clienteId" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="clienteId"/>

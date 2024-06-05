@@ -39,6 +39,18 @@ public class SuperKinalAlert {
             alert. setHeaderText("Campos pendientes");
             alert. setContentText(" Capos necesarios para el registro estan en blanco");
             alert.showAndWait(); 
+        }else if(code == 800){
+           Alert alert = new Alert(Alert.AlertType.WARNING);
+           alert.setTitle("Contraseña Incorrecta");
+           alert.setHeaderText("Contraseña Incorrecta");
+           alert.setContentText("La contraseña que ingreso es incorrecta!!");
+           alert.showAndWait();
+        }else if(code == 900){
+           Alert alert = new Alert(Alert.AlertType.WARNING);
+           alert.setTitle("Usuario Inexistente o Incorrecto");
+           alert.setHeaderText("Usuario Inexistente o Incorrecto");
+           alert.setContentText("El usuario que intenta iniciar no existe o es incorrecto!");
+           alert.showAndWait();
         }
         
     }
@@ -59,6 +71,13 @@ public class SuperKinalAlert {
             action = alert.showAndWait();
         }
          return action;
+    }
+    
+    public void alertBienvenida(String usuario){
+           Alert alert = new Alert(Alert.AlertType.INFORMATION);
+           alert.setTitle("BIENVENIDO!");
+           alert.setHeaderText("BIENVENIDO " +  usuario);
+           alert.showAndWait();
     }
     
     public Optional <ButtonType> mostrarAlertaConfirmacion(){
