@@ -1050,7 +1050,7 @@ Delimiter $$
 Create procedure sp_BuscarUsuar(us Varchar(100))
 Begin 
 	Select * From Usuar
-		Where usuario = us;
+		Where usuar = us;
 END $$
 Delimiter ;
  
@@ -1146,7 +1146,6 @@ call sp_agregarClientes('NIT','nombre', 'apellido', 'telefono', 'direccion');
 call sp_agregarClientes('NIT','nombre', 'apellido', 'telefono', 'direccion');
 call sp_agregarEmpleado('nombreEmpleado', 'apellidoEmpleado',23.5,12,5,1);
 call sp_AgregarLvlAcces('Alto');
-call sp_AgregarUsuar('G',1,1,1);
 call sp_listarTicketSoporteComplet;
 call sp_ListarProductoComple;
 call sp_listarEmpleadoComp;
