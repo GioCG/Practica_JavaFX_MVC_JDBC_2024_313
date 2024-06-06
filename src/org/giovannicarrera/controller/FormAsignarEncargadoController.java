@@ -1,15 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package org.giovannicarrera.controller;
 
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -28,22 +30,38 @@ public class FormAsignarEncargadoController implements Initializable {
 
     private static Connection conexion = null;
     private static PreparedStatement statement = null;
+    private static ResultSet resultSet = null;
     
     @FXML
     Button btnGuardar,btnCancelar;
     @FXML
-    ComboBox cmbClienteId,cmbEncargadoId;
+    ComboBox cmbEmpleadoId,cmbEncargadoId;
+    
+    @FXML
+    public void handleButtonAction(ActionEvent event){
+        if(event.getSource() == btnCancelar){
+            stage.menuEmpleadosView();
+        }else if(event.getSource() == btnGuardar){
+            asignarEncargado();
+            stage.menuEmpleadosView();
+            }  
+                
+        }
+            
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        cmbEmpleadoId.setItems(listarEmpleado());
+        cmbEncargadoId.setItems(listarEmpleado());
     }    
     
-    public void asignarEncargado() throws SQLException{
+    public void asignarEncargado(){
         try{
             conexion = Conexion.getInstance().obtenerConexion();
             String sql = "call sp_AsignarEncargado(?,?)";
             statement = conexion.prepareStatement(sql);
-            statement.setInt(1, Integer.parseInt((String) cmbClienteId.getValue()));
+            statement.setInt(1, Integer.parseInt((String) cmbEmpleadoId.getValue()));
             statement.setInt(2, Integer.parseInt((String) cmbEncargadoId.getValue()));
             statement.execute();
         }catch(SQLException e){
@@ -61,6 +79,48 @@ public class FormAsignarEncargadoController implements Initializable {
         }
         
     }
+    
+    public ObservableList<Empleado> listarEmpleado(){
+        ArrayList<Empleado> empleado = new ArrayList<>();
+        
+        try{
+            conexion = Conexion.getInstance().obtenerConexion();
+            String sql = "call sp_listarEmpleadoComp()";
+            statement = conexion.prepareStatement(sql);
+            resultSet = statement.executeQuery();
+            
+            while(resultSet.next()){
+                int empleadoId = resultSet.getInt("empleadoId");
+                String nombreEmpleado = resultSet.getString("nombreEmpleado");
+                String apellidoEmpleado = resultSet.getString("apellidoEmpleado");
+                Double sueldo = resultSet.getDouble("sueldo");
+                Time horaEntrada = resultSet.getTime("horaEntrada");
+                Time horaSalida = resultSet.getTime("horaSalida");
+                String cargo = resultSet.getString("cargo");
+                int encargadoId = resultSet.getInt("encargadoId");
+                empleado.add(new Empleado (empleadoId,nombreEmpleado, apellidoEmpleado, sueldo,horaEntrada,horaSalida,cargo,encargadoId));
+            }
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }finally{
+            try{
+               if(resultSet != null){
+                   resultSet.close();
+               }
+               if(statement != null){
+                   statement.close();
+               }
+               if(conexion != null){
+                   conexion.close();
+               }
+               
+            }catch(SQLException e){
+                System.out.println(e.getMessage());
+            }
+        }
+        return FXCollections.observableArrayList(empleado);
+    }
+    
     public Main getStage() {
         return stage;
     }

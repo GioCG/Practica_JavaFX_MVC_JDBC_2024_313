@@ -36,6 +36,7 @@ import org.giovannicarrera.utils.SuperKinalAlert;
  */
 public class MenuCategoriaProductosController implements Initializable {
     
+    private int op;
     Main stage;
     
     private static Connection conexion = null;
@@ -43,7 +44,7 @@ public class MenuCategoriaProductosController implements Initializable {
     private static ResultSet resultSet = null;
     
     @FXML
-    TextField tfCategoriaProductosId,tfNombreCategoria;
+    TextField tfCategoriaProductosId,tfNombreCategoria,tfCategoriaBuscar;
     @FXML
     TextArea taDescripcionCategoria;
     @FXML
@@ -51,7 +52,7 @@ public class MenuCategoriaProductosController implements Initializable {
     @FXML
     TableColumn colCategoriaProductosId,colNombreCategoria,colDescripcionCategoria;
     @FXML
-    Button btnGuardar,btnEliminar,btnRegresar;
+    Button btnGuardar,btnEliminar,btnRegresar,btnBuscar;
     
     
     
@@ -61,20 +62,31 @@ public class MenuCategoriaProductosController implements Initializable {
             stage.menuPrincipalView();
         }else if(event.getSource() == btnGuardar){
             if(tfCategoriaProductosId.getText().equals("")){
-                agregarCargos();
+                agregarCategoria();
                 cargarDatos();
+                vaciarForm();
             }else{
-                editarCargos();
+                editarCategoria();
                 cargarDatos();
+                vaciarForm();
             }
         }else if(event.getSource() == btnEliminar){
             if(tfCategoriaProductosId.getText().equals("")){
             }else{
                 if(SuperKinalAlert.getInstance().mostrarAlertConf(770).get() == ButtonType.OK){
-                eliminarCargos(((CategoriaProductos) tblCategoriaProductos.getSelectionModel().getSelectedItem()).getCategoriaProductosId());
+                eliminarCategoria(((CategoriaProductos) tblCategoriaProductos.getSelectionModel().getSelectedItem()).getCategoriaProductosId());
                 cargarDatos();
                 }
             }
+        }else if(event.getSource()== btnBuscar){
+            if(tfCategoriaBuscar.getText().equals("")){
+               cargarDatos();
+            }else{
+                op=3;
+                tblCategoriaProductos.getItems().clear();
+                cargarDatos(); 
+            }
+            
         }
     }
     @Override
@@ -84,10 +96,16 @@ public class MenuCategoriaProductosController implements Initializable {
     
     
     public void cargarDatos(){
+        if(op==3){
+            tblCategoriaProductos.getItems().add(buscarCategoria()); 
+            op = 0;
+        }else{
         tblCategoriaProductos.setItems(listarCategoriaProductos());
         colCategoriaProductosId.setCellValueFactory(new PropertyValueFactory<CategoriaProductos, Integer>("categoriaProductosId"));
         colNombreCategoria.setCellValueFactory(new PropertyValueFactory<CategoriaProductos, String>("nombreCategoria"));
         colDescripcionCategoria.setCellValueFactory(new PropertyValueFactory<CategoriaProductos, String>("descripcionCategoria"));
+    
+        }
     }
     
     @FXML
@@ -98,6 +116,12 @@ public class MenuCategoriaProductosController implements Initializable {
             tfNombreCategoria.setText(ts.getNombreCategoria());
             taDescripcionCategoria.setText(ts.getDescripcionCategoria());
         }
+    }
+    
+    public void vaciarForm(){
+        tfCategoriaProductosId.clear();
+        tfNombreCategoria.clear();
+        taDescripcionCategoria.clear();
     }
     
     public ObservableList<CategoriaProductos> listarCategoriaProductos(){
@@ -136,7 +160,7 @@ public class MenuCategoriaProductosController implements Initializable {
        return FXCollections.observableList(cargos);
     }
     
-    public void eliminarCargos(int catProId){
+    public void eliminarCategoria(int catProId){
         try{
             conexion = Conexion.getInstance().obtenerConexion();
             String sql = "call sp_eliminarCategoriaProductos(?)";
@@ -148,7 +172,7 @@ public class MenuCategoriaProductosController implements Initializable {
         }
     }
     
-    public void agregarCargos(){
+    public void agregarCategoria(){
         try{
             conexion = Conexion.getInstance().obtenerConexion();
             String sql = "call sp_agregarCategoriaProducto(?,?)";
@@ -172,7 +196,7 @@ public class MenuCategoriaProductosController implements Initializable {
         }
     }
     
-    public void editarCargos(){
+    public void editarCategoria(){
         try{
             conexion = Conexion.getInstance().obtenerConexion();
             String sql = "call sp_editarCategoriaProductos(?,?,?)";
@@ -196,6 +220,43 @@ public class MenuCategoriaProductosController implements Initializable {
             }
         }
     }
+    
+    public CategoriaProductos buscarCategoria(){
+        CategoriaProductos categoriaProductos = null;
+        try{
+            conexion = Conexion.getInstance().obtenerConexion();
+            String sql = "call sp_buscarCategoriaProductos(?)";
+            statement = conexion.prepareStatement(sql);
+            statement.setInt(1, Integer.parseInt(tfCategoriaBuscar.getText()));
+            resultSet = statement.executeQuery();
+            
+            if(resultSet.next()){
+                int categoriaProductosId = resultSet.getInt("categoriaProductosId");
+                String nombreCategoria = resultSet.getString("nombreCategoria");
+                String descripcionCategoria = resultSet.getString("descripcionCategoria");
+                categoriaProductos = new CategoriaProductos(categoriaProductosId, nombreCategoria,descripcionCategoria);
+            }
+            
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }finally{
+            try{
+                if(resultSet != null){
+                    resultSet.close();
+                }
+                if(statement != null){
+                    statement.close();
+                }
+                if(conexion != null){
+                    conexion.close();
+                }
+            }catch(SQLException e){
+                System.out.println(e.getMessage());
+            }
+        }   
+        return categoriaProductos;
+    }
+    
     public Main getStage() {
         return stage;
     }

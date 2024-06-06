@@ -1,0 +1,20 @@
+Echos
+--------------
+Clientes
+Distribuidores //alertas  
+TiketSoporte //alertas  
+Cargo Empleados //alertas  
+Categoria Productos //alertas  
+Promociones //alertas  
+Factura //alertas  
+compras //alertas  
+Detalle compra //alertas 
+detalle factrura //alertas 
+Productos //alertas
+Login 
+Registro
+===============
+Puliendo
+---------------  
+-Empleados  // asignar encargado
+

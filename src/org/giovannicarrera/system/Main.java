@@ -12,13 +12,17 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.giovannicarrera.controller.FormAsignarEncargadoController;
 import org.giovannicarrera.controller.FormClienteController;
+import org.giovannicarrera.controller.FormDetalleFacturaController;
 import org.giovannicarrera.controller.FormDistribuidoresController;
 import org.giovannicarrera.controller.FormEmpleadosController;
+import org.giovannicarrera.controller.FormLoginController;
+import org.giovannicarrera.controller.FormRegistrarController;
 import org.giovannicarrera.controller.MenuCargosController;
 import org.giovannicarrera.controller.MenuCategoriaProductosController;
 import org.giovannicarrera.controller.MenuClienteController;
 import org.giovannicarrera.controller.MenuDistribuidorController;
 import org.giovannicarrera.controller.MenuEmpleadosController;
+import org.giovannicarrera.controller.MenuFacturaController;
 import org.giovannicarrera.controller.MenuFormProductoController;
 import org.giovannicarrera.controller.MenuPrincipalController;
 import org.giovannicarrera.controller.MenuProductosController;
@@ -39,7 +43,7 @@ public class Main extends Application {
         stage.setTitle("Super Kinal APP");
         Image image = new Image("org/giovannicarrera/image/Logo.png");
         stage.getIcons().add(image);
-        menuPrincipalView();
+        formLoginView();
         stage.show();
     }
 
@@ -106,6 +110,7 @@ public class Main extends Application {
     public void menuFormProductoView(int op) {
         try{
             MenuFormProductoController menuFormProductoView = (MenuFormProductoController)switchScene("MenuFormProductoView.fxml",1200,750);
+            menuFormProductoView.setOp(op);
             menuFormProductoView.setStage(this);
         }catch(Exception e){
            System.out.println(e.getMessage());
@@ -151,7 +156,7 @@ public class Main extends Application {
     
     public void formAsignarEncargadoView() {
         try{
-            FormAsignarEncargadoController formAsignarEncargadoView = (FormAsignarEncargadoController)switchScene("FormAsignarEncargadoView.fxml",600,900);
+            FormAsignarEncargadoController formAsignarEncargadoView = (FormAsignarEncargadoController)switchScene("FormAsignarEncargadoView.fxml",500,750);
             formAsignarEncargadoView.setStage(this);
         }catch(Exception e){
            System.out.println(e.getMessage());
@@ -180,6 +185,40 @@ public class Main extends Application {
             MenuPromocionesController menuPromocionesView = (MenuPromocionesController)switchScene("MenuPromocionesView.fxml",1200,750);
             menuPromocionesView.setStage(this);
         }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    public void menuFacturaView() {
+        try{
+            MenuFacturaController menuFacturaView = (MenuFacturaController)switchScene("MenuFacturaView.fxml",1200,750);
+            menuFacturaView.setStage(this);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    public void formDetalleFacturaView() {
+        try{
+            FormDetalleFacturaController formDetalleFacturaView = (FormDetalleFacturaController)switchScene("FormDetalleFacturaView.fxml",500,750);
+            formDetalleFacturaView.setStage(this);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    } 
+    public void formRegistrarView(){
+        try{
+            FormRegistrarController formRegistrarView = (FormRegistrarController) switchScene("FormRegistrarView.fxml", 600, 750);
+            formRegistrarView.setStage(this);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    public void formLoginView(){
+        try{
+            FormLoginController formLoginView = (FormLoginController) switchScene("FormLoginView.fxml", 500, 750);
+            formLoginView.setStage(this);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
             e.printStackTrace();
         }
     }

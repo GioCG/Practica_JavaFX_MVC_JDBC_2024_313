@@ -18,6 +18,7 @@ public class Empleado {
     private Double sueldo;
     private Time horaEntrada;
     private Time horaSalida;
+    private String cargo;
     private int cargoId;
     private int encargadoId;
 
@@ -25,14 +26,14 @@ public class Empleado {
         
     }
 
-    public Empleado(int empleadoId, String nombreEmpleado, String apellidoEmpleado, Double sueldo, Time horaEntrada, Time horaSalida,int cargoId, int encargadoId) {
+    public Empleado(int empleadoId, String nombreEmpleado, String apellidoEmpleado, Double sueldo, Time horaEntrada, Time horaSalida,String cargo, int encargadoId) {
         this.empleadoId = empleadoId;
         this.nombreEmpleado = nombreEmpleado;
         this.apellidoEmpleado = apellidoEmpleado;
         this.sueldo = sueldo;
         this.horaEntrada = horaEntrada;
         this.horaSalida = horaSalida;
-        this.cargoId = cargoId;
+        this.cargo = cargo;
         this.encargadoId = encargadoId;
     }
 
@@ -88,6 +89,14 @@ public class Empleado {
         return cargoId;
     }
 
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+
     public void setCargoId(int cargoId) {
         this.cargoId = cargoId;
     }
@@ -102,8 +111,10 @@ public class Empleado {
 
     @Override
     public String toString() {
-        return "Empleado{" + "empleadoId=" + empleadoId + ", nombreEmpleado=" + nombreEmpleado + ", apellidoEmpleado=" + apellidoEmpleado + ", sueldo=" + sueldo + ", horaEntrada=" + horaEntrada + ", horaSalida=" + horaSalida + ", cargoId=" + cargoId + ", encargadoId=" + encargadoId + '}';
-    } 
+        return "Id: "+ empleadoId +"|"+ nombreEmpleado +" " + apellidoEmpleado;
+    }
+
+    
     
 
 }

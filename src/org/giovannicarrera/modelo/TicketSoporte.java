@@ -26,10 +26,8 @@ public class TicketSoporte {
         this.ticketSoporteId = ticketSoporteId;
         this.descripcion = descripcion;
         this.estatus = estatus;
-        this.clienteId = clienteId;
         this.cliente = cliente;
         this.factura = factura;
-        this.facturaId = facturaId;
     }
 
     

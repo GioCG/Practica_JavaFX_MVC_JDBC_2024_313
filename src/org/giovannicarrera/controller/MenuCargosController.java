@@ -36,7 +36,8 @@ import org.giovannicarrera.utils.SuperKinalAlert;
  * @author Dell G7
  */
 public class MenuCargosController implements Initializable {
-
+    
+    private int op;
     Main stage;
     
     private static Connection conexion = null;
@@ -44,7 +45,7 @@ public class MenuCargosController implements Initializable {
     private static ResultSet resultSet = null;
     
     @FXML
-    TextField tfCargoId,tfNombreCargo;
+    TextField tfCargoId,tfNombreCargo,tfCargoBuscar;
     @FXML
     TextArea taDescripcion;
     @FXML
@@ -52,7 +53,7 @@ public class MenuCargosController implements Initializable {
     @FXML
     TableColumn colCargoId,colNombreCargo,colDescripcionCargo;
     @FXML
-    Button btnGuardar,btnEliminar,btnRegresar;
+    Button btnGuardar,btnEliminar,btnRegresar,btnBuscar;
     
     
     
@@ -64,9 +65,11 @@ public class MenuCargosController implements Initializable {
             if(tfCargoId.getText().equals("")){
                 agregarCargos();
                 cargarDatos();
+                vaciarForm();
             }else{
                 editarCargos();
                 cargarDatos();
+                vaciarForm();
             }
         }else if(event.getSource() == btnEliminar){
             if(tfCargoId.getText().equals("")){
@@ -76,6 +79,15 @@ public class MenuCargosController implements Initializable {
                 cargarDatos();
                 }
             }
+        }else if(event.getSource()== btnBuscar){
+            if(tfCargoBuscar.getText().equals("")){
+               cargarDatos();
+            }else{
+                op=3;
+                tblCargos.getItems().clear();
+                cargarDatos(); 
+            }
+            
         }
     }
     
@@ -86,10 +98,21 @@ public class MenuCargosController implements Initializable {
     }    
     
     public void cargarDatos(){
+        if(op==3){
+          tblCargos.getItems().add(buscarCargos()); 
+          op = 0;
+        }else{
         tblCargos.setItems(listarCargos());
         colCargoId.setCellValueFactory(new PropertyValueFactory<Cargos, Integer>("cargoId"));
         colNombreCargo.setCellValueFactory(new PropertyValueFactory<Cargos, String>("nombreCargo"));
         colDescripcionCargo.setCellValueFactory(new PropertyValueFactory<Cargos, String>("descripcionCargo"));
+        }
+    }
+    
+    public void vaciarForm(){
+        tfCargoId.clear();
+        tfNombreCargo.clear();
+        taDescripcion.clear();
     }
     
     @FXML
@@ -199,6 +222,43 @@ public class MenuCargosController implements Initializable {
             }
         }
     }
+    
+    public Cargos buscarCargos(){
+        Cargos cargos = null;
+        try{
+            conexion = Conexion.getInstance().obtenerConexion();
+            String sql = "call sp_buscarCargo(?)";
+            statement = conexion.prepareStatement(sql);
+            statement.setInt(1, Integer.parseInt(tfCargoBuscar.getText()));
+            resultSet = statement.executeQuery();
+            
+            if(resultSet.next()){
+                int cargoId = resultSet.getInt("cargoId");
+                String nombreCargo = resultSet.getString("nombreCargo");
+                String descripcionCargo = resultSet.getString("descripcionCargo");
+                cargos = new Cargos(cargoId, nombreCargo,descripcionCargo);
+            }
+            
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }finally{
+            try{
+                if(resultSet != null){
+                    resultSet.close();
+                }
+                if(statement != null){
+                    statement.close();
+                }
+                if(conexion != null){
+                    conexion.close();
+                }
+            }catch(SQLException e){
+                System.out.println(e.getMessage());
+            }
+        }   
+        return cargos;
+    }
+    
     public Main getStage() {
         return stage;
     }

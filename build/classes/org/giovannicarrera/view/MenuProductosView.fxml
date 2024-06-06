@@ -15,11 +15,7 @@
             <Image url="@../image/Productos.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnMenuPrincipal" layoutX="14.0" layoutY="631.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="82.0" prefWidth="212.0" text="Regresar" />
-      <ImageView fx:id="imgMostrar" fitHeight="276.0" fitWidth="287.0" layoutX="859.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../image/subir%20Imagen.png" />
-         </image></ImageView>
+      <Button fx:id="btnMenuPrincipal" layoutX="932.0" layoutY="557.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="82.0" prefWidth="136.0" text="Regresar" />
       <TableView fx:id="tblProductos" layoutX="36.0" layoutY="58.0" prefHeight="449.0" prefWidth="723.0">
         <columns>
           <TableColumn fx:id="colProductoId" prefWidth="74.0" text="producto Id" />
@@ -34,10 +30,11 @@
             <TableColumn fx:id="colCategoria" prefWidth="79.0" text="Categoria" />
         </columns>
       </TableView>
-      <Button fx:id="btnEliminar" layoutX="802.0" layoutY="635.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="75.0" prefWidth="136.0" text="Eliminar" />
-      <Button fx:id="btnAgregar" layoutX="802.0" layoutY="447.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="75.0" prefWidth="136.0" text="Agregar" />
-      <Button fx:id="btnEditar" layoutX="802.0" layoutY="540.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="75.0" prefWidth="136.0" text="Editar" />
-      <Button fx:id="btnBuscar" layoutX="341.0" layoutY="635.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="75.0" prefWidth="113.0" text="Buscar" />
-      <TextField fx:id="tfProductoId" layoutX="500.0" layoutY="635.0" prefHeight="75.0" prefWidth="224.0" />
+      <Button fx:id="btnEliminar" layoutX="932.0" layoutY="363.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="75.0" prefWidth="136.0" text="Eliminar" />
+      <Button fx:id="btnAgregar" layoutX="932.0" layoutY="175.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="75.0" prefWidth="136.0" text="Agregar" />
+      <Button fx:id="btnEditar" layoutX="932.0" layoutY="268.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="75.0" prefWidth="136.0" text="Editar" />
+      <Button fx:id="btnBuscar" layoutX="36.0" layoutY="619.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="75.0" prefWidth="113.0" text="Buscar" />
+      <TextField fx:id="tfProductoId" layoutX="195.0" layoutY="619.0" prefHeight="75.0" prefWidth="224.0" />
+      <Button fx:id="btnReporte" layoutX="932.0" layoutY="457.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="82.0" prefWidth="136.0" text="Reporte" />
    </children>
 </AnchorPane>

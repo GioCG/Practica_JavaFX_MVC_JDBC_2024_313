@@ -47,7 +47,7 @@
                   <Font name="Bell MT Bold" size="19.0" />
                </font>
             </Button>
-            <Button fx:id="btnReporte" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="89.0" prefWidth="163.0" style="-fx-border-width: 6; -fx-border-color: #D8EA6D;" text="Reporte" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+            <Button fx:id="btnReporte" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="89.0" prefWidth="163.0" style="-fx-border-width: 6; -fx-border-color: #D8EA6D;" text="Reporte" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="4">
                <font>
                   <Font name="Bell MT Bold" size="20.0" />
                </font>

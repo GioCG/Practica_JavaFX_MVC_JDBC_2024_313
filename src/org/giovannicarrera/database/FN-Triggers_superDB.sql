@@ -1,4 +1,4 @@
-USE superDB
+USE superDB;
 
 Delimiter $$
 create function FN_AsignarEncargado(encId int) returns boolean
@@ -14,6 +14,38 @@ begin
         return true;
 	end$$
 delimiter ;
+
+DELIMITER $$
+
+DELIMITER $$
+CREATE FUNCTION fn_CalcularPromocion(prodId INT) RETURNS DECIMAL(10,2) DETERMINISTIC
+BEGIN
+    DECLARE resultado INT DEFAULT 0;
+    DECLARE i INT DEFAULT 1;
+    DECLARE fechaFin DATE;
+
+    SET resultado = 0; 
+    
+    resultadoLoop: LOOP
+        SELECT fechaFinalizacion INTO fechaFin FROM Promociones
+        WHERE promocionId = i AND productoId = prodId;
+
+        IF fechaFin IS NOT NULL THEN
+            IF fechaFin > DATE(NOW()) THEN
+                SET resultado = 1; 
+            END IF;
+        END IF;
+
+        SET i = i + 1; 
+
+        IF i > (SELECT COUNT(*) FROM Promociones WHERE productoId = prodId) THEN
+            LEAVE resultadoLoop; 
+        END IF;
+    END LOOP resultadoLoop;
+
+    RETURN resultado;
+END$$
+DELIMITER ;
 
 delimiter $$
 create function FN_totalFact (factId int) returns decimal(10,2) deterministic
@@ -49,7 +81,7 @@ delimiter ;
 
 delimiter $$
 create function FN_descuentoMasivo(descuento double) returns boolean
-deterministic
+deterministic	
 begin
 	declare i int default 1;
     declare precionu double;
@@ -113,4 +145,3 @@ begin
 	return Stok; 
 end $$
 delimiter ;
-
