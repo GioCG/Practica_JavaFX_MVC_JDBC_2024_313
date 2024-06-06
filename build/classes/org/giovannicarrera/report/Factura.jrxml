@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Factura" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="556a87e9-628f-41e0-a75b-dce3dd170bb7">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SuperKinalDB"/>
@@ -94,10 +94,6 @@ where Facturas.facturaId = $P{factId}]]>
 	</background>
 	<title>
 		<band height="88" splitType="Stretch">
-			<image>
-				<reportElement x="90" y="0" width="90" height="88" uuid="e93744d2-cdc6-4d8d-a88c-b21350d5dd52"/>
-				<imageExpression><![CDATA["C:/Users/informatica/Desktop/Nueva carpeta/Practica_JavaFX_MVC_JDBC_2024_313/src/org/giovannicarrera/image/Logo.png"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement x="186" y="0" width="200" height="79" uuid="7065a1a0-37dc-4875-bd6f-0e414c647440"/>
 				<textElement>

@@ -11,15 +11,10 @@ compras //alertas
 Detalle compra //alertas 
 detalle factrura //alertas 
 Productos //alertas
+Login 
+Registro
 ===============
 Puliendo
 ---------------  
 -Empleados  // asignar encargado
-===============
-Faltan
---------------- 
-================
-Extras
-----------------
--Login 
--Registro
+
