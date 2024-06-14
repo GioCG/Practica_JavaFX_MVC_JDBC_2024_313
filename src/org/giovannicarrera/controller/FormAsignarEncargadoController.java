@@ -61,11 +61,11 @@ public class FormAsignarEncargadoController implements Initializable {
             conexion = Conexion.getInstance().obtenerConexion();
             String sql = "call sp_AsignarEncargado(?,?)";
             statement = conexion.prepareStatement(sql);
-            statement.setInt(1, Integer.parseInt((String) cmbEmpleadoId.getValue()));
-            statement.setInt(2, Integer.parseInt((String) cmbEncargadoId.getValue()));
+            statement.setInt(1, ((Empleado)cmbEmpleadoId.getSelectionModel().getSelectedItem()).getEmpleadoId());
+            statement.setInt(2, ((Empleado)cmbEncargadoId.getSelectionModel().getSelectedItem()).getEmpleadoId());
             statement.execute();
         }catch(SQLException e){
-        System.out.println(e.getMessage());
+        e.printStackTrace();
         }finally{
             try{
                 if(statement !=null){
@@ -74,7 +74,7 @@ public class FormAsignarEncargadoController implements Initializable {
                     conexion.close();
                 }
            }catch(SQLException e){
-               System.out.println(e.getMessage());
+               e.printStackTrace();
            }
         }
         

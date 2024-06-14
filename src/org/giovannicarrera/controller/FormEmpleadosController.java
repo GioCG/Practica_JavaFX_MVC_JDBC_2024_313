@@ -60,8 +60,10 @@ public class FormEmpleadosController implements Initializable {
                 editarEmpleado();
                 EmpleadosDTO.getEmpleadosDTO().setEmpleado(null);
                 stage.menuEmpleadosView();
-            }  
-                
+            }else if(op == 3){
+                agregarEmpleado();
+                stage.formRegistrarView();
+            }
         }
             
     }

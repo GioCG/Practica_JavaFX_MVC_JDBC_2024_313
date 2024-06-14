@@ -10,12 +10,12 @@
    <children>
       <ImageView fitHeight="750.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../image/Form%20distribuidores.png" />
+            <Image url="@../image/Asignar%20Encargado.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnGuardar" layoutX="77.0" layoutY="502.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="66.0" prefWidth="100.0" text="Guardar" />
-      <Button fx:id="btnCancelar" layoutX="322.0" layoutY="502.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="66.0" prefWidth="100.0" text="Cancelar" />
-      <ComboBox fx:id="cmbEmpleadoId" layoutX="77.0" layoutY="185.0" prefHeight="26.0" prefWidth="346.0" />
-      <ComboBox fx:id="cmbEncargadoId" layoutX="77.0" layoutY="362.0" prefHeight="26.0" prefWidth="346.0" />
+      <Button fx:id="btnGuardar" layoutX="51.0" layoutY="488.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="90.0" prefWidth="147.0" text="Guardar" />
+      <Button fx:id="btnCancelar" layoutX="297.0" layoutY="488.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="90.0" prefWidth="147.0" text="Cancelar" />
+      <ComboBox fx:id="cmbEmpleadoId" layoutX="14.0" layoutY="295.0" prefHeight="37.0" prefWidth="469.0" />
+      <ComboBox fx:id="cmbEncargadoId" layoutX="14.0" layoutY="422.0" prefHeight="37.0" prefWidth="469.0" />
    </children>
 </AnchorPane>

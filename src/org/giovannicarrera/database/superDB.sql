@@ -1139,14 +1139,13 @@ where Facturas.facturaId;
 
 select * from Clientes;
 select * from Productos;
-call sp_agregarCargo('a','b');
+call sp_agregarCargo('Jefe','Encargado de los empleados');
 call sp_agregarCategoriaProducto('c','d');
 call sp_AgregarDistribuidor('f','g','21','6534','reg');
-call sp_agregarClientes('NIT','nombre', 'apellido', 'telefono', 'direccion');
-call sp_agregarClientes('NIT','nombre', 'apellido', 'telefono', 'direccion');
-call sp_agregarEmpleado('nombreEmpleado', 'apellidoEmpleado',23.5,12,5,1);
+call sp_agregarClientes('98556423','Pedro', 'Vega', '68451231', '7av,12-88,Zona#8');
+call sp_agregarClientes('84953152','Esteban', 'Cano', '95846485', '3av,12-25,Zona#3');
+call sp_agregarEmpleado('Giovanni', 'Carrera',23.5,12,5,1);
 call sp_AgregarLvlAcces('Alto');
-call sp_AgregarUsuar('G',1,1,1);
 call sp_listarTicketSoporteComplet;
 call sp_ListarProductoComple;
 call sp_listarEmpleadoComp;

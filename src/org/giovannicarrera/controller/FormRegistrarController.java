@@ -57,9 +57,7 @@ public class FormRegistrarController implements Initializable {
         }else if(event.getSource() == btnCancelar){
             stage.formLoginView();
         }else if(event.getSource() == btnAgregarEmpledo){
-            stage.formEmpleadosView(1);
-        }else if(event.getSource() == btnAgregarCargo){
-            stage.menuCargosView();
+            stage.formEmpleadosView(3);
         }
     }
     

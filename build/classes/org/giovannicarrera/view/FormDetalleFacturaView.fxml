@@ -18,7 +18,7 @@
       <ComboBox fx:id="cmbProducto" layoutX="15.0" layoutY="421.0" prefHeight="37.0" prefWidth="469.0" />
       <Button fx:id="btnGuardar" layoutX="34.0" layoutY="618.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="107.0" prefWidth="186.0" text="Guardar" />
       <Button fx:id="btnCancelar" layoutX="250.0" layoutY="618.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="107.0" prefWidth="186.0" text="Cancelar" />
-      <TextField fx:id="tfCantidadProducto" layoutX="15.0" layoutY="520.0" prefHeight="38.0" prefWidth="470.0" />
-      <ComboBox fx:id="cmbCompra" layoutX="15.0" layoutY="200.0" prefHeight="37.0" prefWidth="469.0" />
+      <TextField fx:id="tfCantidadProducto" layoutX="15.0" layoutY="520.0" prefHeight="38.0" prefWidth="470.0" promptText="Cantidad del producto" />
+      <ComboBox fx:id="cmbCompra" layoutX="15.0" layoutY="200.0" prefHeight="37.0" prefWidth="469.0" promptText="Compra" />
    </children>
 </AnchorPane>

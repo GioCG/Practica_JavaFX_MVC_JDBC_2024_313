@@ -71,6 +71,7 @@ public class MenuCargosController implements Initializable {
                 cargarDatos();
                 vaciarForm();
             }
+            
         }else if(event.getSource() == btnEliminar){
             if(tfCargoId.getText().equals("")){
             }else{
@@ -267,4 +268,7 @@ public class MenuCargosController implements Initializable {
         this.stage = stage;
     }
     
+    public void setOp(int op) {
+        this.op = op;
+    }
 }
