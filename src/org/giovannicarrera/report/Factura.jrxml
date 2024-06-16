@@ -2,7 +2,7 @@
 <!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Factura" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="556a87e9-628f-41e0-a75b-dce3dd170bb7">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SuperKinalDB"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="superDB"/>
 	<parameter name="factId" class="java.lang.Integer"/>
 	<queryString language="SQL">
 		<![CDATA[select * from DetalleFactura
@@ -93,7 +93,10 @@ where Facturas.facturaId = $P{factId}]]>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="88" splitType="Stretch">
+		<band height="79" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="612" height="90" forecolor="#000000" backcolor="#416E5E" uuid="96ed738e-cb1c-47c1-a536-7d13f85ca45a"/>
+			</frame>
 			<staticText>
 				<reportElement x="186" y="0" width="200" height="79" uuid="7065a1a0-37dc-4875-bd6f-0e414c647440"/>
 				<textElement>
@@ -105,6 +108,9 @@ where Facturas.facturaId = $P{factId}]]>
 	</title>
 	<pageHeader>
 		<band height="70" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="0" width="612" height="60" forecolor="#000000" backcolor="#BAEBB9" uuid="2efdb2d6-8ebd-4e62-b3cf-e43f35e89d95"/>
+			</frame>
 			<textField>
 				<reportElement x="180" y="0" width="210" height="30" uuid="71f584c8-7bcc-4cdf-975f-007bd2077612"/>
 				<textElement>
@@ -122,7 +128,10 @@ where Facturas.facturaId = $P{factId}]]>
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="120" splitType="Stretch">
+		<band height="125" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="10" width="612" height="110" forecolor="#000000" backcolor="#BAEBB9" uuid="ef1976e1-74f1-4986-8ce6-f4955b9dbb33"/>
+			</frame>
 			<textField>
 				<reportElement x="80" y="10" width="280" height="40" uuid="d7fe9078-3167-473e-abd5-1a2656aba568"/>
 				<textElement>
@@ -151,7 +160,10 @@ where Facturas.facturaId = $P{factId}]]>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="41" splitType="Stretch">
+		<band height="115" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="1" width="612" height="109" forecolor="#000000" backcolor="#BAEBB9" uuid="f233b816-8467-436d-af7a-d4e220806091"/>
+			</frame>
 			<staticText>
 				<reportElement x="80" y="0" width="460" height="20" uuid="f8a1a35b-69a5-4abf-a4a1-519561c90114"/>
 				<text><![CDATA[------------------------------------------------------------------------------------------------------------------------------------------]]></text>
@@ -171,7 +183,10 @@ where Facturas.facturaId = $P{factId}]]>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="40" splitType="Stretch">
+		<band height="64" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-4" width="612" height="59" forecolor="#000000" backcolor="#BAEBB9" uuid="321f31ff-5c45-4966-b8da-f888f28c90b3"/>
+			</frame>
 			<staticText>
 				<reportElement x="340" y="10" width="100" height="30" uuid="fba77fbb-e930-4878-8cac-55494724e614"/>
 				<text><![CDATA[TOTAL SIN IVA:]]></text>
@@ -183,7 +198,14 @@ where Facturas.facturaId = $P{factId}]]>
 		</band>
 	</columnFooter>
 	<pageFooter>
-		<band height="136" splitType="Stretch">
+		<band height="160" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="0" width="612" height="123" forecolor="#000000" backcolor="#BAEBB9" uuid="e14e6958-84ed-497c-b57c-fce1b8bd8562"/>
+				<image>
+					<reportElement x="420" y="10" width="70" height="79" uuid="e16a5e32-3173-472e-8971-457b9c68775d"/>
+					<imageExpression><![CDATA["https://i.ibb.co/GtZxsf5/Logo-completo.png"]]></imageExpression>
+				</image>
+			</frame>
 			<staticText>
 				<reportElement x="80" y="0" width="100" height="78" uuid="1609b5b7-dc46-48d5-99c5-d840ae29c832"/>
 				<text><![CDATA[*

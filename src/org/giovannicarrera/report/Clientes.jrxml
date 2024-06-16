@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Clientes" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9c5947ee-fde6-4948-a241-700fe7d7754e">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SuperKinalDB"/>
@@ -58,14 +58,17 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="115" splitType="Stretch">
-			<staticText>
-				<reportElement x="20" y="10" width="140" height="50" uuid="09151b69-5266-4e8a-be7a-86c69a5f6872"/>
-				<textElement>
-					<font size="34"/>
-				</textElement>
-				<text><![CDATA[Clientes]]></text>
-			</staticText>
+		<band height="132" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="612" height="90" forecolor="#000000" backcolor="#416E5E" uuid="e9910047-7941-4faf-a9e2-e83bd6baa41b"/>
+				<image>
+					<reportElement x="470" y="-20" width="136" height="100" uuid="2fc34d4b-527d-456e-b826-ae8986860ba0"/>
+					<imageExpression><![CDATA["https://i.ibb.co/GtZxsf5/Logo-completo.png"]]></imageExpression>
+				</image>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="70" width="612" height="50" forecolor="#000000" backcolor="#BAEBB9" uuid="e0df9153-9601-4020-a239-29ab44aa3eff"/>
+			</frame>
 			<staticText>
 				<reportElement x="0" y="80" width="70" height="30" uuid="c65cfcdb-267d-4212-8e3f-b96857d34e44"/>
 				<textElement>
@@ -101,10 +104,23 @@
 				</textElement>
 				<text><![CDATA[Direccion]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="170" height="60" uuid="c0e9790d-b544-4954-8a0e-3a4b3f1b5a5d"/>
+				<textElement>
+					<font size="34"/>
+				</textElement>
+				<text><![CDATA[Clientes]]></text>
+			</staticText>
 		</band>
 	</title>
 	<detail>
-		<band height="60" splitType="Stretch">
+		<band height="100" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-12" width="612" height="102" forecolor="#000000" backcolor="#BAEBB9" uuid="d875817f-0dcf-44fb-87f9-489ab400ecb8"/>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="-16" y="10" width="612" height="60" forecolor="#000000" backcolor="#6CEB95" uuid="7b2c4c57-ca33-4a96-ab76-b5ec6337b51e"/>
+			</frame>
 			<textField>
 				<reportElement x="0" y="30" width="100" height="30" uuid="1e022f11-d63f-46bc-843f-8f76d22a4634">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7504cb80-4a67-4891-a453-14f025a31f2b"/>

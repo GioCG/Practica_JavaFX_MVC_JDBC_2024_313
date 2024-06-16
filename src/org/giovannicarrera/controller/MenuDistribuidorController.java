@@ -25,6 +25,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import org.giovannicarrera.dao.Conexion;
 import org.giovannicarrera.dto.DistribuidorDTO;
 import org.giovannicarrera.modelo.Distribuidor;
+import org.giovannicarrera.report.GenerarReporte;
 import org.giovannicarrera.system.Main;
 
 /** *
@@ -39,7 +40,7 @@ public class MenuDistribuidorController implements Initializable {
     private static ResultSet resultSet;
     
     @FXML
-    Button btnRegresar, btnAgregar, btnEditar,btnEliminar,btnBuscar;
+    Button btnRegresar, btnAgregar, btnEditar,btnEliminar,btnBuscar,btnReporte;
     @FXML
     TableView tblDistribuidores;
     @FXML
@@ -72,6 +73,8 @@ public class MenuDistribuidorController implements Initializable {
                 op = 3;
                 cargarDatos();
             }
+        }else if(event.getSource() == btnReporte){
+             GenerarReporte.getInstance().generarDistribuidores();
         }
            
     }

@@ -98,4 +98,43 @@ public class GenerarReporte {
             e.printStackTrace();
         }
     }
+    public void generarEmpleado(){
+        try{
+            conexion = Conexion.getInstance().obtenerConexion();
+            
+            Map<String, Object> parametros = new HashMap<>();
+            Stage reportStage = new Stage();
+            JasperPrint reporte = JasperFillManager.fillReport(GenerarReporte.class.getResourceAsStream("/org/giovannicarrera/report/Empleado.jasper"),parametros, conexion );
+            JRViewerFX reportView = new JRViewerFX(reporte);
+            Pane root = new Pane();
+            root.getChildren().add(reportView);
+            reportView.setPrefSize(1000,800);
+            Scene scene = new Scene(root);
+            reportStage.setScene(scene);
+            reportStage.setTitle("Empleado");
+            reportStage.show();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public void generarDistribuidores(){
+        try{
+            conexion = Conexion.getInstance().obtenerConexion();
+            
+            Map<String, Object> parametros = new HashMap<>();
+            Stage reportStage = new Stage();
+            JasperPrint reporte = JasperFillManager.fillReport(GenerarReporte.class.getResourceAsStream("/org/giovannicarrera/report/Distribuidores.jasper"),parametros, conexion );
+            JRViewerFX reportView = new JRViewerFX(reporte);
+            Pane root = new Pane();
+            root.getChildren().add(reportView);
+            reportView.setPrefSize(1000,800);
+            Scene scene = new Scene(root);
+            reportStage.setScene(scene);
+            reportStage.setTitle("Distribuidores");
+            reportStage.show();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 }

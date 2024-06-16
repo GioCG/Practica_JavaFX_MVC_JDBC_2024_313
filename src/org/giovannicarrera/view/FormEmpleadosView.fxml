@@ -16,7 +16,7 @@
       </ImageView>
       <Button fx:id="btnGuardar" layoutX="93.0" layoutY="669.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="66.0" prefWidth="100.0" text="Guardar" />
       <Button fx:id="btnCancelar" layoutX="278.0" layoutY="669.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="66.0" prefWidth="100.0" text="Cancelar" />
-      <TextField fx:id="tfEmpleadoId" editable="false" layoutX="76.0" layoutY="215.0" prefHeight="26.0" prefWidth="349.0" />
+      <TextField fx:id="tfEmpleadoId" editable="false" layoutX="76.0" layoutY="215.0" prefHeight="26.0" prefWidth="349.0" promptText="**********************************************************************" />
       <TextField fx:id="tfNombreEmpleado" layoutX="76.0" layoutY="283.0" prefHeight="26.0" prefWidth="349.0" />
       <TextField fx:id="tfApellidoEmpleado" layoutX="76.0" layoutY="362.0" prefHeight="26.0" prefWidth="349.0" />
       <TextField fx:id="tfSueldo" layoutX="76.0" layoutY="426.0" prefHeight="26.0" prefWidth="349.0" promptText="00.00" />

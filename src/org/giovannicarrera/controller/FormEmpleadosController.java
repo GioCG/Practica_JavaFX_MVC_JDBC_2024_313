@@ -51,10 +51,14 @@ public class FormEmpleadosController implements Initializable {
     @FXML
     public void handleButtonAction(ActionEvent event){
         if(event.getSource() == btnCancelar){
-            stage.menuEmpleadosView();
+            if(op == 1){
+                stage.menuEmpleadosView();
+            }else if(op == 3){
+                stage.formRegistrarView();
+            }
         }else if(event.getSource() == btnGuardar){
             if(op == 1){
-            agregarEmpleado(); 
+                agregarEmpleado(); 
             stage.menuEmpleadosView();
             }else if(op == 2){
                 editarEmpleado();

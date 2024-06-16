@@ -344,7 +344,7 @@ CREATE PROCEDURE sp_editarCargo(IN carId INT,IN nomCar VARCHAR(30), IN descCar V
 		UPDATE Cargos
 			SET
 				nombreCargo = nomCar,
-				descripcionCargo = descCarg
+				descripcionCargo = descCar
 					WHERE cargoId = carId;
 	END $$
 Delimiter ;
@@ -1007,11 +1007,12 @@ delimiter ;
 delimiter $$
     create procedure sp_listarDetFacturas()
 	begin
-		select
-			DetalleFactur.detalleFacturaId,
-			DetalleFactur.facturaId,
-            DetalleFactur.productoId
-				from DetalleFactur;
+			select TS.ticketSoporteId,TS.descripcion,TS.estatus,
+            CONCAT("id: ",C.clienteId,"|", C.nombre," ", C.apellido) AS Cliente,
+            CONCAT("id: ",F.facturaId,"|", F.fecha,"|", F.hora,"|", F.total) AS Factura, TS.clienteId from TicketSoportes TS
+            join Clientes C on TS.clienteId = C.clienteId
+            join Facturas F on TS.facturaId = F.facturaId
+					where ticketSoporteId = ticSopId;
 	end$$
 delimiter ;
 

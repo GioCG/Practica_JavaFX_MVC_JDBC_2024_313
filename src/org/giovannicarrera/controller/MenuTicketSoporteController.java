@@ -159,7 +159,7 @@ public class MenuTicketSoporteController implements Initializable {
         for (int i = 0; i < cmbFactura.getItems().size(); i++) {
             String facturaCmb = cmbFactura.getItems().get(i).toString();
             
-            if (facturaTbl.equals(facturaCmb)) {
+            if (facturaTbl.equals(facturaCmb)){
                 index = i;
                 return i;
             }

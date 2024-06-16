@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Distribuidores" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d3a8c14b-b5c3-42c1-9345-ce343838a053">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="superDB"/>
+	<queryString language="SQL">
+		<![CDATA[select * from distribuidores]]>
+	</queryString>
+	<field name="distribuidorId" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="distribuidorId"/>
+		<property name="com.jaspersoft.studio.field.label" value="distribuidorId"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="distribuidores"/>
+	</field>
+	<field name="nombreDistribuidor" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombreDistribuidor"/>
+		<property name="com.jaspersoft.studio.field.label" value="nombreDistribuidor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="distribuidores"/>
+	</field>
+	<field name="direccionDistribuidor" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="direccionDistribuidor"/>
+		<property name="com.jaspersoft.studio.field.label" value="direccionDistribuidor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="distribuidores"/>
+	</field>
+	<field name="nitDistribuidor" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nitDistribuidor"/>
+		<property name="com.jaspersoft.studio.field.label" value="nitDistribuidor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="distribuidores"/>
+	</field>
+	<field name="telefonoDistribuidor" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="telefonoDistribuidor"/>
+		<property name="com.jaspersoft.studio.field.label" value="telefonoDistribuidor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="distribuidores"/>
+	</field>
+	<field name="web" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="web"/>
+		<property name="com.jaspersoft.studio.field.label" value="web"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="distribuidores"/>
+	</field>
+	<group name="distribuidorId">
+		<groupExpression><![CDATA[$F{distribuidorId}]]></groupExpression>
+	</group>
+	<group name="nombreDistribuidor">
+		<groupExpression><![CDATA[$F{nombreDistribuidor}]]></groupExpression>
+	</group>
+	<group name="direccionDistribuidor">
+		<groupExpression><![CDATA[$F{direccionDistribuidor}]]></groupExpression>
+	</group>
+	<group name="nitDistribuidor">
+		<groupExpression><![CDATA[$F{nitDistribuidor}]]></groupExpression>
+	</group>
+	<group name="telefonoDistribuidor">
+		<groupExpression><![CDATA[$F{telefonoDistribuidor}]]></groupExpression>
+	</group>
+	<group name="web">
+		<groupExpression><![CDATA[$F{web}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-21" width="594" height="90" forecolor="#000000" backcolor="#416E5E" uuid="cb96757a-5177-482e-be49-5d66f2ad8ad2"/>
+				<staticText>
+					<reportElement x="20" y="0" width="260" height="80" uuid="06d27a9b-65cc-4763-ae84-c3cb80db85c8"/>
+					<textElement>
+						<font size="38" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Distribuidores]]></text>
+				</staticText>
+				<image>
+					<reportElement x="440" y="10" width="141" height="80" uuid="e930515f-aba7-4bb6-93c0-3adee06e294f"/>
+					<imageExpression><![CDATA["https://i.ibb.co/GtZxsf5/Logo-completo.png"]]></imageExpression>
+				</image>
+				<frame>
+					<reportElement mode="Opaque" x="0" y="90" width="592" height="60" forecolor="#000000" backcolor="#BAEBB9" uuid="1664257e-cb2c-4ab7-a5b0-31fe55a0dad9"/>
+					<staticText>
+						<reportElement x="179" y="0" width="100" height="30" uuid="cc9f2be1-7c3b-47cf-acba-e6b65051ef56">
+							<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c4323020-9174-43af-9a2d-48150b789995"/>
+						</reportElement>
+						<text><![CDATA[direccionDistribuidor]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="289" y="0" width="70" height="30" uuid="4d5e6252-5280-4920-83f0-4d5175e9c86a">
+							<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="eda9f917-6f52-461a-a025-f630e80d189b"/>
+						</reportElement>
+						<text><![CDATA[nitDistribuidor]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="-1" y="0" width="60" height="30" uuid="311fa90c-16dd-42ec-9ae9-2646e69ba8db">
+							<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2819bcac-8a35-49b5-80cd-95f97cf53462"/>
+						</reportElement>
+						<text><![CDATA[distribuidorId]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="69" y="0" width="100" height="30" uuid="c61109ea-c41b-4875-970f-7dee02275113">
+							<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="25c89859-7cbe-467f-ae0d-73c770f10d4a"/>
+						</reportElement>
+						<text><![CDATA[nombreDistribuidor]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="529" y="0" width="32" height="30" uuid="a0b028b6-728f-4ffb-9f6d-285c5f8fc122">
+							<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c6478eba-0cca-4a6e-888b-287375329b3f"/>
+						</reportElement>
+						<text><![CDATA[web]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="389" y="0" width="100" height="30" uuid="0671d80f-2853-489c-85d1-84345e2020f1">
+							<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="045ec6c6-0501-401d-93bb-0570f3d5eda5"/>
+						</reportElement>
+						<text><![CDATA[telefonoDistribuidor]]></text>
+					</staticText>
+				</frame>
+				<frame>
+					<reportElement mode="Opaque" x="0" y="170" width="592" height="60" forecolor="#000000" backcolor="#BAEBB9" uuid="7d7f5cb0-a60d-4346-8ea8-90bbcf570761"/>
+					<textField>
+						<reportElement x="510" y="10" width="82" height="30" uuid="51ef4a78-8c0b-4616-9725-1eb820186271">
+							<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c6478eba-0cca-4a6e-888b-287375329b3f"/>
+						</reportElement>
+						<textFieldExpression><![CDATA[$F{web}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement x="400" y="10" width="100" height="30" uuid="63822ec1-02b2-45bb-ab7e-9518f72abf43">
+							<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="045ec6c6-0501-401d-93bb-0570f3d5eda5"/>
+						</reportElement>
+						<textFieldExpression><![CDATA[$F{telefonoDistribuidor}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement x="70" y="10" width="100" height="30" uuid="419b006b-1332-4f3f-bcba-75c639e57fab">
+							<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="25c89859-7cbe-467f-ae0d-73c770f10d4a"/>
+						</reportElement>
+						<textFieldExpression><![CDATA[$F{nombreDistribuidor}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement x="180" y="10" width="100" height="30" uuid="bec82932-e2ee-4b4f-93b5-faf982777382">
+							<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c4323020-9174-43af-9a2d-48150b789995"/>
+						</reportElement>
+						<textFieldExpression><![CDATA[$F{direccionDistribuidor}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement x="5" y="10" width="50" height="30" uuid="7659bba0-ee09-4ff4-95cf-420d34780766">
+							<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2819bcac-8a35-49b5-80cd-95f97cf53462"/>
+						</reportElement>
+						<textFieldExpression><![CDATA[$F{distribuidorId}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement x="290" y="10" width="100" height="30" uuid="03ff329f-d9a0-4602-b288-1085b78044ce">
+							<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="eda9f917-6f52-461a-a025-f630e80d189b"/>
+						</reportElement>
+						<textFieldExpression><![CDATA[$F{nitDistribuidor}]]></textFieldExpression>
+					</textField>
+				</frame>
+			</frame>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="40" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="180" splitType="Stretch"/>
+	</detail>
+</jasperReport>

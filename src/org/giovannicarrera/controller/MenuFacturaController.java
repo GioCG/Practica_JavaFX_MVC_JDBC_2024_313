@@ -7,6 +7,7 @@ package org.giovannicarrera.controller;
 
 import java.time.LocalDate;
 import java.net.URL;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -29,8 +30,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.giovannicarrera.dao.Conexion;
 import org.giovannicarrera.modelo.Cliente;
+import org.giovannicarrera.modelo.Compra;
 import org.giovannicarrera.modelo.Empleado;
 import org.giovannicarrera.modelo.Factura;
+import org.giovannicarrera.modelo.Productos;
 import org.giovannicarrera.report.GenerarReporte;
 
 import org.giovannicarrera.system.Main;
@@ -53,7 +56,7 @@ public class MenuFacturaController implements Initializable {
     @FXML
     TextField tfFacturaId, tfFecha, tfHora,tfFacturaBuscar;
     @FXML
-    ComboBox cmbCliente, cmbEmpleado;
+    ComboBox cmbCliente, cmbEmpleado,cmbProducto;
     @FXML
     TableView tblFactura;
     @FXML
@@ -65,8 +68,8 @@ public class MenuFacturaController implements Initializable {
     public void handleButtonAction(ActionEvent event){
         if(event.getSource() == btnRegresar){
             stage.menuPrincipalView();
-        }else if(event.getSource() == btnDetFactura){
-            stage.formDetalleFacturaView();
+        }else if(event.getSource()== btnImprimir){
+            GenerarReporte.getInstance().generarFactura(Integer.parseInt(tfFacturaId.getText()));
         }else if(event.getSource() == btnGuardar){
             if(tfFacturaId.getText().equals("")){
                 agregarFactura();
@@ -74,6 +77,8 @@ public class MenuFacturaController implements Initializable {
                 cargarDatos();
             }else{
                 editarFactura();
+                agregarDetalleFactura();
+                agregarDetalleCompra();
                 cargarDatos();
             }
         }else if(event.getSource() == btnVaciarForm){
@@ -91,8 +96,6 @@ public class MenuFacturaController implements Initializable {
                 tblFactura.getItems().clear();
                 cargarDatos(); 
             }    
-        }else if(event.getSource()== btnImprimir){
-            GenerarReporte.getInstance().generarFactura(Integer.parseInt(tfFacturaId.getText()));
         }
     }
     @Override
@@ -100,6 +103,7 @@ public class MenuFacturaController implements Initializable {
        cargarDatos();
        cmbCliente.setItems(listarClientes());
        cmbEmpleado.setItems(listarEmpleado());
+       cmbProducto.setItems(listarProducto());
     }    
     
     public void cargarDatos(){
@@ -168,6 +172,48 @@ public class MenuFacturaController implements Initializable {
         return index; 
     }
     
+    public ObservableList<Productos> listarProducto(){
+        ArrayList<Productos> producto = new ArrayList<>();
+        
+        try{
+            conexion = Conexion.getInstance().obtenerConexion();
+            String sql = "call sp_ListarProductoComple()";
+            statement = conexion.prepareStatement(sql);
+            resultSet = statement.executeQuery();
+            
+            while(resultSet.next()){
+                int productoId = resultSet.getInt("productoId");
+                String nombreProducto = resultSet.getString("nombreProducto");
+                String descripcionProducto = resultSet.getString("descripcionProducto");
+                int cantidadStock = resultSet.getInt("cantidadStock");
+                Double precioVentaUnitario = resultSet.getDouble("precioVentaUnitario");
+                Double precioVentaMayor = resultSet.getDouble("precioVentaMayor");
+                Double precioCompra = resultSet.getDouble("precioCompra");
+                Blob imagen = resultSet.getBlob("imagen");
+                String distribuidor = resultSet.getString("distribuidor");
+                String categoria = resultSet.getString("categoria");
+                producto.add(new Productos(productoId, nombreProducto, descripcionProducto, cantidadStock,precioVentaUnitario, precioVentaMayor, precioCompra,imagen, distribuidor, categoria));
+            }
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }finally{
+            try{
+               if(resultSet != null){
+                   resultSet.close();
+               }
+               if(statement != null){
+                   statement.close();
+               }
+               if(conexion != null){
+                   conexion.close();
+               }
+               
+            }catch(SQLException e){
+                System.out.println(e.getMessage());
+            }
+        }
+        return FXCollections.observableArrayList(producto);
+    }
     public ObservableList<Empleado> listarEmpleado(){
         ArrayList<Empleado> empleado = new ArrayList<>();
         
@@ -287,6 +333,54 @@ public class MenuFacturaController implements Initializable {
         }
         return FXCollections.observableList(facturas);
     }
+    public void agregarDetalleFactura(){
+        try{
+            conexion = Conexion.getInstance().obtenerConexion();
+            String sql = "call SP_agregarDetFacturas(?,?)";
+            statement = conexion.prepareStatement(sql);
+            statement.setInt(1, Integer.parseInt(tfFacturaId.getText()));
+            statement.setInt(2, ((Productos)cmbProducto.getSelectionModel().getSelectedItem()).getProductoId());
+            statement.execute();
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }finally{
+            try{
+                if(statement != null){
+                    statement.close();
+                }
+                if(conexion != null){
+                    conexion.close();
+                }
+            }catch(SQLException e){
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+    public void agregarDetalleCompra(){
+        try{
+            conexion = Conexion.getInstance().obtenerConexion();
+            String sql = "call sp_agregarDetalleCompra(?,?,?)";
+            statement = conexion.prepareStatement(sql);
+            statement.setInt(1, 1);
+            statement.setInt(2, ((Productos)cmbProducto.getSelectionModel().getSelectedItem()).getProductoId());
+            statement.setInt(3, Integer.parseInt(tfFacturaId.getText()));
+            statement.execute();
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }finally{
+            try{
+                if(statement != null){
+                    statement.close();
+                }
+                if(conexion != null){
+                    conexion.close();
+                }
+            }catch(SQLException e){
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+    
     public void agregarFactura(){
         try{
             conexion = Conexion.getInstance().obtenerConexion();

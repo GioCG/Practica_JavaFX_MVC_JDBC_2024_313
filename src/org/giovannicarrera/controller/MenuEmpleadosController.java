@@ -76,7 +76,7 @@ public class MenuEmpleadosController implements Initializable {
                 cargarLista(); 
             }  
         }else if(event.getSource()==btnReporte){
-            
+            GenerarReporte.getInstance().generarEmpleado();
         }
     }
     

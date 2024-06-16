@@ -13,11 +13,11 @@
             <Image url="@../image/Formulario.png" />
          </image>
       </ImageView>
-      <TextField fx:id="tfClienteId" editable="false" layoutX="69.0" layoutY="230.0" prefHeight="28.0" prefWidth="351.0" />
-      <TextField fx:id="tfNIT" layoutX="69.0" layoutY="299.0" prefHeight="28.0" prefWidth="351.0" />
+      <TextField fx:id="tfClienteId" editable="false" layoutX="69.0" layoutY="230.0" prefHeight="28.0" prefWidth="351.0" promptText="****************************************************************************" />
+      <TextField fx:id="tfNIT" layoutX="69.0" layoutY="299.0" prefHeight="28.0" prefWidth="351.0" promptText="00000000" />
       <TextField fx:id="tfApellido" layoutX="69.0" layoutY="441.0" prefHeight="28.0" prefWidth="351.0" />
-      <TextField fx:id="tfTelefono" layoutX="69.0" layoutY="509.0" prefHeight="28.0" prefWidth="351.0" />
-      <TextField fx:id="tfDireccion" layoutX="69.0" layoutY="579.0" prefHeight="28.0" prefWidth="351.0" />
+      <TextField fx:id="tfTelefono" layoutX="69.0" layoutY="509.0" prefHeight="28.0" prefWidth="351.0" promptText="00000000" />
+      <TextField fx:id="tfDireccion" layoutX="69.0" layoutY="579.0" prefHeight="28.0" prefWidth="351.0" promptText="av,00-00,zona#" />
       <TextField fx:id="tfNombre" layoutX="69.0" layoutY="375.0" prefHeight="28.0" prefWidth="351.0" />
       <Button fx:id="btnGuardar" layoutX="136.0" layoutY="635.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="77.0" prefWidth="92.0" text="Guardar" />
       <Button fx:id="btnCancelar" layoutX="261.0" layoutY="635.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="77.0" prefWidth="92.0" text="Cancelar" />

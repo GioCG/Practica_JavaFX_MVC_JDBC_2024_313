@@ -12,7 +12,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.giovannicarrera.controller.FormAsignarEncargadoController;
 import org.giovannicarrera.controller.FormClienteController;
-import org.giovannicarrera.controller.FormDetalleFacturaController;
 import org.giovannicarrera.controller.FormDistribuidoresController;
 import org.giovannicarrera.controller.FormEmpleadosController;
 import org.giovannicarrera.controller.FormLoginController;
@@ -196,14 +195,6 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
-    public void formDetalleFacturaView() {
-        try{
-            FormDetalleFacturaController formDetalleFacturaView = (FormDetalleFacturaController)switchScene("FormDetalleFacturaView.fxml",500,750);
-            formDetalleFacturaView.setStage(this);
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-    } 
     public void formRegistrarView(){
         try{
             FormRegistrarController formRegistrarView = (FormRegistrarController) switchScene("FormRegistrarView.fxml", 600, 750);

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package org.giovannicarrera.controller;
 
 
@@ -13,11 +9,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.MenuItem;
 import org.giovannicarrera.system.Main;
+import org.giovannicarrera.report.GenerarReporte;
+
 
 public class MenuPrincipalController implements Initializable{
     private Main stage;
     @FXML
-    MenuItem btnMenuClientes,btnMenuTiketSop,btnMenuProductos,btnMenuCargos,btnMenuCategoriaProductos,btnMenuEmpleados,btnMenuDistribuidores,btnMenuPromociones,btnMenuFacturas;
+    MenuItem btnMenuClientes,btnMenuTiketSop,btnMenuProductos,btnMenuCargos,
+            btnMenuCategoriaProductos,btnMenuEmpleados,btnMenuDistribuidores,
+            btnMenuPromociones,btnMenuFacturas,btnRepoCliente,btnRepoProducto,
+            btnRepoFactura,btnRepoDistribuidores,btnRepoEmpleados;
     @Override
     public void initialize(URL location, ResourceBundle resources){
         
@@ -52,6 +53,16 @@ public class MenuPrincipalController implements Initializable{
             stage.menuPromocionesView();
         }else if(event.getSource() == btnMenuFacturas){
             stage.menuFacturaView();
+        }else if(event.getSource() == btnRepoCliente){
+            GenerarReporte.getInstance().generarClientes();
+        }else if(event.getSource() == btnRepoProducto){
+            GenerarReporte.getInstance().generarProductos();
+        }else if(event.getSource() == btnRepoFactura){
+            stage.menuFacturaView();
+        }else if(event.getSource() == btnRepoDistribuidores){
+            GenerarReporte.getInstance().generarDistribuidores();
+        }else if(event.getSource() == btnRepoEmpleados){
+            GenerarReporte.getInstance().generarEmpleado();
         }
     }
     

@@ -8,8 +8,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="900.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.giovannicarrera.controller.MenuCategoriaProductosController">
    <children>
@@ -17,35 +15,20 @@
          <image>
             <Image url="@../image/Formulario%20Categoria%20Producto.png" />
          </image></ImageView>
-      <TextField fx:id="tfCategoriaProductosId" editable="false" layoutX="30.0" layoutY="81.0" />
-      <TextField fx:id="tfNombreCategoria" layoutX="30.0" layoutY="141.0" />
-      <TextArea fx:id="taDescripcionCategoria" layoutX="30.0" layoutY="206.0" prefHeight="200.0" prefWidth="200.0" />
-      <TableView fx:id="tblCategoriaProductos" layoutX="30.0" layoutY="432.0" onMouseClicked="#cargarForm" prefHeight="252.0" prefWidth="366.0">
+      <TextField fx:id="tfCategoriaProductosId" editable="false" layoutX="156.0" layoutY="93.0" prefHeight="25.0" prefWidth="134.0" />
+      <TextField fx:id="tfNombreCategoria" layoutX="14.0" layoutY="94.0" prefHeight="25.0" prefWidth="134.0" />
+      <TextArea fx:id="taDescripcionCategoria" layoutX="14.0" layoutY="181.0" prefHeight="200.0" prefWidth="331.0" />
+      <TableView fx:id="tblCategoriaProductos" layoutX="14.0" layoutY="411.0" onMouseClicked="#cargarForm" prefHeight="273.0" prefWidth="576.0">
         <columns>
           <TableColumn fx:id="colCategoriaProductosId" prefWidth="75.0" text="Categoria Id" />
-          <TableColumn fx:id="colNombreCategoria" prefWidth="115.99998474121094" text="Nombre" />
-            <TableColumn fx:id="colDescripcionCategoria" prefWidth="177.60000000000002" text="Descripcion" />
+          <TableColumn fx:id="colNombreCategoria" prefWidth="191.0" text="Nombre" />
+            <TableColumn fx:id="colDescripcionCategoria" prefWidth="309.0" text="Descripcion" />
         </columns>
       </TableView>
-      <Button fx:id="btnRegresar" layoutX="343.0" layoutY="761.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="89.0" prefWidth="106.0" text="Regresar" />
-      <Text layoutX="32.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Categoria ID">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Text>
-      <Text layoutX="32.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Text>
-      <Text layoutX="32.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Text>
-      <Button fx:id="btnEliminar" layoutX="52.0" layoutY="761.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="89.0" prefWidth="106.0" text="Eliminar" />
-      <Button fx:id="btnGuardar" layoutX="194.0" layoutY="761.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="89.0" prefWidth="106.0" text="Guardar" />
-      <Button fx:id="btnBuscar" layoutX="480.0" layoutY="615.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="89.0" prefWidth="106.0" text="Buscar" />
-      <TextField fx:id="tfCategoriaBuscar" layoutX="418.0" layoutY="558.0" prefHeight="41.0" prefWidth="169.0" />
+      <Button fx:id="btnRegresar" layoutX="480.0" layoutY="797.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="89.0" prefWidth="106.0" text="Regresar" />
+      <Button fx:id="btnEliminar" layoutX="353.0" layoutY="797.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="89.0" prefWidth="106.0" text="Eliminar" />
+      <Button fx:id="btnGuardar" layoutX="480.0" layoutY="701.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="89.0" prefWidth="106.0" text="Guardar" />
+      <Button fx:id="btnBuscar" layoutX="364.0" layoutY="292.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="89.0" prefWidth="169.0" text="Buscar" />
+      <TextField fx:id="tfCategoriaBuscar" layoutX="365.0" layoutY="235.0" prefHeight="41.0" prefWidth="169.0" />
    </children>
 </AnchorPane>

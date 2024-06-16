@@ -15,11 +15,11 @@
       </ImageView>
       <Button fx:id="btnGuardar" layoutX="76.0" layoutY="670.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="66.0" prefWidth="100.0" text="Guardar" />
       <Button fx:id="btnCancelar" layoutX="325.0" layoutY="670.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="66.0" prefWidth="100.0" text="Cancelar" />
-      <TextField fx:id="tfDistribuidorId" layoutX="76.0" layoutY="187.0" prefHeight="26.0" prefWidth="349.0" />
+      <TextField fx:id="tfDistribuidorId" editable="false" layoutX="76.0" layoutY="187.0" prefHeight="26.0" prefWidth="349.0" promptText="****************************************************************************" />
       <TextField fx:id="tfNombreDistribuidor" layoutX="76.0" layoutY="279.0" prefHeight="26.0" prefWidth="349.0" />
-      <TextField fx:id="tfDireccionDistribuidor" layoutX="76.0" layoutY="368.0" prefHeight="26.0" prefWidth="349.0" />
-      <TextField fx:id="tfNitDistribuidor" layoutX="75.0" layoutY="454.0" prefHeight="26.0" prefWidth="349.0" />
-      <TextField fx:id="tfTelefonoDistribuidor" layoutX="75.0" layoutY="536.0" prefHeight="26.0" prefWidth="349.0" />
-      <TextField fx:id="tfWeb" layoutX="76.0" layoutY="623.0" prefHeight="26.0" prefWidth="349.0" />
+      <TextField fx:id="tfDireccionDistribuidor" layoutX="76.0" layoutY="368.0" prefHeight="26.0" prefWidth="349.0" promptText="av,00-00,zona#" />
+      <TextField fx:id="tfNitDistribuidor" layoutX="75.0" layoutY="454.0" prefHeight="26.0" prefWidth="349.0" promptText="00000000" />
+      <TextField fx:id="tfTelefonoDistribuidor" layoutX="75.0" layoutY="536.0" prefHeight="26.0" prefWidth="349.0" promptText="00000000" />
+      <TextField fx:id="tfWeb" layoutX="76.0" layoutY="623.0" prefHeight="26.0" prefWidth="349.0" promptText="www." />
    </children>
 </AnchorPane>
